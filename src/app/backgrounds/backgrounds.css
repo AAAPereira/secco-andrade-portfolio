@@ -1,0 +1,654 @@
+/* Backgrounds.css - Efeitos de Fundo Futurísticos */
+
+/* Modo Default */
+.theme-default .background-overlay {
+  background: center/cover no-repeat, linear-gradient(135deg, #0f0c29, #000000, #24243e);
+  color: #ffffff;
+  animation: neon-glow 5s infinite alternate;
+  transition: background 0.5s ease;
+  opacity: 3.8;
+}
+
+/* Modo Neon Futurístico */
+.theme-neon .background-overlay {
+  background: url('/media/photos/robos-futuristas_e.png') center/cover no-repeat, linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  color: #ffffff;
+  animation: neon-glow 5s infinite alternate;
+  opacity: 0.8;
+  --theme-button: linear-gradient(90deg, #cccccc, #e0e0e0); /* Gradiente branco para o botão */
+}
+
+/* Modo Neon transição */
+.theme-neon .background-overlay::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(0,255,255,0.2) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: particle-glow 20s linear infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Modo classic Futurístico */
+.theme-classic .background-overlay {
+  background: center/cover no-repeat, linear-gradient(135deg, #0f0c29, #000000 0%, #1a1a1a 100%);
+  color: #ffffff;
+  animation: neon-glow 5s infinite alternate;
+  opacity: 0.8;
+}
+
+/* Modo classic transição */
+.theme-classic .background-overlay::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(0,255,255,0.2) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: particle-glow 20s linear infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Transição suave entre modos dark mode */
+.theme-background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  transition: background 0.5s ease;
+}
+
+
+.theme-neon {
+  --theme-primary: #00ffff;
+  --theme-accent: #00ff77;
+  --logo-glow: 0 0 20px #00ffff;
+  --theme-button: linear-gradient(90deg, #00ffff, #00cccc);
+}
+
+.theme-default {
+  --theme-primary: #3399ff;
+  --theme-accent: #00ffff;
+  --logo-glow: 0 0 20px #3399ff;
+  --theme-button: linear-gradient(90deg, #3399ff, #00ccff);
+}
+
+.theme-classic {
+  --theme-primary: #ffffff;
+  --theme-accent: #999999;
+  --logo-glow: 0 0 20px #ffffff;
+  --theme-button: linear-gradient(90deg,  #0a1a2a 0%, #1c4a5d 50%, #2e8b57 100%);
+}
+
+/* Verde */
+.theme-green {
+  --theme-primary: #00ffcc;
+  --theme-secondary: #00ffcc;
+  --theme-accent: #00ffcc;
+  --logo-glow: 0 0 20px #00ffcc;
+  --theme-button: linear-gradient(90deg, #00ffcc, #009999);
+  background-color: #020c1b;
+}
+
+/* Amarelo */
+.theme-yellow {
+  --theme-primary: #ffcc00;
+  --theme-secondary: #ffcc00;
+  --theme-accent: #ffcc00;
+  --logo-glow: 0 0 20px #ffcc00;
+  --theme-button: linear-gradient(90deg, #ffcc00, #b38f00);
+  background-color: #000000;
+}
+
+/* Azul */
+.theme-blue {
+  --theme-primary: #3399ff;
+  --theme-secondary: #3399ff;
+  --theme-accent: #3399ff;
+  --logo-glow: 0 0 20px #3399ff;
+  --theme-button: linear-gradient(90deg, #3399ff, #1e90ff);
+  background-color: #1e1e2f;
+}
+
+/* Roxo */
+.theme-purple {
+  --theme-primary: #8a2be2; /* Azul-violeta vibrante */
+  --theme-secondary: #9932cc; /* Orquídea escura */
+  --theme-accent: #ba55d3; /* Médio-orquídea */
+  --logo-glow: 0 0 20px #8a2be2;
+  --theme-button: linear-gradient(90deg, #8a2be2, #9932cc);
+  background-color: #1a102a; /* Fundo roxo bem escuro */
+}
+
+/* Pink */
+.theme-pink {
+  --theme-primary: #ff69b4; /* Rosa choque */
+  --theme-secondary: #ff1493; /* Rosa profundo */
+  --theme-accent: #ffb6c1; /* Rosa claro */
+  --logo-glow: 0 0 20px #ff69b4;
+  --theme-button: linear-gradient(90deg, #ff69b4, #ff1493);
+  background-color: #2a101a; /* Fundo rosa bem escuro */
+}
+
+/* Orange */
+.theme-orange {
+  --theme-primary: #ff8c00; /* Laranja escuro */
+  --theme-secondary: #ff4500; /* Laranja vermelho */
+  --theme-accent: #ffa500; /* Laranja */
+  --logo-glow: 0 0 20px #ff8c00;
+  --theme-button: linear-gradient(90deg, #ff8c00, #ff4500);
+  background-color: #2a1a10; /* Fundo laranja bem escuro */
+}
+
+
+/* Black & White (Preto e Branco) */
+.theme-black-white {
+  --theme-primary: #ffffff; /* Branco puro para elementos principais */
+  --theme-secondary: #f0f0f0; /* Branco ligeiramente mais suave */
+  --theme-accent: #cccccc; /* Cinza claro para acentos */
+  --logo-glow: 0 0 15px #cccccc; /* Brilho suave branco */
+  --theme-button: linear-gradient(90deg, #cccccc, #e0e0e0); /* Gradiente branco para o botão */
+  background: linear-gradient(180deg, #000000 0%, #1a1a1a 100%);
+}
+
+
+/* Futuristic */
+.theme-futuristic {
+  --theme-primary: #00e5ff; /* Ciano Elétrico */
+  --theme-secondary: #00aaff; /* Azul Profundo */
+  --theme-accent: #39ff14; /* Verde Neon */
+  --logo-glow: 0 0 25px #00e5ff, 0 0 40px #39ff14; /* Brilho duplo */
+  --theme-button: linear-gradient(90deg, #00e5ff, #00aaff, #39ff14); /* Gradiente de três cores */
+  background-color: #0d0d1a; /* Fundo muito escuro, quase preto, com um toque de azul */
+}
+
+
+/* 🌟 Tema Verde Neon Elétrico CyberGrid */
+.theme-verde-neon {
+  /* 🎨 Paleta principal */
+  --theme-primary: #00ffbf;      /* Verde água neon - Primário */
+  --theme-secondary: #00ffbf;    /* Mesma base para consistência */
+  --theme-accent: #0099FF;       /* Azul neon - Contraste perfeito */
+
+  /* ✨ Glow do logo e elementos */
+  --logo-glow: 0 0 25px #00e5ff, 0 0 30px #00ffbf;
+
+  /* 🔘 Botões e efeitos */
+  --theme-button: linear-gradient(120deg, transparent 60%, #00ffbf 65%, transparent 70%);
+
+  /* 🖤 Fundo absoluto */
+  background-color: #000;
+
+  /* 🌌 Efeito neon diagonal CyberGrid */
+  background-image:
+    linear-gradient(120deg, transparent 0%, #00ffbf 5%, transparent 10%),
+    linear-gradient(120deg, transparent 30%, #00ffbf 35%, transparent 40%),
+    linear-gradient(120deg, transparent 60%, #00ffbf 65%, transparent 70%);
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+
+/* 🌌 Theme Azul Neon Elétrico */
+.theme-azul-neon {
+  --theme-primary: #00aaff;
+  --theme-secondary: #0088cc;
+  --theme-accent: #00ffff;
+  --logo-glow: 0 0 25px #00aaff, 0 0 40px #00ffff;
+  --theme-button: linear-gradient(90deg, #00aaff, #00ffff, #0088cc);
+  background-color: #000d1a;
+  background-image: url('/media/backgrounds/tracos-azul-neon.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+
+.theme-verdee-neon {
+  --theme-primary: #00ffbf;
+  --theme-secondary: #00ccaa;
+  --theme-accent: #39ff14;
+  --logo-glow: 0 0 25px #00ffbf, 0 0 40px #39ff14;
+  --theme-button: linear-gradient(90deg, #00ffbf, #39ff14, #00ccaa);
+  background-color: #000f0a;
+  background-image: url('/media/backgrounds/tracos-verde-neon.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.theme-roxo-neon {
+  --theme-primary: #b400ff;
+  --theme-secondary: #8a00cc;
+  --theme-accent: #00ffff;
+  --logo-glow: 0 0 25px #b400ff, 0 0 40px #00ffff;
+  --theme-button: linear-gradient(120deg, transparent 60%, #00ffbf 65%, transparent 70% #b400ff, #00ffff, #8a00cc);
+ /* --theme-button: linear-gradient(120deg, transparent 60%, #00ffbf 65%, transparent 70%);*/
+  background-color: #0a0014;
+  background-image: url('/media/backgrounds/linhas-de-luz-roxa.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+
+
+
+
+
+
+/* 🔘 Botão neon interativo */
+.theme-azul-neon .button-neon {
+  background: var(--theme-button);
+  color: white;
+  border: 1px solid var(--theme-accent);
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  box-shadow: 0 0 8px var(--theme-primary), 0 0 16px var(--theme-accent);
+  transition: all 0.3s ease;
+}
+
+.theme-azul-neon .button-neon:hover {
+  box-shadow: 0 0 12px var(--theme-accent), 0 0 24px var(--theme-primary), inset 0 0 10px var(--theme-accent);
+  transform: scale(1.05);
+}
+
+
+.texto-padrao {
+  color: #00F5FF;
+}
+
+.texto-secundario {
+  color: #FFFFFF;
+}
+
+.texto-destaque {
+  color: #39FF14;
+}
+
+
+/* Aplicação das variáveis */
+.bg-theme-primary {
+  background-color: var(--theme-primary);
+  border: 2px solid var(--theme-accent); /* NOVA BORDA */
+  box-shadow: 0 0 8px var(--theme-accent); /* BRILHO SUAVE */
+  transition: all 0.3s ease;
+}
+
+.text-theme-primary {
+  color: var(--theme-primary);
+}
+.border-theme-primary {
+  border-color: var(--theme-primary);
+}
+.text-theme-secondary {
+  color: var(--theme-secondary);
+}
+.text-theme-accent {
+  color: var(--theme-accent);
+}
+
+
+.bg-theme-primary:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 16px var(--theme-accent), 0 0 24px var(--theme-accent) inset;
+}
+
+/* Linhas neon com variável do tema */
+.neon-line {
+  height: 4px;
+  background-color: var(--theme-accent);
+  box-shadow: 0 0 10px var(--theme-accent), 0 0 20px var(--theme-accent);
+}
+
+/* Botões atualizados com tema */
+.button-acessar-neon {
+  background-color: transparent;
+  color: var(--theme-primary);
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border: 2px solid var(--theme-primary);
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+  box-shadow: 0 0 12px var(--theme-primary), 0 0 20px var(--theme-primary) inset;
+}
+
+.button-acessar-neon:hover {
+  background-color: var(--theme-primary);
+  color: #000;
+  box-shadow: 0 0 20px var(--theme-primary), 0 0 40px var(--theme-primary) inset;
+}
+
+
+.button-theme {
+  background: var(--theme-button);
+  color: white;
+  border: none;
+  box-shadow: 0 0 10px var(--theme-primary);
+  transition: all 0.3s ease;
+}
+
+.button-theme:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px var(--theme-accent);
+}
+
+.toggle-mode {
+  backdrop-filter: blur(6px);
+  background: rgba(0, 255, 255, 0.1);
+  border: 1px solid rgba(0, 255, 255, 0.4);
+  box-shadow: 0 0 8px var(--theme-accent);
+  color: var(--theme-accent);
+  font-size: 1.4rem;
+  padding: 10px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.toggle-mode:hover {
+  background: rgba(0, 255, 255, 0.2);
+  box-shadow: 0 0 12px var(--theme-accent);
+}
+
+
+/* Botão de Som com Estilo Neon */
+.toggle-mode-sound {
+  backdrop-filter: blur(6px);
+  background: rgba(255, 0, 102, 0.1);
+  border: 1px solid rgba(255, 0, 102, 0.4);
+  box-shadow: 0 0 8px #ff0066;
+  color: #ff0066;
+  font-size: 1.4rem;
+  padding: 10px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.toggle-mode-sound:hover {
+  background: rgba(255, 0, 102, 0.2);
+  box-shadow: 0 0 12px #ff0066;
+}
+
+.toggleLanguage {
+  backdrop-filter: blur(6px);
+  background: rgba(0, 255, 255, 0.1);
+  border: 1px solid rgba(0, 255, 255, 0.4);
+  box-shadow: 0 0 8px #00ffff;
+  color: #00ffff;
+  font-size: 1.4rem;
+  padding: 10px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Rodapé com Animação Neon */
+.footer {
+  background-color: #121212;
+  color: #00ffff;
+  text-align: center;
+  padding: 10px;
+  animation: neon-pulse 2s infinite alternate;
+}
+
+
+/* Animação de Entrada para Títulos */
+.titulo-entrada {
+  animation: fade-in 1s ease;
+}
+
+
+.logo-neon {
+  filter: drop-shadow(0 0 8px #00ff77);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo-neon:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 12px #00ff77);
+}
+
+.neon-line {
+  box-shadow: 0 0 12px #00ff77, 0 0 20px #00ff77;
+}
+
+/* Efeito de Destaque nos Logos */
+.logo-item:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+
+.neon-text {
+  color: #00ffff;
+  text-shadow: 0 0 8px #00ffff, 0 0 12px #00ff77;
+  transition: text-shadow 0.3s ease;
+}
+
+.neon-text:hover {
+  text-shadow: 0 0 12px #00ffff, 0 0 24px #00ff77, 0 0 36px #00ffff;
+}
+
+.timeline-container {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.timeline-line {
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, #00ff77, #00ff77);
+  margin-bottom: 20px;
+}
+
+.timeline-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timeline-ano {
+    background: none !important;
+    color: #00FF77 !important;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 20;
+    border: none;
+    transition: color 0.3s ease;
+}
+
+.timeline-ano:hover {
+    color: #00FF77 !important;
+}
+
+.timeline-content {
+  max-width: 600px;
+  text-align: justify;
+  margin: 0 auto;
+  padding: 10px;
+  line-height: 1.6;
+  color: #00ff77;
+}
+
+.timeline-logo {
+   margin-top: 20px;
+   filter: drop-shadow(0 0 8px #00ff77);
+   transition: filter 0.3s ease;
+}
+
+.timeline-logo:hover {
+   filter: drop-shadow(0 0 16px #00ff77);
+}
+
+.timeline-key {
+  color: #7E22CE;
+  font-weight: bold;
+}
+
+/* Adicionais para integração de tema */
+.glow-logo {
+  filter: drop-shadow(var(--logo-glow));
+}
+
+/* Estilos base para as setas */
+.slick-prev,
+.slick-next {
+  backdrop-filter: blur(8px);
+  background: rgba(0, 255, 255, 0.1);
+  border: 1px solid rgba(0, 255, 255, 0.4);
+  box-shadow: 0 0 8px #00ffff;
+  color: #00ffff;
+  font-size: 1.4rem;
+  padding: 10px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  content: ""; /* Você pode usar caracteres Unicode aqui se a biblioteca usar pseudo-elementos */
+}
+
+/* Efeito neon no hover */
+.slick-prev:hover,
+.slick-next:hover {
+  color: #00ffff; /* Cor neon ciano no hover */
+  text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ffff;
+}
+
+/* Efeito neon ativo (opcional) */
+.slick-prev:active,
+.slick-next:active {
+  text-shadow: 0 0 2px #00ff00, 0 0 5px #00ffff;
+}
+
+/* Posicionamento das setas (você pode precisar ajustar isso) */
+.slick-prev {
+  left: 10px;
+}
+
+.slick-next {
+  right: 10px;
+}
+
+.slick-slide-item {
+  transition: transform 0.3s ease-in-out; /* Transição suave para o scale */
+}
+
+.slick-slide-item.active {
+  transform: scale(1.05); /* Leve aumento de escala */
+}
+
+/* Certificacoes.css */
+.centered-image {
+  max-height: 600px; /* Ajuste a altura máxima conforme necessário */
+  margin: 0 auto;
+}
+
+
+.custom-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background-color: var(--theme-primary);
+  border-radius: 10px;
+  box-shadow: 0 0 10px #00a8ff; /* Efeito de brilho neon */
+  border: 2px solid #00ff00;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+  background-color: #00ff00;
+}
+
+
+/* Exemplo: styles/globals.css */
+.input-date {
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  background-color: #00a8ff; /* Cor neon verde */
+  border-radius: 10px;
+}
+
+.input-date-custom {
+  background-image: url("/media/photos/calendario_a.png"); /* seu .png */
+  background-repeat: no-repeat;
+  background-position: right 2rem center;
+  background-size: 40px;
+  color-scheme: dark;
+  padding-right: 1.5rem; /* espaço pro ícone */
+}
+
+/* Deixe o ícone do calendário branco */
+.calendar-white-icon::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  background-color: #00ff00;
+}
+
+.calendar-white-icon::-moz-calendar-picker-indicator {
+  filter: invert(1);
+  background-color: #00ff00;
+}
+
+
+
+@keyframes neon-glow {
+  0% { filter: brightness(0.8); }
+  50% { filter: brightness(1.2); }
+  100% { filter: brightness(0.8); }
+}
+
+@keyframes particle-glow {
+  0% { background-position: 0 0; }
+  100% { background-position: 100px 100px; }
+}
+
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+@keyframes neon-pulse {
+  0% { text-shadow: 0 0 8px #00ffff; }
+  100% { text-shadow: 0 0 20px #00ffff; }
+}
+
+@keyframes logo-pulse {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.2); }
+}
+
+
