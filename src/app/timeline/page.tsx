@@ -28,7 +28,8 @@ const audioMap = {
   "2024": "/media/audios/profissional/This Body of Mine.mp3",
 };
 
-
+// Definição da interface TimelineDisplayProps
+// Se o componente não recebe props, pode ser uma interface vazia
 interface TimelineDisplayProps {}
 
 const TimelineDisplay: React.FC<TimelineDisplayProps> = () => {
@@ -41,6 +42,7 @@ const TimelineDisplay: React.FC<TimelineDisplayProps> = () => {
   const [mode, setMode] = useState("default");
   const [idioma, setIdioma] = useState<"pt" | "en">("pt");
   const [isMuted, setIsMuted] = useState(false);
+  const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
   const router = useRouter(); // Inicialize o router
 
   const modeAudioRef = useRef<HTMLAudioElement>(null); // sons neon/classic
@@ -112,37 +114,32 @@ const handlePlay = () => {
   }, []);
 
 
-useEffect(() => {
-  const saudacaoExecutada = sessionStorage.getItem("saudacaoTimelineExecutada");
-  const storedFirstName = sessionStorage.getItem("firstName");
+  useEffect(() => {
+    const saudacaoExecutada = sessionStorage.getItem("saudacaoTimelineExecutada");
+    if (typeof window !== "undefined" && "speechSynthesis" in window && !saudacaoExecutada) {
+      const hora = new Date().getHours();
+      let saudacaoPt = "Olá! Esta é a página timeline, aqui você terá de forma resumida todo o trabalho realizado pelo André Pereira. Clique em cada ano e voce verá as tecnologias, habilidades e impactos positivos para as empresas. Obrigado.";
+      let saudacaoEn = "Hello! This is the timeline page. Here you'll find a summarized overview of all the work done by André Pereira. Click on each year, and you'll see the technologies, skills, and positive impacts for the companies. Thank you.";
 
-  if (typeof window !== "undefined" && "speechSynthesis" in window && !saudacaoExecutada) {
-    const hora = new Date().getHours();
-    const nome = storedFirstName?.split("@")[0];
-    const nomeFormatado = nome ? nome.charAt(0).toUpperCase() + nome.slice(1) : "visitante";
+      if (hora >= 5 && hora < 12) {
+        saudacaoPt = "Bom dia! Esta é a página timeline, aqui você terá de forma resumida todo o trabalho realizado pelo André Pereira. Clique em cada ano e voce verá as tecnologias, habilidades e impactos positivos para as empresas. Obrigado.";
+        saudacaoEn = "Good morning! This is the timeline page. Here you'll find a summarized overview of all the work done by André Pereira. Click on each year, and you'll see the technologies, skills, and positive impacts for the companies. Thank you.";
+      } else if (hora >= 12 && hora < 18) {
+        saudacaoPt = "Boa tarde! Esta é a página timeline, aqui você terá de forma resumida todo o trabalho realizado pelo André Pereira. Clique em cada ano e voce verá as tecnologias, habilidades e impactos positivos para as empresas. Obrigado.";
+        saudacaoEn = "Good afternoon! This is the timeline page. Here you'll find a summarized overview of all the work done by André Pereira. Click on each year, and you'll see the technologies, skills, and positive impacts for the companies. Thank you.";
+      } else {
+        saudacaoPt = "Boa noite! Esta é a página timeline, aqui você terá de forma resumida todo o trabalho realizado pelo André Pereira. Clique em cada ano e voce verá as tecnologias, habilidades e impactos positivos para as empresas. Obrigado.";
+        saudacaoEn = "Good evening! This is the timeline page. Here you'll find a summarized overview of all the work done by André Pereira. Click on each year, and you'll see the technologies, skills, and positive impacts for the companies. Thank you.";
+      }
 
-    let saudacaoPt = `Bom dia! Esta é a página timeline, aqui você terá de forma resumida todo o trabalho realizado pelo André Pereira. Clique no ano desejado e você verá as tecnologias, habilidades e impactos positivos para as empresas. Obrigado pela visita, ${nomeFormatado}!`;
-    let saudacaoEn = `Good morning! This is the timeline page. Here, you'll find a summarized overview of the work done by André Pereira. Click on the desired year to explore the technologies, skills, and positive impacts. Thank you for your visit, ${nomeFormatado}!`;
-
-    if (hora >= 12 && hora < 18) {
-      saudacaoPt = saudacaoPt.replace("Bom dia", "Boa tarde");
-      saudacaoEn = saudacaoEn.replace("Good morning", "Good afternoon");
-    } else if (hora >= 18 || hora < 5) {
-      saudacaoPt = saudacaoPt.replace("Bom dia", "Boa noite");
-      saudacaoEn = saudacaoEn.replace("Good morning", "Good evening");
+      const utter = new SpeechSynthesisUtterance(idioma === "pt" ? saudacaoPt : saudacaoEn);
+      utter.lang = idioma === "pt" ? "pt-BR" : "en-US";
+      utter.rate = 0.98;
+      utter.pitch = 1.1;
+      window.speechSynthesis.speak(utter);
+      sessionStorage.setItem("saudacaoTimelineExecutada", "true");
     }
-
-    const utter = new SpeechSynthesisUtterance(`${saudacaoPt} ${saudacaoEn}`);
-    utter.lang = "pt-BR"; // Pode deixar assim se não quiser mudar voz no meio
-    utter.rate = 0.95;
-    utter.pitch = 1.1;
-
-    window.speechSynthesis.speak(utter);
-    sessionStorage.setItem("saudacaoTimelineExecutada", "true");
-  }
-}, []);
-
-
+  }, [idioma]);
 
 
   useEffect(() => {
@@ -216,7 +213,7 @@ useEffect(() => {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <Image src="/media/photos/icone_security.png" alt="Logo da Segurança" width={400} height={400} priority className="mx-auto mb-4 animate-pulse logo-neon" style={{ height: "auto" }}style={{ filter: "drop-shadow(var(--logo-glow))" }}/>
+          <Image src="/media/photos/icone_security.png" alt="Logo da Segurança" width={400} height={400} priority className="mx-auto mb-4 animate-pulse logo-neon" style={{ height: "auto" , filter: "drop-shadow(var(--logo-glow))" }}/>
 
           <h1 className="text-xl text-green-400 font-bold text-theme-primary">Carregando Pagina Timeline...</h1>
         </motion.div>
@@ -232,7 +229,7 @@ useEffect(() => {
      <div id="dashboard-content" className="grid grid-cols-1 lg:grid-cols-12 gap-6 max-w-[1600px] w-full px-4">
 
         <div className="col-span-2 space-y-4">
-             <div className="relative left-80 z-0 w-full mt-30">
+             <div className="relative left-95 z-0 w-full mt-30">
                 <Image src="/media/photos/andre_pereira_b.png" alt="Foto de André Pereira" width={183} height={624}  className="rounded-lg shadow-xl"/>
              </div>
         </div>
@@ -263,7 +260,7 @@ useEffect(() => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
-              className="text-theme-accent px-64 py-4 max-w-5xl mx-auto z-50 text-left space-y-6 overflow-y-auto max-h-[60vh] px-2 custom-scroll"
+              className="text-theme-accent px-4  max-w-2xl mx-auto z-50 text-left space-y-6 max-h-[65vh] overflow-y-auto custom-scroll"
             >
               <h3 className="text-xl text-theme-accent font-bold text-center">
                 {language === 'pt' ? selectedData.titulo : selectedData.translations.EN.titulo}

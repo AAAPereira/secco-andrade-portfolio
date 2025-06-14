@@ -243,9 +243,34 @@
 }
 
 
+.theme-cybergrid {
+  /* Cores principais */
+  --theme-primary: #ffffff; /* Branco puro para linhas e detalhes */
+  --theme-secondary: #b0b0b0; /* Cinza claro para contraste */
+  --theme-accent: #00ffff; /* Neon ciano para destaques */
+  --logo-glow:
+    0 0 5px #ffffff,
+    0 0 10px #ffffff,
+    0 0 15px #ffffff;
 
+  /* Botões */
+  --theme-button: linear-gradient(
+    120deg,
+    transparent 60%,
+    #ffffff 65%,
+    transparent 70%,
+    #00ffff,
+    #b0b0b0
+  );
 
-
+  /* Fundo */
+  background-color: #000000; /* Preto absoluto */
+  background-image: url('/media/backgrounds/neon-preto.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
 
 
 /* 🔘 Botão neon interativo */
@@ -394,15 +419,6 @@
 }
 
 
-
-
-
-
-
-
-
-
-
 /* Rodapé com Animação Neon */
 .footer {
   background-color: #121212;
@@ -475,18 +491,20 @@
 }
 
 .timeline-ano {
-    background: none !important;
-    color: #00FF77 !important;
-    font-weight: bold;
-    cursor: pointer;
-    padding: 20;
-    border: none;
-    transition: color 0.3s ease;
+  padding: 0.4rem 1rem;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  box-shadow: 0 0 8px #00ffff, 0 0 16px #00ffff40;
+  backdrop-filter: blur(3px);
+  transition: all 0.3s ease;
 }
 
 .timeline-ano:hover {
-    color: #00FF77 !important;
+  background: rgba(0, 255, 255, 0.1);
+  transform: scale(1.05);
 }
+
 
 .timeline-content {
   max-width: 600px;

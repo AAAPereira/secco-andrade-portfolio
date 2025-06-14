@@ -177,7 +177,16 @@ export default function SobrePage() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <Image src="/media/photos/icone_security.png" alt="Logo da Segurança" width={400} height={400} priority className="mx-auto mb-4 animate-pulse logo-neon" style={{ height: "auto" }}style={{ filter: "drop-shadow(var(--logo-glow))" }}/>
+          <Image
+              src="/media/photos/icone_security.png"
+              alt="Logo da Segurança"
+              width={400}
+              height={400}
+              priority
+              className="mx-auto mb-4 animate-pulse logo-neon"
+              style={{ height: "auto", filter: "drop-shadow(var(--logo-glow))" }}
+            />
+
 
           <h1 className="text-xl text-green-400 font-bold text-theme-primary">Carregando Sobre o Profissional - Andre Pereira...</h1>
         </motion.div>
@@ -270,3 +279,4 @@ export default function SobrePage() {
         </div>
     </main>
   );
+};

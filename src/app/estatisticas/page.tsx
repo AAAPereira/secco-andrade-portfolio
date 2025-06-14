@@ -9,7 +9,7 @@ import jsPDF from "jspdf";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 
 interface Avaliacao {
   email: string;
@@ -22,20 +22,22 @@ const COLORS = ["#00ffe0", "#00c8ff", "#00ff99", "#ff00ff", "#ffcc00"];
 
 export default function EstatisticasPage() {
   const [avaliacoes, setAvaliacoes] = useState<Avaliacao[]>([]);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [firstName, setFirstName] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
-  const pdfRef = useRef(null);
+  const [isExporting, setIsExporting] = useState(false);
   const router = useRouter();
 
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // 🔐 Restrição de acesso
   useEffect(() => {
     const email = localStorage.getItem("email");
     if (email !== "fernandre6973@gmail.com") {
       alert("Acesso restrito. Redirecionando...");
-      window.location.href = "/login";
+      router.push("/login");
     }
-  }, []);
+  }, [router]);
 
+  // 🚀 Fetch dos dados
   useEffect(() => {
     fetch("/api/kv/avaliacoes")
       .then((res) => res.json())
@@ -43,8 +45,10 @@ export default function EstatisticasPage() {
       .catch((err) => console.error("Erro ao buscar avaliações:", err));
   }, []);
 
+  // 🚦 Dados tratados
   const avaliacoesFiltradas = avaliacoes.filter(a => a.email !== "fernandre6973@gmail.com");
   const total = avaliacoesFiltradas.length;
+
   const porEmail = avaliacoesFiltradas.reduce<Record<string, number>>((acc, { email }) => {
     acc[email] = (acc[email] || 0) + 1;
     return acc;
@@ -63,7 +67,6 @@ export default function EstatisticasPage() {
     const hora = date.getHours();
     return { hora, count: 1 };
   });
-
   const agregadosHora = porDataHora.reduce<Record<number, number>>((acc, { hora }) => {
     acc[hora] = (acc[hora] || 0) + 1;
     return acc;
@@ -75,110 +78,99 @@ export default function EstatisticasPage() {
     .slice(0, 5)
     .map(([email, count]) => `${email} (${count})`);
 
-  const media = total > 0 ? (avaliacoesFiltradas.reduce((sum, a) => sum + a.nota, 0) / total).toFixed(1) : "0";
+  const media = total > 0
+    ? (avaliacoesFiltradas.reduce((sum, a) => sum + a.nota, 0) / total).toFixed(1)
+    : "0";
 
-  const isOwner = typeof window !== "undefined" && sessionStorage.getItem("isOwner") === "true";
-
-  const [isExporting, setIsExporting] = useState(false);
-
+  // 📄 Exportação PDF
   const exportarPDF = async () => {
+    setIsExporting(true);
+    const element = containerRef.current;
+    if (!element) return;
+
+    const canvas = await html2canvas(element, { scale: 2 });
+    const imgData = canvas.toDataURL("image/png");
+
+    const pdf = new jsPDF({
+      orientation: "landscape",
+      unit: "px",
+      format: [canvas.width, canvas.height],
+    });
+
+    pdf.addImage(imgData, "PNG", 0, 0, canvas.width, canvas.height);
+    pdf.save("visitors-stats.pdf");
     setIsExporting(false);
-
-    setTimeout(async () => {
-      const element = document.getElementById("dashboard-content");
-      if (!element) {
-        console.error("Elemento 'dashboard-content' não encontrado para exportação.");
-        setIsExporting(false);
-        return;
-      }
-
-      element.querySelectorAll("*").forEach((el) => {
-        const style = getComputedStyle(el);
-        if (style.color.includes("oklch")) (el as HTMLElement).style.color = "#00ffff";
-        if (style.backgroundColor.includes("oklch")) (el as HTMLElement).style.backgroundColor = "#0A1634";
-        if (style.borderColor.includes("oklch")) (el as HTMLElement).style.borderColor = "#00ffff";
-      });
-
-      const canvas = await html2canvas(element, { scale: 2 });
-      const imgData = canvas.toDataURL("image/png");
-
-      const pdf = new jsPDF({ orientation: "landscape", unit: "px", format: [canvas.width, canvas.height] });
-      pdf.addImage(imgData, "PNG", 0, 0, canvas.width, canvas.height);
-      pdf.save("visitors-stats.pdf");
-
-      setIsExporting(false);
-    }, 200);
   };
 
   useEffect(() => {
-    // Simula um carregamento de 2 segundos
-    const timeout = setTimeout(() => {
-      setLoading(false);
-    }, 2000); // 2000 milissegundos = 2 segundos
-
-    // Limpa o timeout ao sair do componente
-    return () => clearTimeout(timeout);
-  }, []);
-
-  // Adicione o useEffect para buscar o nome do usuário
-  useEffect(() => {
-    const storedFirstName = sessionStorage.getItem("firstName");
-    setFirstName(storedFirstName);
+    const timer = setTimeout(() => setLoading(false), 1500);
+    return () => clearTimeout(timer);
   }, []);
 
   if (loading) {
     return (
-      <div className="grid grid-cols-12 max-w-screen-xl w-full mx-auto md:px-16 py-30">
-      <div className="col-span-12 md:col-span-12 z-10 flex justify-center">
+      <div className="flex items-center justify-center min-h-screen">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <Image src="/media/photos/icone_security.png" alt="Logo da Segurança" width={400} height={400} priority className="mx-auto mb-4 animate-pulse logo-neon" style={{ height: "auto" }}style={{ filter: "drop-shadow(var(--logo-glow))" }}/>
-
-          <h1 className="text-xl text-green-400 font-bold text-theme-primary">Carregando Pagina Estatisticas...</h1>
+          <Image
+            src="/media/photos/icone_security.png"
+            alt="Logo"
+            width={400}
+            height={400}
+            className="mx-auto mb-4 animate-pulse logo-neon"
+          />
+          <h1 className="text-xl text-green-400 font-bold">Carregando Estatísticas...</h1>
         </motion.div>
-      </div>
       </div>
     );
   }
 
   return (
     <div className="relative flex flex-col items-center justify-center text-white">
-      <div className="fixed top-5 right-85 z-50 flex gap-2">
+      {/* 🔘 Botões */}
+      <div className="fixed top-5 right-85 z-50 flex gap-4">
         <button
-          className={`button-acessar-neon button-theme${isExporting ? 'opacity-50 cursor-not-allowed' : ''}`}
           onClick={exportarPDF}
           disabled={isExporting}
+          className="button-acessar-neon button-theme disabled:opacity-50"
         >
-          {isExporting ? 'Exportando...' : '📥 Baixar Gráfico'}
+          {isExporting ? "Exportando..." : "📥 Baixar PDF"}
         </button>
       </div>
 
-      <div id="dashboard-content" className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 max-w-[1600px] w-full px-4 mt-8">
-        <div className="w-full bg-[#131a2b] p-4 rounded-xl shadow-xl border border-emerald-400">
-          <h2 className="text-lg font-bold text-emerald-300 mb-2">📊 Estatísticas de Visitantes</h2>
+      <div
+        id="dashboard-content"
+        ref={containerRef}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[1600px] w-full px-4 mt-10"
+      >
+        {/* 🔸 Bloco - Métricas */}
+        <div className="bg-[#131a2b] p-4 rounded-xl border border-emerald-400 shadow-xl">
+          <h2 className="text-lg font-bold text-emerald-300 mb-2">📊 Estatísticas</h2>
           <p>Total de Avaliações: <span className="text-emerald-200">{total}</span></p>
           <p>Visitantes Únicos: <span className="text-emerald-200">{unicos}</span></p>
-          <p>Visitantes Repetidos: <span className="text-emerald-200">{repetidos}</span></p>
+          <p>Repetidos: <span className="text-emerald-200">{repetidos}</span></p>
           <p>Nota Média: <span className="text-green-300">{media}/10</span></p>
         </div>
 
-        <div className="w-full bg-[#131a2b] p-4 rounded-xl shadow-xl border border-yellow-500">
-          <h2 className="text-lg font-bold text-yellow-300 mb-2">🕒 Avaliações por Hora do Dia</h2>
+        {/* 🔸 Avaliações por Hora */}
+        <div className="bg-[#131a2b] p-4 rounded-xl border border-yellow-500 shadow-xl">
+          <h2 className="text-lg font-bold text-yellow-300 mb-2">🕒 Por Hora do Dia</h2>
           <ResponsiveContainer width="100%" height={260}>
             <BarChart data={dadosHora}>
-              <XAxis dataKey="hora" stroke="#ffd700" label={{ value: "Hora do Dia", position: "insideBottom", offset: -5 }} />
-              <YAxis stroke="#ffd700" label={{ value: "Avaliações", angle: -90, position: "insideLeft" }} />
+              <XAxis dataKey="hora" stroke="#ffd700" />
+              <YAxis stroke="#ffd700" />
               <Tooltip />
               <Bar dataKey="count" fill="#ffd700" />
             </BarChart>
           </ResponsiveContainer>
         </div>
 
-        <div className="w-full bg-[#131a2b] p-4 rounded-xl shadow-xl border border-pink-400">
+        {/* 🔸 Distribuição de Notas */}
+        <div className="bg-[#131a2b] p-4 rounded-xl border border-pink-400 shadow-xl">
           <h2 className="text-lg font-bold text-pink-300 mb-2">🥧 Distribuição de Notas</h2>
           <ResponsiveContainer width="100%" height={260}>
             <PieChart>
@@ -192,7 +184,7 @@ export default function EstatisticasPage() {
                 label={({ nota }) => `Nota ${nota}`}
               >
                 {dadosNotas.map((_, index) => (
-                  <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                  <Cell key={index} fill={COLORS[index % COLORS.length]} />
                 ))}
               </Pie>
               <Tooltip />
@@ -200,10 +192,14 @@ export default function EstatisticasPage() {
           </ResponsiveContainer>
         </div>
 
-        <div className="w-full bg-[#131a2b] p-4 rounded-xl border border-cyan-400">
-          <h2 className="text-lg font-bold text-cyan-300 mb-2">📊 Visitantes Únicos vs Repetidos</h2>
+        {/* 🔸 Únicos x Repetidos */}
+        <div className="bg-[#131a2b] p-4 rounded-xl border border-cyan-400 shadow-xl">
+          <h2 className="text-lg font-bold text-cyan-300 mb-2">📊 Únicos vs Repetidos</h2>
           <ResponsiveContainer width="100%" height={260}>
-            <BarChart data={[{ tipo: "Únicos", valor: unicos }, { tipo: "Repetidos", valor: repetidos }]}>
+            <BarChart data={[
+              { tipo: "Únicos", valor: unicos },
+              { tipo: "Repetidos", valor: repetidos }
+            ]}>
               <XAxis dataKey="tipo" stroke="#00ffe0" />
               <YAxis stroke="#00ffe0" />
               <Tooltip />
@@ -212,8 +208,9 @@ export default function EstatisticasPage() {
           </ResponsiveContainer>
         </div>
 
-        <div className="w-full bg-[#131a2b] p-4 rounded-xl border border-indigo-400">
-          <h2 className="text-lg font-bold text-indigo-300 mb-2">📈 Visitas por Data e Hora</h2>
+        {/* 🔸 Linha de visitas */}
+        <div className="bg-[#131a2b] p-4 rounded-xl border border-indigo-400 shadow-xl">
+          <h2 className="text-lg font-bold text-indigo-300 mb-2">📈 Visitas</h2>
           <ResponsiveContainer width="100%" height={260}>
             <LineChart data={avaliacoes.map(({ timestamp }, i) => ({ index: i + 1, timestamp }))}>
               <CartesianGrid strokeDasharray="3 3" stroke="#333" />
@@ -225,7 +222,8 @@ export default function EstatisticasPage() {
           </ResponsiveContainer>
         </div>
 
-        <div className="w-full bg-[#131a2b] p-4 rounded-xl shadow-xl border border-yellow-400">
+        {/* 🔸 Top Visitantes */}
+        <div className="bg-[#131a2b] p-4 rounded-xl border border-yellow-400 shadow-xl">
           <h2 className="text-lg font-bold text-yellow-300 mb-2">🌟 Top 5 Visitantes</h2>
           <ul className="list-disc list-inside text-yellow-200">
             {top5.length === 0 && <li>Nenhum visitante registrado</li>}
@@ -236,9 +234,11 @@ export default function EstatisticasPage() {
         </div>
       </div>
 
-      <div className="fixed top-4 right-23 z-20 flex gap-2">
-        <button className="toggle-mode border-theme-primary" onClick={() => window.location.href = '/profissional'}><ArrowLeft className="w-8 h-8" /></button>
-        <button className="toggle-mode border-theme-primary" onClick={() => window.location.href = '/visao-macro'}><ArrowRight className="w-8 h-8" /></button>
+      {/* 🔗 Navegação */}
+      <div className="fixed top-4 right-22 z-50 flex gap-1">
+        <button className="toggle-mode" onClick={() => router.push('/profissional')}><ArrowLeft className="w-8 h-8" /></button>
+        <button className="toggle-mode" onClick={() => router.push('/visao-macro')}><ArrowRight className="w-8 h-8" /></button>
       </div>
     </div>
   );
+}

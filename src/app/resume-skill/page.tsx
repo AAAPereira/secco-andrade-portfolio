@@ -1,93 +1,125 @@
-//app/resume-skill/page.tsx
+// src/app/resume-skill/page.tsx
 
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import Head from "next/head";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-import { AutoPlayAudio } from "@/app/components/audio/AutoPlayAudio";
+import { motion } from "framer-motion";
 import { textoResumoSkill } from "@/app/resume-skill/texto_resumo_skill";
 import "@/app/backgrounds/backgrounds.css";
 import { Music, Square, ArrowLeft, ArrowRight } from "lucide-react";
-import { useRouter } from 'next/navigation'; // Importe o useRouter
+import { useRouter } from "next/navigation";
 
 const audioMap = {
-  "pt": "/media/audios/pessoal/Stand By Me.mp3",
-  "en": "/media/audios/pessoal/A Thousand Years.mp3",
+  pt: "/media/audios/pessoal/Stand By Me.mp3",
+  en: "/media/audios/pessoal/A Thousand Years.mp3",
 };
 
 export default function ResumeSkillPage() {
-  const [temaSkill, setTemaSkill] = useState<string | null>(null);
-  const [mode, setMode] = useState("default");
-  const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
   const [loading, setLoading] = useState(true);
   const [idioma, setIdioma] = useState<"pt" | "en">("pt");
-  const [firstName, setFirstName] = useState<string | null>(null); // Adicione o estado firstName
-  const router = useRouter(); // Inicialize o router
+  const [firstName, setFirstName] = useState<string | null>(null);
+  const router = useRouter();
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
-
+  // 🎧 Controle do áudio
   const handlePlay = () => {
-    const audio = audioRef.current;
-    if (!audio) return;
-
+    if (!audioRef.current) return;
     if (isPlaying) {
-      audio.pause();
+      audioRef.current.pause();
       setIsPlaying(false);
     } else {
-      audio.play();
+      audioRef.current.play().catch(console.warn);
       setIsPlaying(true);
     }
   };
 
+  // 🎧 Troca de idioma troca também a música
   useEffect(() => {
     const audio = audioRef.current;
     if (audio) {
-      audio.pause(); // Para a música anterior
+      audio.pause();
       audio.src = audioMap[idioma];
       audio.load();
-      audio.play();
+      audio.play().catch(console.warn);
       setIsPlaying(true);
     }
   }, [idioma]);
-  
-  
 
+  // ⏳ Carregamento simulado
   useEffect(() => {
-    // Simula um carregamento de 2 segundos
-    const timeout = setTimeout(() => {
-      setLoading(false);
-    }, 2000); // 2000 milissegundos = 2 segundos
-
-    // Limpa o timeout ao sair do componente
+    const timeout = setTimeout(() => setLoading(false), 2000);
     return () => clearTimeout(timeout);
   }, []);
 
+  // 👋 Saudação com voz bilíngue
+  useEffect(() => {
+    const saudacaoExecutada = sessionStorage.getItem("saudacaoResumeSkillExecutada");
+    const storedFirstName = sessionStorage.getItem("firstName");
 
-  // Adicione o useEffect para buscar o nome do usuário
+    if (typeof window !== "undefined" && "speechSynthesis" in window && !saudacaoExecutada) {
+      const hora = new Date().getHours();
+      const nome = storedFirstName?.split("@")[0]?.replace(/^./, (c) => c.toUpperCase()) || "visitante";
+
+      let saudacaoPt = `Você chegou na página de resumo das minhas habilidades. Aqui você verá de forma compacta toda a trajetória técnica de André Pereira. Explore com atenção, ${nome}.`;
+      let saudacaoEn = `Welcome to the summary page of my skills. Here you will quickly understand the technical journey of André Pereira. Explore carefully, ${nome}.`;
+
+      if (hora >= 5 && hora < 12) {
+        saudacaoPt = `Bom dia! ${saudacaoPt}`;
+        saudacaoEn = `Good morning! ${saudacaoEn}`;
+      } else if (hora >= 12 && hora < 18) {
+        saudacaoPt = `Boa tarde! ${saudacaoPt}`;
+        saudacaoEn = `Good afternoon! ${saudacaoEn}`;
+      } else {
+        saudacaoPt = `Boa noite! ${saudacaoPt}`;
+        saudacaoEn = `Good evening! ${saudacaoEn}`;
+      }
+
+      const utterPt = new SpeechSynthesisUtterance(saudacaoPt);
+      utterPt.lang = "pt-BR";
+      utterPt.rate = 0.95;
+      utterPt.pitch = 1.1;
+
+      const utterEn = new SpeechSynthesisUtterance(saudacaoEn);
+      utterEn.lang = "en-US";
+      utterEn.rate = 1.0;
+      utterEn.pitch = 1.0;
+
+      window.speechSynthesis.speak(utterPt);
+      window.speechSynthesis.speak(utterEn);
+      sessionStorage.setItem("saudacaoResumeSkillExecutada", "true");
+    }
+  }, []);
+
+  // 🔥 Nome do usuário
   useEffect(() => {
     const storedFirstName = sessionStorage.getItem("firstName");
     setFirstName(storedFirstName);
   }, []);
 
-
-   if (loading) {
+  if (loading) {
     return (
-      <div className="grid grid-cols-12 max-w-screen-xl w-full mx-auto md:px-16 py-30">
-      <div className="col-span-12 md:col-span-12 z-10 flex justify-center">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6 }}
-          className="text-center"
-        >
-          <Image src="/media/photos/icone_security.png" alt="Logo da Segurança" width={400} height={400} priority className="mx-auto mb-4 animate-pulse logo-neon" style={{ height: "auto" }}style={{ filter: "drop-shadow(var(--logo-glow))" }}/>
-
-          <h1 className="text-xl text-green-400 font-bold text-theme-primary">Carregando Resumo Skill...</h1>
-        </motion.div>
-      </div>
+      <div className="grid grid-cols-12 max-w-screen-xl w-full mx-auto py-30">
+        <div className="col-span-12 flex justify-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            <Image
+              src="/media/photos/icone_security.png"
+              alt="Logo"
+              width={400}
+              height={400}
+              priority
+              className="mx-auto mb-4 animate-pulse logo-neon"
+              style={{ filter: "drop-shadow(var(--logo-glow))" }}
+            />
+            <h1 className="text-xl text-green-400 font-bold">Carregando Resumo Skill...</h1>
+          </motion.div>
+        </div>
       </div>
     );
   }
@@ -95,37 +127,47 @@ export default function ResumeSkillPage() {
   return (
     <div id="dashboard-content" className="grid grid-cols-1 lg:grid-cols-12 gap-6 max-w-[1600px] w-full px-4">
 
-        <div className="col-span-8 space-y-4 mt-18">
-
-        {/* Coluna da Imagem (esquerda do texto) */}
-        <div className="w-auto flex justify-center">
-          <Image
-            src="/media/photos/andre_pereira_a.png"
-            alt="Foto de André Pereira"
-            width={170}
-            height={598}
-            className="rounded-lg shadow-xl"
-          />
-        </div>
-
-      <div className="fixed top-4 right-23 z-20 flex gap-2">
-        <button className="toggle-mode border-theme-primary" onClick={() => window.location.href = '/profissional'}><ArrowLeft className="w-8 h-8" /></button>
-        <button className="toggle-mode border-theme-primary" onClick={() => window.location.href = '/skill-completo'}><ArrowRight className="w-8 h-8" /></button>
+      {/* 📸 Coluna da Imagem */}
+      <div className="col-span-3 flex justify-center items-start mt-24">
+      <div className="absolute left-85">
+        <Image
+          src="/media/photos/andre_pereira_a.png"
+          alt="Foto de André Pereira"
+          width={170}
+          height={598}
+          className="rounded-lg shadow-xl"
+        />
+      </div>
       </div>
 
+      {/* 📝 Coluna do Texto */}
+      <div className="col-span-7 flex items-start justify-center">
+        <div
+          className="mt-20 max-w-2xl max-h-[65vh] overflow-y-auto p-4 text-white text-justify leading-relaxed custom-scroll"
+          dangerouslySetInnerHTML={{ __html: textoResumoSkill[idioma] }}
+        />
+      </div>
+
+      {/* 🎧 Controle de áudio e idioma */}
       <audio ref={audioRef} />
-      <div className="fixed top-32 right-8 z-20 flex gap-2">
-        <button className="toggle-mode border-theme-primary" onClick={() => setIdioma(idioma === "pt" ? "en" : "pt")}>{idioma === "pt" ? "EN" : "PT"}</button>
-        <button className="toggle-mode border-theme-primary" onClick={handlePlay}>{isPlaying ? <Square className="w-8 h-8" /> : <Music className="w-8 h-8" />}</button>
+      <div className="fixed top-32 right-8 z-50 flex gap-4">
+        <button className="toggle-mode border-theme-primary" onClick={() => setIdioma(idioma === "pt" ? "en" : "pt")}>
+          {idioma === "pt" ? "EN" : "PT"}
+        </button>
+        <button className="toggle-mode border-theme-primary" onClick={handlePlay} title={isPlaying ? "Parar trilha" : "Tocar trilha"}>
+          {isPlaying ? <Square className="w-8 h-8" /> : <Music className="w-8 h-8" />}
+        </button>
       </div>
 
-      <div
-        className="fixed right-130 top-34  max-w-2xl max-h-[70vh] text-white overflow-y-auto p-24 custom-scroll"
-        dangerouslySetInnerHTML={{ __html: textoResumoSkill[idioma] }}
-      />
-
+      {/* 🔀 Navegação */}
+      <div className="fixed top-4 right-24 z-50 flex gap-4">
+        <button className="toggle-mode border-theme-primary" onClick={() => router.push('/profissional')}>
+          <ArrowLeft className="w-8 h-8" />
+        </button>
+        <button className="toggle-mode border-theme-primary" onClick={() => router.push('/skill-completo')}>
+          <ArrowRight className="w-8 h-8" />
+        </button>
       </div>
     </div>
   );
 }
-

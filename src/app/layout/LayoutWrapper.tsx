@@ -6,8 +6,8 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import "@/app/backgrounds/backgrounds.css";
-import { logoutAndGoToRating } from "@/app/lib/logout";
-import SkillMenu from "@/app/components/SkillMenu/DropdownMenu"; // Exemplo de componente com os botões dropdown
+import "@/app/backgrounds/theme-cybergrid.css";
+import SkillMenu from "@/app/components/skillmenu/DropdownMenu";
 import CVMenu from "@/app/components/cvmenu/DropdownCV";
 
 const modeIcons: Record<string, React.ReactNode> = {
@@ -32,11 +32,8 @@ const modeIcons: Record<string, React.ReactNode> = {
 export default function LayoutWrapper({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
-  const [height, setHeight] = useState('100vh');
   const [firstName, setFirstName] = useState<string | null>(null);
   const [showExitModal, setShowExitModal] = useState(false);
-
-  const isPaginaProfissional = pathname === "/profissional";
 
   const temas = [
     "theme-green",
@@ -56,7 +53,9 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
     "theme-roxo-neon",
     "theme-cybergrid",
   ];
-  const [theme, setTheme] = useState<string | null>(null);
+  const [theme, setTheme] = useState<string>("theme-default");
+
+  const isPaginaProfissional = pathname === "/profissional";
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") || "theme-default";
@@ -64,13 +63,10 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
     document.documentElement.className = savedTheme;
 
     const storedFirstName = sessionStorage.getItem("firstName");
-    if (storedFirstName) {
-      setFirstName(storedFirstName);
-    }
+    setFirstName(storedFirstName);
   }, [pathname]);
 
   const toggleTheme = () => {
-    if (!theme) return;
     const indexAtual = temas.indexOf(theme);
     const proximoTema = temas[(indexAtual + 1) % temas.length];
     setTheme(proximoTema);
@@ -121,7 +117,7 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
         </h1>
         <div className="absolute right-8 top-4 z-50">
           <button className="toggle-mode border-theme-primary" onClick={toggleTheme}>
-            {theme && modeIcons[theme] || "🎨"}
+            {(theme && modeIcons[theme]) || "🎨"}
           </button>
         </div>
 
@@ -129,16 +125,16 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
         <div className="absolute bottom-[-2px] left-0 w-full h-[4px] bg-theme-primary neon-line"></div>
       </header>
 
-      {/* Só aparece na página /profissional */}
+      {/* Menus que só aparecem na página profissional */}
       {isPaginaProfissional && (
-        <div className="fixed top-6 left-60 z-20">
-          <SkillMenu />
-        </div>
-        )}
-        {isPaginaProfissional && (
-        <div className="fixed top-6 right-80 z-20">
-          <CVMenu />
-        </div>
+        <>
+          <div className="fixed top-6 left-60 z-20">
+            <SkillMenu />
+          </div>
+          <div className="fixed top-6 right-80 z-20">
+            <CVMenu />
+          </div>
+        </>
       )}
 
       {/* MAIN */}

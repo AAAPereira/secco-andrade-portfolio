@@ -138,7 +138,7 @@ export default function VisaoMacroPage() {
   }
 
   return (
-    <div className="relative bg-theme-surface rounded-xl p-4 border border-theme-primary max-w-2xl mx-auto mt-4">
+    <div className="relative bg-theme-surface rounded-xl p-4 border border-theme-primary max-w-2xl items-center mx-auto mt-8">
       <h2 className="text-xl mb-2 font-bold text-theme-secondary">📊 Visão Geral de Visitantes</h2>
 
       <div className="flex flex-wrap gap-4 mb-4 items-center">

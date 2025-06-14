@@ -1,5 +1,3 @@
-// File: tailwind.config.js
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -7,6 +5,17 @@ module.exports = {
     "./app/components/**/*.{js,ts,jsx,tsx}",
   ],
   darkMode: 'class',
+
+  safelist: [
+    'col-span-10', 'col-span-8', 'col-span-4',
+    'justify-center', 'items-center',
+    'gap-2', 'gap-4', 'space-y-4',
+    'text-theme-accent', 'bg-theme-primary', 'border-theme-primary',
+    'timeline-ano', 'font-bold', 'text-center', 'text-xl',
+    'relative', 'absolute', 'fixed', 'z-10',
+    'w-1', 'w-full', 'h-8', 'mt-6', 'mt-24', 'mb-6', 'mt-[-14px]',
+  ],
+
   theme: {
     extend: {
       colors: {
@@ -23,5 +32,10 @@ module.exports = {
       },
     },
   },
+
+  corePlugins: {
+    preflight: true, // ou false se quiser desligar os resets do Tailwind.
+  },
+
   plugins: [],
-}
+};

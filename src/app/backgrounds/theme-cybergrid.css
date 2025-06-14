@@ -1,0 +1,130 @@
+/* ------------------------- */
+/* 🎯 Tema CyberGrid Neon    */
+/* ------------------------- */
+
+:root {
+  --theme-primary: #00ff99;
+  --theme-secondary: #00ffff;
+  --theme-accent: #ffffff;
+  --logo-glow:
+    0 0 10px #ffffff,
+    0 0 20px #00ffff,
+    0 0 30px #00ffff,
+    0 0 40px #00ffff;
+  --theme-button: linear-gradient(120deg, #00ffff 30%, #00ff99 70%);
+  --background-color: #0a0014;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--theme-accent);
+}
+
+/* ------------------------- */
+/* 🌟 Linhas de Neon         */
+/* ------------------------- */
+
+.neon-line {
+  box-shadow: 0 0 10px var(--theme-primary),
+              0 0 20px var(--theme-primary),
+              0 0 30px var(--theme-primary),
+              0 0 40px var(--theme-primary);
+}
+
+/* ------------------------- */
+/* 🌟 Botões Neon            */
+/* ------------------------- */
+
+.button-neon {
+  background: var(--theme-button);
+  border: 1px solid var(--theme-primary);
+  color: var(--theme-accent);
+  padding: 8px 16px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px var(--theme-primary),
+              0 0 20px var(--theme-secondary);
+  transition: all 0.3s ease;
+}
+
+.button-neon:hover {
+  background: var(--theme-accent);
+  color: var(--theme-primary);
+  box-shadow: 0 0 20px var(--theme-accent),
+              0 0 30px var(--theme-accent);
+}
+
+/* ------------------------- */
+/* 🌟 Cards Neon             */
+/* ------------------------- */
+
+.box-theme {
+  border: 1px solid var(--theme-primary);
+  border-radius: 16px;
+  background-color: rgba(10, 1, 20, 0.8);
+  box-shadow: 0 0 10px var(--theme-primary),
+              0 0 20px var(--theme-secondary);
+  transition: all 0.3s ease;
+}
+
+.box-theme:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px var(--theme-primary),
+              0 0 40px var(--theme-secondary);
+}
+
+/* ------------------------- */
+/* 🌟 Scroll Custom          */
+/* ------------------------- */
+
+.custom-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--theme-primary) transparent;
+}
+
+.custom-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background-color: var(--theme-primary);
+  border-radius: 20px;
+  border: 1px solid var(--theme-accent);
+}
+
+/* ------------------------- */
+/* 🌟 Texto Glow             */
+/* ------------------------- */
+
+.text-glow {
+  text-shadow: 0 0 5px var(--theme-accent),
+               0 0 10px var(--theme-accent),
+               0 0 20px var(--theme-accent);
+}
+
+/* ------------------------- */
+/* 🌟 Pulsação               */
+/* ------------------------- */
+
+.logo-neon {
+  animation: pulseNeon 2s infinite;
+}
+
+@keyframes pulseNeon {
+  0% {
+    filter: drop-shadow(0 0 5px #fff)
+            drop-shadow(0 0 10px #00ffff);
+  }
+  50% {
+    filter: drop-shadow(0 0 15px #fff)
+            drop-shadow(0 0 30px #00ffff);
+  }
+  100% {
+    filter: drop-shadow(0 0 5px #fff)
+            drop-shadow(0 0 10px #00ffff);
+  }
+}
+

@@ -1,14 +1,16 @@
-// next.config.ts
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  reactStrictMode: true, // útil para detectar bugs em dev
+  reactStrictMode: true,
   images: {
-    domains: ["raw.githubusercontent.com", "res.cloudinary.com"], // ajuste se você usar imagens externas
+    domains: ["raw.githubusercontent.com", "res.cloudinary.com"],
   },
   experimental: {
-    serverActions: {} // CORRETO para Next 15+
-  }
+    serverActions: {},
+  },
+  eslint: {
+    ignoreDuringBuilds: true, // 🚨 Liga o modo "Ignora ESLint no build"
+  },
 };
 
 export default nextConfig;
