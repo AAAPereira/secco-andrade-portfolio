@@ -3,13 +3,24 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["raw.githubusercontent.com", "res.cloudinary.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "raw.githubusercontent.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        pathname: "/**",
+      },
+    ],
   },
   experimental: {
     serverActions: {},
   },
   eslint: {
-    ignoreDuringBuilds: true, // 🚨 Liga o modo "Ignora ESLint no build"
+    ignoreDuringBuilds: true, // 🚨 Ignora erros do ESLint no build
   },
 };
 

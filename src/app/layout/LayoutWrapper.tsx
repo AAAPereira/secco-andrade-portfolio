@@ -6,7 +6,6 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import "@/app/backgrounds/backgrounds.css";
-import "@/app/backgrounds/theme-cybergrid.css";
 import SkillMenu from "@/app/components/skillmenu/DropdownMenu";
 import CVMenu from "@/app/components/cvmenu/DropdownCV";
 
@@ -24,9 +23,10 @@ const modeIcons: Record<string, React.ReactNode> = {
   "theme-futuristic": "👾",
   "theme-verde-neon": "🧪",
   "theme-azul-neon": "🛸",
-  "theme-verdee-neon": "💚",
+  "theme-verdao-neon": "💚",
   "theme-roxo-neon": "💜",
   "theme-cybergrid": "⚫",
+  "theme-laranja-neon": "💣",
 };
 
 export default function LayoutWrapper({ children }: { children: React.ReactNode }) {
@@ -49,9 +49,10 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
     "theme-neon",
     "theme-verde-neon",
     "theme-azul-neon",
-    "theme-verdee-neon",
+    "theme-verdao-neon",
     "theme-roxo-neon",
     "theme-cybergrid",
+    "theme-laranja-neon",
   ];
   const [theme, setTheme] = useState<string>("theme-default");
 
@@ -105,7 +106,7 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
       {/* HEADER */}
       <header className="h-28 w-full border-b-2 border-theme-primary text-center relative z-10 flex items-center justify-center">
         <Image
-          src="/media/photos/icone_security.png"
+          src="/media/photos/icone-security.png"
           alt="Logo"
           width={90}
           height={90}
@@ -121,8 +122,8 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
           </button>
         </div>
 
-        <div className="absolute bottom-4 left-0 w-full h-[6px] bg-theme-primary"></div>
-        <div className="absolute bottom-[-2px] left-0 w-full h-[4px] bg-theme-primary neon-line"></div>
+        <div className="absolute bottom-4 w-full h-[6px] border-theme-primary bg-theme-primary"></div>
+        <div className="absolute bottom-[-2px] w-full h-[4px] border-theme-primary "></div>
       </header>
 
       {/* Menus que só aparecem na página profissional */}

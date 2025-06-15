@@ -129,8 +129,8 @@ export default function VisaoMacroPage() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <Image src="/media/photos/icone_security.png" alt="Logo da Segurança" width={400} height={400} priority className="mx-auto mb-4 animate-pulse logo-neon" style={{ height: "auto", filter: "drop-shadow(var(--logo-glow))" }} />
-            <h1 className="text-xl text-green-400 font-bold text-theme-primary">Carregando Pagina Visão Macro...</h1>
+            <Image src="/media/photos/icone-security.png" alt="Logo da Segurança" width={400} height={400} priority className="mx-auto mb-4 animate-pulse logo-neon" style={{ height: "auto", filter: "drop-shadow(var(--logo-glow))" }} />
+            <h1 className="text-xl text-theme-primary font-bold">Carregando Pagina Visão Macro...</h1>
           </motion.div>
         </div>
       </div>

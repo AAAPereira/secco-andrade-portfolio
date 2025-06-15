@@ -5,10 +5,12 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(true);
   const [successMessage, setSuccessMessage] = useState("");
   const [emailEnviado, setEmailEnviado] = useState(false);
   const router = useRouter();
@@ -89,11 +91,43 @@ export default function LoginPage() {
     }
   };
 
+
+  useEffect(() => {
+    // Simula um carregamento de 2 segundos
+    const timeout = setTimeout(() => {
+      setLoading(false);
+    }, 2000); // 2000 milissegundos = 2 segundos
+
+    // Limpa o timeout ao sair do componente
+    return () => clearTimeout(timeout);
+  }, []);
+
+
+  if (loading) {
+    return (
+      <div className="grid grid-cols-12 max-w-screen-xl w-full mx-auto md:px-16 py-30">
+      <div className="col-span-12 md:col-span-12 z-10 flex justify-center">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          className="text-center"
+        >
+            <Image src="/media/photos/icone-security.png" alt="Logo da Segurança" width={400} height={400} priority className="mx-auto mb-4 animate-pulse logo-neon" style={{ height: "auto", filter: "drop-shadow(var(--logo-glow))" }} />
+
+          <h1 className="text-xl text-theme-primary font-bold">Carregando Pagina Login...</h1>
+        </motion.div>
+      </div>
+      </div>
+    );
+  }
+
   return (
-    <main className="flex items-center justify-center min-h-screen">
-      <div className="bg-zinc-900 p-8 rounded-lg shadow-xl w-full max-w-sm text-center border border-theme-primary">
+      <div className="col-span-12 md:col-span-6 md:col-start-4 flex flex-col items-center justify-center mt-20 text-white">
+        {/* Box central */}
+        <div className="bg-zinc-900 p-6 rounded-lg shadow-xl w-full max-w-sm text-center border border-theme-primary">
         <Image
-          src="/media/photos/fundo_tela_login.png"
+          src="/media/photos/fundo-tela-login.png"
           alt="Logo de Segurança"
           width={360}
           height={360}
@@ -108,7 +142,7 @@ export default function LoginPage() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           onFocus={handleInputFocus}
-          className="w-full p-2 mb-2 text-white rounded border border-zinc-600 focus:outline-none"
+          className="w-full p-2 mb-6 text-white rounded border border-zinc-600 focus:outline-none"
         />
 
         {/* ✅ Mensagem de sucesso */}
@@ -143,6 +177,6 @@ export default function LoginPage() {
           Enviar Código
         </button>
       </div>
-    </main>
+    </div>
   );
 }

@@ -26,24 +26,24 @@ export default function TermosPage() {
   };
 
   return (
-    <main className="grid grid-cols-12 gap-4 max-w-[1600px] w-full mx-auto px-4">
+    <main className="grid grid-cols-12 gap-4 max-w-[1600px] w-full mx-auto">
 
       {/* Logo Central */}
-      <div className="col-span-12 flex justify-center mt-4">
+      <div className="col-span-12 flex justify-center">
         <Image
-          src="/media/photos/icone_security.png"
+          src="/media/photos/icone-security.png"
           alt="Logo de Segurança"
           width={350}
           height={350}
           priority
-          className="drop-shadow-xl animate-pulse logo-neon mb-6"
+          className="drop-shadow-xl animate-pulse logo-neon"
           style={{ filter: "drop-shadow(var(--logo-glow))" }}
         />
       </div>
 
       {/* Texto Termo */}
-      <div className="col-span-12 md:col-span-8 md:col-start-3 text-center space-y-6">
-        <h2 className="text-2xl md:text-3xl text-emerald-400 font-bold text-theme-primary">
+      <div className="md:col-span-6 md:col-start-4 text-center space-y-6">
+        <h2 className="text-3xl md:text-3xl text-emerald-400 font-bold text-theme-primary">
           Termos de Uso e Política de Privacidade
         </h2>
 
@@ -67,8 +67,8 @@ export default function TermosPage() {
       </div>
 
       {/* Botões */}
-      <div className="col-span-12 flex justify-center mt-6 mb-8">
-        <div className="flex gap-6">
+      <div className="absolute left-150 flex justify-center">
+        <div className="flex gap-6 mt-160">
           <button
             onClick={handleAceite}
             className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-6 rounded shadow-xl button-theme button-acessar-neon"

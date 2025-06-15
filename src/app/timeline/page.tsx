@@ -13,19 +13,19 @@ import { useRouter } from 'next/navigation'; // Importe o useRouter
 import { timelineData, textoHabilidadesItem } from "@/app/timeline/texto_habilidades";
 
 const audioMap = {
-  "1993": "/media/audios/profissional/Sweet Caroline.mp3",
-  "1995": "/media/audios/profissional/If I Got Jesus.mp3",
-  "1997": "/media/audios/profissional/Always On My Mind.mp3",
-  "2000": "/media/audios/profissional/Gods Country.mp3",
-  "2001": "/media/audios/profissional/Just Breathe.mp3",
-  "2002": "/media/audios/profissional/Kenny Rogers.mp3",
-  "2003": "/media/audios/profissional/Baby What You Want Me To Do.mp3",
-  "2004": "/media/audios/profissional/Hallelujah.mp3",
-  "2006": "/media/audios/profissional/Sing Me Back Home.mp3",
-  "2011": "/media/audios/profissional/Hungry Eyes.mp3",
-  "2014": "/media/audios/profissional/Riding home to you.mp3",
-  "2022": "/media/audios/profissional/Hes My Brother.mp3",
-  "2024": "/media/audios/profissional/This Body of Mine.mp3",
+  "1993": "/media/audios/profissional/sweet-caroline.mp3",
+  "1995": "/media/audios/profissional/if-i-got-jesus.mp3",
+  "1997": "/media/audios/profissional/always-on-my-mind.mp3",
+  "2000": "/media/audios/profissional/gods-country.mp3",
+  "2001": "/media/audios/profissional/just-breathe.mp3",
+  "2002": "/media/audios/profissional/kenny-rogers.mp3",
+  "2003": "/media/audios/profissional/baby-what-you-want-me-to-do.mp3",
+  "2004": "/media/audios/profissional/hallelujah.mp3",
+  "2006": "/media/audios/profissional/sing-me-back-home.mp3",
+  "2011": "/media/audios/profissional/hungry-eyes.mp3",
+  "2014": "/media/audios/profissional/riding-home-to-you.mp3",
+  "2022": "/media/audios/profissional/hes-my-brother.mp3",
+  "2024": "/media/audios/profissional/this-body-of-mine.mp3",
 };
 
 // Definição da interface TimelineDisplayProps
@@ -116,7 +116,7 @@ const handlePlay = () => {
 
   useEffect(() => {
     const saudacaoExecutada = sessionStorage.getItem("saudacaoTimelineExecutada");
-    if (typeof window !== "undefined" && "speechSynthesis" in window && !saudacaoExecutada) {
+    if ("speechSynthesis" in window && !saudacaoExecutada) {
       const hora = new Date().getHours();
       let saudacaoPt = "Olá! Esta é a página timeline, aqui você terá de forma resumida todo o trabalho realizado pelo André Pereira. Clique em cada ano e voce verá as tecnologias, habilidades e impactos positivos para as empresas. Obrigado.";
       let saudacaoEn = "Hello! This is the timeline page. Here you'll find a summarized overview of all the work done by André Pereira. Click on each year, and you'll see the technologies, skills, and positive impacts for the companies. Thank you.";
@@ -213,7 +213,7 @@ const handlePlay = () => {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <Image src="/media/photos/icone_security.png" alt="Logo da Segurança" width={400} height={400} priority className="mx-auto mb-4 animate-pulse logo-neon" style={{ height: "auto" , filter: "drop-shadow(var(--logo-glow))" }}/>
+          <Image src="/media/photos/icone-security.png" alt="Logo da Segurança" width={400} height={400} priority className="mx-auto mb-4 animate-pulse logo-neon" style={{ height: "auto" , filter: "drop-shadow(var(--logo-glow))" }}/>
 
           <h1 className="text-xl text-green-400 font-bold text-theme-primary">Carregando Pagina Timeline...</h1>
         </motion.div>
@@ -230,7 +230,7 @@ const handlePlay = () => {
 
         <div className="col-span-2 space-y-4">
              <div className="relative left-95 z-0 w-full mt-30">
-                <Image src="/media/photos/andre_pereira_b.png" alt="Foto de André Pereira" width={183} height={624}  className="rounded-lg shadow-xl"/>
+                <Image src="/media/photos/andre-pereira-b.png" alt="Foto de André Pereira" width={183} height={624}  className="rounded-lg shadow-xl"/>
              </div>
         </div>
 
@@ -268,7 +268,7 @@ const handlePlay = () => {
 
               <div>
                 <p className="text-red-400 font-bold">{language === 'pt' ? 'Tecnologias:' : 'Technologies:'}</p>
-                <ul className="list-disc list-inside text-green-200">
+                <ul className="list-disc list-inside text-white">
                   {(language === 'pt' ? selectedData.tecnologias : selectedData.translations.EN.tecnologias)
                     .split('✔️')
                     .filter(Boolean)
@@ -278,7 +278,7 @@ const handlePlay = () => {
 
               <div>
                 <p className="text-yellow-400 font-bold">{language === 'pt' ? 'Habilidades:' : 'Skills:'}</p>
-                <ul className="list-disc list-inside text-green-200">
+                <ul className="list-disc list-inside text-white">
                   {(language === 'pt' ? selectedData.habilidades : selectedData.translations.EN.habilidades)
                     .split('✔️')
                     .filter(Boolean)
@@ -288,7 +288,7 @@ const handlePlay = () => {
 
               <div>
                 <p className="text-purple-400 font-bold">{language === 'pt' ? 'Impacto:' : 'Impact:'}</p>
-                <ul className="list-disc list-inside text-green-200">
+                <ul className="list-disc list-inside text-white">
                   {(language === 'pt' ? selectedData.impacto : selectedData.translations.EN.impacto)
                     .split('✔️')
                     .filter(Boolean)
@@ -303,7 +303,7 @@ const handlePlay = () => {
         <audio ref={modeAudioRef} hidden />
         <audio ref={audioRef} hidden />
 
-      <div className="fixed top-32 right-24 z-50 flex gap-4">
+      <div className="fixed top-32 right-22 z-50 flex gap-4">
         <button className="toggle-mode" onClick={toggleLanguage}>
           {language === 'pt' ? 'EN' : 'PT'}
         </button>
@@ -315,7 +315,7 @@ const handlePlay = () => {
       </div>
     </div>
 
-      <div className="fixed top-4 right-23 z-20 flex gap-2">
+      <div className="fixed top-4 right-22 z-20 flex gap-1">
         <button className="toggle-mode" onClick={() => window.location.href = '/profissional'}><ArrowLeft className="w-8 h-8" /></button>
         <button className="toggle-mode" onClick={() => window.location.href = '/skill-completo'}><ArrowRight className="w-8 h-8" /></button>
        </div>

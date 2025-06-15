@@ -7,12 +7,12 @@ import { Music, Square, ArrowLeft, ArrowRight } from "lucide-react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 const audioMap: Record<string, string> = {
-  "oracle-oci": "/media/audios/profissional/Amazing Grace.mp3",
+  "oracle-oci": "/media/audios/profissional/amazing-grace.mp3",
   "nse1": "/media/audios/pessoal/Who Am I.mp3",
   "nse2": "/media/audios/pessoal/Stand By Me.mp3",
   "ccna": "/media/audios/pessoal/Goodness of God.mp3",
@@ -22,17 +22,17 @@ const audioMap: Record<string, string> = {
   "pentest": "/media/audios/pessoal/In the Ghetto.mp3",
   "multicloud": "/media/audios/pessoal/A Thousand Years.mp3",
   "politica-ciber": "/media/audios/pessoal/Oceans Where Feet May Fail.mp3",
-  "mikrotik": "/media/audios/profissional/Sweet Caroline.mp3",
-  "seguranca-digital": "/media/audios/profissional/Baby What You Want Me To Do.mp3",
-  "bt-fdn": "/media/audios/profissional/Hallelujah.mp3",
-  "bt-fdn-a": "/media/audios/profissional/Sing Me Back Home.mp3",
-  "bt-tc": "/media/audios/profissional/Riding home to you.mp3",
-  "bt-tc-a": "/media/audios/profissional/This Body of Mine.mp3",
-  "mainframe": "/media/audios/profissional/Livin On Love.mp3",
-  "fundamentos": "/media/audios/profissional/Youve Lost That Lovin Feelin.mp3",
-  "storage": "/media/audios/profissional/Home.mp3",
-  "mba-gestao": "/media/audios/profissional/Hungry Eyes.mp3",
-  "diploma": "/media/audios/profissional/Always On My Mind.mp3",
+  "mikrotik": "/media/audios/profissional/sweet-caroline.mp3",
+  "seguranca-digital": "/media/audios/profissional/baby-what-you-want-me-to-do.mp3",
+  "bt-fdn": "/media/audios/profissional/hallelujah.mp3",
+  "bt-fdn-a": "/media/audios/profissional/sing-me-back-home.mp3",
+  "bt-tc": "/media/audios/profissional/riding-home-to-you.mp3",
+  "bt-tc-a": "/media/audios/profissional/this-body-of-mine.mp3",
+  "mainframe": "/media/audios/profissional/livin-on-love.mp3",
+  "fundamentos": "/media/audios/profissional/youve-lost-that-lovin-feelin.mp3",
+  "storage": "/media/audios/profissional/home.mp3",
+  "mba-gestao": "/media/audios/profissional/hungry-eyes.mp3",
+  "diploma": "/media/audios/profissional/always-on-my-mind.mp3",
 };
 
 const minhasCertificacoes = [
@@ -63,6 +63,7 @@ export default function Certificacoes() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [loading, setLoading] = useState(true);
   const [emailAutorizado, setEmailAutorizado] = useState(false);
   const router = useRouter();
 
@@ -110,11 +111,42 @@ export default function Certificacoes() {
     ],
   };
 
+  useEffect(() => {
+    // Simula um carregamento de 2 segundos
+    const timeout = setTimeout(() => {
+      setLoading(false);
+    }, 2000); // 2000 milissegundos = 2 segundos
+
+    // Limpa o timeout ao sair do componente
+    return () => clearTimeout(timeout);
+  }, []);
+
+
+  if (loading) {
+    return (
+      <div className="grid grid-cols-12 max-w-screen-xl w-full mx-auto md:px-16 py-30">
+      <div className="col-span-12 md:col-span-12 z-10 flex justify-center">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          className="text-center"
+        >
+            <Image src="/media/photos/icone-security.png" alt="Logo da Segurança" width={400} height={400} priority className="mx-auto mb-4 animate-pulse logo-neon" style={{ height: "auto", filter: "drop-shadow(var(--logo-glow))" }} />
+
+          <h1 className="text-xl text-theme-primary font-bold">Carregando Pagina Certificados...</h1>
+        </motion.div>
+      </div>
+      </div>
+    );
+  }
+
+
   return (
     <div id="dashboard-content" className="grid grid-cols-1 lg:grid-cols-12 gap-6 max-w-[1600px] w-full px-4">
       {/* Imagem lateral */}
       <div className="absolute left-180 mt-16">
-        <Image src="/media/photos/andre_pereira_b.png" alt="Foto de André Pereira" width={183} height={624} className="rounded-lg shadow-xl" />
+        <Image src="/media/photos/andre-pereira-b.png" alt="Foto de André Pereira" width={183} height={624} className="rounded-lg shadow-xl" />
       </div>
 
       {/* Slider de certificados */}
@@ -145,7 +177,7 @@ export default function Certificacoes() {
       </div>
 
       {/* Navegação */}
-      <div className="fixed top-4 right-24 z-20 flex gap-4">
+      <div className="fixed top-4 right-22 z-20 flex gap-1">
         <button className="toggle-mode border-theme-primary" onClick={() => router.push('/profissional')}>
           <ArrowLeft className="w-8 h-8" />
         </button>

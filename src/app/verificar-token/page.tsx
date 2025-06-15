@@ -74,13 +74,14 @@ export default function VerificarTokenPage() {
     }
   };
 
+
   return (
     <>
       <div className="col-span-12 md:col-span-6 md:col-start-4 flex flex-col items-center justify-center mt-20 text-white">
         {/* Box central */}
         <div className="bg-zinc-900 p-6 rounded-lg shadow-xl w-full max-w-sm text-center border border-theme-primary">
           <Image
-            src="/media/photos/fundo_tela_login.png"
+            src="/media/photos/fundo-tela-login.png"
             alt="Logo de Segurança"
             width={360}
             height={360}

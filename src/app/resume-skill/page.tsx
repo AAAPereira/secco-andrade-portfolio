@@ -58,7 +58,7 @@ export default function ResumeSkillPage() {
     const saudacaoExecutada = sessionStorage.getItem("saudacaoResumeSkillExecutada");
     const storedFirstName = sessionStorage.getItem("firstName");
 
-    if (typeof window !== "undefined" && "speechSynthesis" in window && !saudacaoExecutada) {
+    if ("speechSynthesis" in window && !saudacaoExecutada) {
       const hora = new Date().getHours();
       const nome = storedFirstName?.split("@")[0]?.replace(/^./, (c) => c.toUpperCase()) || "visitante";
 
@@ -109,7 +109,7 @@ export default function ResumeSkillPage() {
             className="text-center"
           >
             <Image
-              src="/media/photos/icone_security.png"
+              src="/media/photos/icone-security.png"
               alt="Logo"
               width={400}
               height={400}
@@ -117,7 +117,7 @@ export default function ResumeSkillPage() {
               className="mx-auto mb-4 animate-pulse logo-neon"
               style={{ filter: "drop-shadow(var(--logo-glow))" }}
             />
-            <h1 className="text-xl text-green-400 font-bold">Carregando Resumo Skill...</h1>
+            <h1 className="text-xl text-theme-primary font-bold">Carregando Resumo Skill...</h1>
           </motion.div>
         </div>
       </div>
@@ -131,7 +131,7 @@ export default function ResumeSkillPage() {
       <div className="col-span-3 flex justify-center items-start mt-24">
       <div className="absolute left-85">
         <Image
-          src="/media/photos/andre_pereira_a.png"
+          src="/media/photos/andre-pereira-a.png"
           alt="Foto de André Pereira"
           width={170}
           height={598}
@@ -150,7 +150,7 @@ export default function ResumeSkillPage() {
 
       {/* 🎧 Controle de áudio e idioma */}
       <audio ref={audioRef} />
-      <div className="fixed top-32 right-8 z-50 flex gap-4">
+      <div className="fixed top-32 right-8 z-50 flex gap-1">
         <button className="toggle-mode border-theme-primary" onClick={() => setIdioma(idioma === "pt" ? "en" : "pt")}>
           {idioma === "pt" ? "EN" : "PT"}
         </button>
@@ -160,7 +160,7 @@ export default function ResumeSkillPage() {
       </div>
 
       {/* 🔀 Navegação */}
-      <div className="fixed top-4 right-24 z-50 flex gap-4">
+      <div className="fixed top-4 right-22 z-50 flex gap-1">
         <button className="toggle-mode border-theme-primary" onClick={() => router.push('/profissional')}>
           <ArrowLeft className="w-8 h-8" />
         </button>

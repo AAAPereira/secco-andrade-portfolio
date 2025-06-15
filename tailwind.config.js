@@ -34,7 +34,7 @@ module.exports = {
   },
 
   corePlugins: {
-    preflight: true, // ou false se quiser desligar os resets do Tailwind.
+    preflight: false, // ou false se quiser desligar os resets do Tailwind.
   },
 
   plugins: [],

@@ -123,11 +123,7 @@ export default function SobrePage() {
     const saudacaoExecutada = sessionStorage.getItem("saudacaoSobreExecutada");
     const storedFirstName = sessionStorage.getItem("firstName");
 
-    if (
-    typeof window !== "undefined" &&
-    "speechSynthesis" in window &&
-    !saudacaoExecutada
-    ) {
+    if ("speechSynthesis" in window && !saudacaoExecutada) {
     const hora = new Date().getHours();
     const nome =
     storedFirstName
@@ -178,7 +174,7 @@ export default function SobrePage() {
           className="text-center"
         >
           <Image
-              src="/media/photos/icone_security.png"
+              src="/media/photos/icone-security.png"
               alt="Logo da Segurança"
               width={400}
               height={400}
@@ -188,7 +184,7 @@ export default function SobrePage() {
             />
 
 
-          <h1 className="text-xl text-green-400 font-bold text-theme-primary">Carregando Sobre o Profissional - Andre Pereira...</h1>
+          <h1 className="text-xl text-theme-primary font-bold">Carregando Sobre o Profissional - Andre Pereira...</h1>
         </motion.div>
       </div>
       </div>
@@ -221,7 +217,7 @@ export default function SobrePage() {
       <div className="col-span-1  md:col-span-5 z-10 flex justify-center">
       <div className="relative left-40 mt-18">
         <Image
-          src="/media/photos/andre_pereira.png"
+          src="/media/photos/andre-pereira.png"
           alt="Foto de André Pereira"
           width={169}
           height={555}
@@ -255,14 +251,14 @@ export default function SobrePage() {
       {/* CERTIFICADOS FIXADOS COM DIV ENVOLVENTE */}
       <div className="col-span-7 md:col-span-5 z-0">
         <div className="absolute -bottom-20 left-220 transform -translate-x-1/2 w-full max-w-6xl text-center">
-          <h2 className="text-2xl font-bold text-emerald-300 mb-4 text-theme-primary">Certificados</h2>
+          <h2 className="text-2xl font-bold text-theme-primary mb-4">Certificados</h2>
 
             <Slider {...settings}>
               {certificados.map((src, idx) => (
                 <div
                   key={src + idx}
                   onClick={() => router.push("/certificados")}
-                  className={`slick-slide-item ${idx === currentSlide ? "active" : ""} box-theme  rounded-xl shadow-md border border-theme-primary cursor-pointer hover:shadow card`}
+                  className={`slick-slide-item ${idx === currentSlide ? "active" : ""} rounded-xl shadow-md border border-theme-primary cursor-pointer hover:shadow card`}
                 >
                   <img
                     src={src}

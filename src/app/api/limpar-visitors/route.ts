@@ -9,35 +9,41 @@ export async function POST(req: NextRequest) {
 
     if (!dataInicial || !dataFinal) {
       return NextResponse.json(
-        { error: "Datas inválidas" },
+        { error: "Datas inválidas. Informe dataInicial e dataFinal." },
         { status: 400 }
       );
     }
 
     const dataInicio = new Date(dataInicial);
     const dataFim = new Date(dataFinal);
-    dataFim.setHours(23, 59, 59, 999); // Garante pegar até o fim do dia
+    dataFim.setHours(23, 59, 59, 999); // Inclui o dia todo
 
-    const chaves = await kv.keys("visita:*");
+    const chaves = await kv.keys("avaliacao:*"); // 🔥 Verificar se o prefixo está correto
     const removidos: string[] = [];
+
+    if (!chaves || chaves.length === 0) {
+      return NextResponse.json({
+        message: "Nenhuma chave encontrada com o prefixo 'visita:'.",
+      });
+    }
 
     for (const chave of chaves) {
       const valor = await kv.get(chave);
 
-      if (
-        valor &&
-        typeof valor === "object" &&
-        "timestamp" in valor &&
-        typeof (valor as { timestamp: unknown }).timestamp === "string"
-      ) {
-        const dataRegistro = new Date(
-          (valor as { timestamp: string }).timestamp
-        );
+      if (!valor || typeof valor !== "object") continue;
 
-        if (dataRegistro >= dataInicio && dataRegistro <= dataFim) {
-          await kv.del(chave);
-          removidos.push(chave);
-        }
+      const registro = valor as { timestamp?: string | number };
+
+      if (!registro.timestamp) continue;
+
+      const dataRegistro =
+        typeof registro.timestamp === "string"
+          ? new Date(registro.timestamp)
+          : new Date(Number(registro.timestamp));
+
+      if (dataRegistro >= dataInicio && dataRegistro <= dataFim) {
+        await kv.del(chave);
+        removidos.push(chave);
       }
     }
 
@@ -48,7 +54,7 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     console.error("Erro ao limpar registros:", error);
     return NextResponse.json(
-      { error: "Erro ao processar a solicitação" },
+      { error: "Erro interno ao processar a solicitação" },
       { status: 500 }
     );
   }

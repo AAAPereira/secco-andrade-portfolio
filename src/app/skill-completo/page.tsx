@@ -10,19 +10,19 @@ import { TemaProvider } from "@/app/components/TemaProvider";
 import "@/app/backgrounds/backgrounds.css";
 
 const audioMap = {
-  "SEGURANÇA_1": "/media/audios/profissional/Sweet Caroline.mp3",
-  "SEGURANÇA_2": "/media/audios/profissional/If I Got Jesus.mp3",
-  "SEGURANÇA_3": "/media/audios/profissional/Always On My Mind.mp3",
-  "INFRA_1": "/media/audios/profissional/Gods Country.mp3",
-  "INFRA_2": "/media/audios/profissional/Just Breathe.mp3",
-  "INFRA_3": "/media/audios/profissional/Kenny Rogers.mp3",
-  "TELECOM_1": "/media/audios/profissional/Baby What You Want Me To Do.mp3",
-  "TELECOM_2": "/media/audios/profissional/Hallelujah.mp3",
-  "TELECOM_3": "/media/audios/profissional/Hes My Brother.mp3",
+  "SEGURANÇA_1": "/media/audios/profissional/sweet-caroline.mp3",
+  "SEGURANÇA_2": "/media/audios/profissional/if-i-got-jesus.mp3",
+  "SEGURANÇA_3": "/media/audios/profissional/always-on-my-mind.mp3",
+  "INFRA_1": "/media/audios/profissional/gods-country.mp3",
+  "INFRA_2": "/media/audios/profissional/just-breathe.mp3",
+  "INFRA_3": "/media/audios/profissional/kenny-rogers.mp3",
+  "TELECOM_1": "/media/audios/profissional/baby-what-you-want-me-to-do.mp3",
+  "TELECOM_2": "/media/audios/profissional/hallelujah.mp3",
+  "TELECOM_3": "/media/audios/profissional/hes-my-brother.mp3",
 };
 
 const SkillDisplay: React.FC = () => {
-  const [temaSkillCompleto, setTemaSkillCompleto] = useState(detailedSkillsData[0]?.ano || "");
+  const [temaSkillCompleto, setTemaSkillCompleto] = useState("TELECOM_3");
   const [selectedData, setSelectedData] = useState<DetailedSkillItem | null>(null);
   const [language, setLanguage] = useState<"pt" | "en">("pt");
   const [isPlaying, setIsPlaying] = useState(false);
@@ -88,7 +88,7 @@ const SkillDisplay: React.FC = () => {
     const saudacaoExecutada = sessionStorage.getItem("saudacaoSkillCompletoExecutada");
     const storedFirstName = sessionStorage.getItem("firstName");
 
-    if (typeof window !== "undefined" && "speechSynthesis" in window && !saudacaoExecutada) {
+    if ("speechSynthesis" in window && !saudacaoExecutada) {
       const hora = new Date().getHours();
       const nome = storedFirstName?.split("@")[0];
       const nomeFormatado = nome ? nome.charAt(0).toUpperCase() + nome.slice(1) : "visitante";
@@ -146,8 +146,8 @@ const SkillDisplay: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <Image src="/media/photos/icone_security.png" alt="Logo da Segurança" width={400} height={400} priority className="mx-auto mb-4 animate-pulse logo-neon" style={{ height: "auto", filter: "drop-shadow(var(--logo-glow))" }} />
-            <h1 className="text-xl text-green-400 font-bold text-theme-primary">Carregando Skill Completo...</h1>
+            <Image src="/media/photos/icone-security.png" alt="Logo da Segurança" width={400} height={400} priority className="mx-auto mb-4 animate-pulse logo-neon" style={{ height: "auto", filter: "drop-shadow(var(--logo-glow))" }} />
+            <h1 className="text-xl text-theme-primary font-bold">Carregando Skill Completo...</h1>
           </motion.div>
         </div>
       </div>
@@ -160,7 +160,7 @@ const SkillDisplay: React.FC = () => {
 
         <div className="col-span-2">
           <div className="relative left-80 z-0 w-full mt-30">
-            <Image src="/media/photos/andrade_pereira.png" alt="Foto de André Pereira" width={243} height={624} className="rounded-lg shadow-xl" />
+            <Image src="/media/photos/andrade-pereira.png" alt="Foto de André Pereira" width={243} height={624} className="rounded-lg shadow-xl" />
           </div>
         </div>
 
@@ -194,34 +194,43 @@ const SkillDisplay: React.FC = () => {
                     {language === "pt" ? selectedData.titulo : selectedData.translations.EN.titulo}
                   </h3>
 
-                  <div>
-                    <p className="text-red-400 font-bold">{language === "pt" ? "Tecnologias:" : "Technologies:"}</p>
-                    <ul className="list-disc list-inside text-green-200">
-                      {renderList(language === "pt" ? selectedData.tecnologias : selectedData.translations.EN.tecnologias)}
-                    </ul>
-                  </div>
+            <div>
+                <p className="text-red-400 font-bold">{language === 'pt' ? 'Tecnologias:' : 'Technologies:'}</p>
+                <ul className="list-disc list-inside text-white">
+                  {(language === 'pt' ? selectedData.tecnologias : selectedData.translations.EN.tecnologias)
+                    .split('✔️')
+                    .filter(Boolean)
+                    .map((item, idx) => <li key={idx}>{item.trim()}</li>)}
+                </ul>
+            </div>
 
-                  <div>
-                    <p className="text-yellow-400 font-bold">{language === "pt" ? "Habilidades:" : "Skills:"}</p>
-                    <ul className="list-disc list-inside text-green-200">
-                      {renderList(language === "pt" ? selectedData.habilidades : selectedData.translations.EN.habilidades)}
-                    </ul>
-                  </div>
+            <div>
+                <p className="text-yellow-400 font-bold">{language === 'pt' ? 'Habilidades:' : 'Skills:'}</p>
+                <ul className="list-disc list-inside text-white">
+                  {(language === 'pt' ? selectedData.habilidades : selectedData.translations.EN.habilidades)
+                    .split('✔️')
+                    .filter(Boolean)
+                    .map((item, idx) => <li key={idx}>{item.trim()}</li>)}
+                </ul>
+            </div>
 
-                  <div>
-                    <p className="text-purple-400 font-bold">{language === "pt" ? "Impacto:" : "Impact:"}</p>
-                    <ul className="list-disc list-inside text-green-200">
-                      {renderList(language === "pt" ? selectedData.impacto : selectedData.translations.EN.impacto)}
-                    </ul>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            <div>
+                <p className="text-purple-400 font-bold">{language === 'pt' ? 'Impacto:' : 'Impact:'}</p>
+                <ul className="list-disc list-inside text-white">
+                  {(language === 'pt' ? selectedData.impacto : selectedData.translations.EN.impacto)
+                    .split('✔️')
+                    .filter(Boolean)
+                    .map((item, idx) => <li key={idx}>{item.trim()}</li>)}
+                </ul>
+            </div>
+            </motion.div>
+            )}
+          </AnimatePresence>
           </div>
 
           <audio ref={audioRef} hidden />
 
-          <div className="fixed top-32 right-24 z-50 flex gap-4">
+          <div className="fixed top-32 right-22 z-50 flex gap-4">
             <button className="toggle-mode" onClick={toggleLanguage}>
               {language === "pt" ? "EN" : "PT"}
             </button>
@@ -234,7 +243,7 @@ const SkillDisplay: React.FC = () => {
           </div>
         </div>
 
-        <div className="fixed top-4 right-23 z-20 flex gap-2">
+        <div className="fixed top-4 right-22 z-20 flex gap-2">
           <button className="toggle-mode" onClick={() => router.push("/profissional")}>
             <ArrowLeft className="w-8 h-8" />
           </button>

@@ -11,7 +11,7 @@
 
 /* Modo Neon Futurístico */
 .theme-neon .background-overlay {
-  background: url('/media/photos/robos-futuristas_e.png') center/cover no-repeat, linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  background: url('/media/photos/robos-futuristas.png') center/cover no-repeat, linear-gradient(135deg, #0f0c29, #302b63, #24243e);
   color: #ffffff;
   animation: neon-glow 5s infinite alternate;
   opacity: 0.8;
@@ -163,7 +163,7 @@
   --theme-primary: #00e5ff; /* Ciano Elétrico */
   --theme-secondary: #00aaff; /* Azul Profundo */
   --theme-accent: #39ff14; /* Verde Neon */
-  --logo-glow: 0 0 25px #00e5ff, 0 0 40px #39ff14; /* Brilho duplo */
+  --logo-glow: 0 0 25px #00aaff; /* Brilho duplo */
   --theme-button: linear-gradient(90deg, #00e5ff, #00aaff, #39ff14); /* Gradiente de três cores */
   background-color: #0d0d1a; /* Fundo muito escuro, quase preto, com um toque de azul */
 }
@@ -174,10 +174,10 @@
   /* 🎨 Paleta principal */
   --theme-primary: #00ffbf;      /* Verde água neon - Primário */
   --theme-secondary: #00ffbf;    /* Mesma base para consistência */
-  --theme-accent: #0099FF;       /* Azul neon - Contraste perfeito */
+  --theme-accent: #00ffbf;       /* Mesma base para consistência */
 
   /* ✨ Glow do logo e elementos */
-  --logo-glow: 0 0 25px #00e5ff, 0 0 30px #00ffbf;
+  --logo-glow: 0 0 20px #00ffbf;
 
   /* 🔘 Botões e efeitos */
   --theme-button: linear-gradient(120deg, transparent 60%, #00ffbf 65%, transparent 70%);
@@ -202,7 +202,7 @@
   --theme-primary: #00aaff;
   --theme-secondary: #0088cc;
   --theme-accent: #00ffff;
-  --logo-glow: 0 0 25px #00aaff, 0 0 40px #00ffff;
+  --logo-glow: 0 0 25px #00aaff;
   --theme-button: linear-gradient(90deg, #00aaff, #00ffff, #0088cc);
   background-color: #000d1a;
   background-image: url('/media/backgrounds/tracos-azul-neon.png');
@@ -213,11 +213,11 @@
 }
 
 
-.theme-verdee-neon {
+.theme-verdao-neon {
   --theme-primary: #00ffbf;
   --theme-secondary: #00ccaa;
   --theme-accent: #39ff14;
-  --logo-glow: 0 0 25px #00ffbf, 0 0 40px #39ff14;
+  --logo-glow: 0 0 25px #39ff14;
   --theme-button: linear-gradient(90deg, #00ffbf, #39ff14, #00ccaa);
   background-color: #000f0a;
   background-image: url('/media/backgrounds/tracos-verde-neon.png');
@@ -231,9 +231,8 @@
   --theme-primary: #b400ff;
   --theme-secondary: #8a00cc;
   --theme-accent: #00ffff;
-  --logo-glow: 0 0 25px #b400ff, 0 0 40px #00ffff;
+  --logo-glow: 0 0 25px #b400ff;
   --theme-button: linear-gradient(120deg, transparent 60%, #00ffbf 65%, transparent 70% #b400ff, #00ffff, #8a00cc);
- /* --theme-button: linear-gradient(120deg, transparent 60%, #00ffbf 65%, transparent 70%);*/
   background-color: #0a0014;
   background-image: url('/media/backgrounds/linhas-de-luz-roxa.png');
   background-repeat: no-repeat;
@@ -248,10 +247,7 @@
   --theme-primary: #ffffff; /* Branco puro para linhas e detalhes */
   --theme-secondary: #b0b0b0; /* Cinza claro para contraste */
   --theme-accent: #00ffff; /* Neon ciano para destaques */
-  --logo-glow:
-    0 0 5px #ffffff,
-    0 0 10px #ffffff,
-    0 0 15px #ffffff;
+  --logo-glow: 0 0 25px #ffffff;
 
   /* Botões */
   --theme-button: linear-gradient(
@@ -272,6 +268,30 @@
   background-attachment: fixed;
 }
 
+  /* Tema Laranja */
+.theme-laranja-neon {
+  --theme-primary: #ff8c00; /* Laranja escuro */
+  --theme-secondary: #ff4500; /* Laranja vermelho */
+  --theme-accent: #ffa500; /* Laranja */
+  --logo-glow: 0 0 25px #FF4500;
+
+  /* Botões */
+  --theme-button: linear-gradient(
+    120deg,
+    transparent 60%,
+    #00F0FF 65%,
+    transparent 70%,
+    #FFA500,
+    #b0b0b0
+  );
+
+  /* Fundo */
+  background-image: url('/media/backgrounds/neon-preto-laranja.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
 
 /* 🔘 Botão neon interativo */
 .theme-azul-neon .button-neon {
@@ -290,6 +310,25 @@
   transform: scale(1.05);
 }
 
+
+/* ------------------------- */
+/* 🌟 Cards Neon             */
+/* ------------------------- */
+
+.box-theme {
+  border: 1px solid var(--theme-primary);
+  border-radius: 16px;
+  background-color: rgba(10, 1, 20, 0.8);
+  box-shadow: 0 0 10px var(--theme-primary),
+              0 0 20px var(--theme-secondary);
+  transition: all 0.3s ease;
+}
+
+.box-theme:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px var(--theme-primary),
+              0 0 40px var(--theme-secondary);
+}
 
 .texto-padrao {
   color: #00F5FF;
@@ -312,6 +351,12 @@
   transition: all 0.3s ease;
 }
 
+.bg-theme-primary:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 16px var(--theme-accent), 0 0 24px var(--theme-accent) inset;
+}
+
+
 .text-theme-primary {
   color: var(--theme-primary);
 }
@@ -326,16 +371,16 @@
 }
 
 
-.bg-theme-primary:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 16px var(--theme-accent), 0 0 24px var(--theme-accent) inset;
-}
 
-/* Linhas neon com variável do tema */
+/* ------------------------- */
+/* 🌟 Linhas de Neon         */
+/* ------------------------- */
+
 .neon-line {
-  height: 4px;
-  background-color: var(--theme-accent);
-  box-shadow: 0 0 10px var(--theme-accent), 0 0 20px var(--theme-accent);
+  box-shadow: 0 0 10px var(--theme-primary),
+              0 0 20px var(--theme-primary),
+              0 0 30px var(--theme-primary),
+              0 0 40px var(--theme-primary);
 }
 
 /* Botões atualizados com tema */
@@ -429,31 +474,7 @@
 }
 
 
-/* Animação de Entrada para Títulos */
-.titulo-entrada {
-  animation: fade-in 1s ease;
-}
 
-
-.logo-neon {
-  filter: drop-shadow(0 0 8px #00ff77);
-  transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-.logo-neon:hover {
-  transform: scale(1.05);
-  filter: drop-shadow(0 0 12px #00ff77);
-}
-
-.neon-line {
-  box-shadow: 0 0 12px #00ff77, 0 0 20px #00ff77;
-}
-
-/* Efeito de Destaque nos Logos */
-.logo-item:hover {
-  transform: scale(1.1);
-  transition: transform 0.3s ease;
-}
 
 
 .neon-text {
@@ -591,8 +612,17 @@
 }
 
 
+/* ------------------------- */
+/* 🌟 Scroll Custom          */
+/* ------------------------- */
+
+.custom-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--theme-primary) transparent;
+}
+
 .custom-scroll::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 .custom-scroll::-webkit-scrollbar-track {
@@ -601,13 +631,8 @@
 
 .custom-scroll::-webkit-scrollbar-thumb {
   background-color: var(--theme-primary);
-  border-radius: 10px;
-  box-shadow: 0 0 10px #00a8ff; /* Efeito de brilho neon */
-  border: 2px solid #00ff00;
-}
-
-.custom-scroll::-webkit-scrollbar-thumb:hover {
-  background-color: #00ff00;
+  border-radius: 20px;
+  border: 1px solid var(--theme-accent);
 }
 
 
@@ -638,35 +663,3 @@
   filter: invert(1);
   background-color: #00ff00;
 }
-
-
-
-@keyframes neon-glow {
-  0% { filter: brightness(0.8); }
-  50% { filter: brightness(1.2); }
-  100% { filter: brightness(0.8); }
-}
-
-@keyframes particle-glow {
-  0% { background-position: 0 0; }
-  100% { background-position: 100px 100px; }
-}
-
-
-@keyframes fade-in {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-
-@keyframes neon-pulse {
-  0% { text-shadow: 0 0 8px #00ffff; }
-  100% { text-shadow: 0 0 20px #00ffff; }
-}
-
-@keyframes logo-pulse {
-  0%, 100% { filter: brightness(1); }
-  50% { filter: brightness(1.2); }
-}
-
-

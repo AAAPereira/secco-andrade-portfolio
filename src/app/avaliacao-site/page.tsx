@@ -79,10 +79,10 @@ export default function AvaliacaoPage() {
     const saudacaoExecutada = sessionStorage.getItem("saudacaoAvaliacaoExecutada");
     const storedFirstName = sessionStorage.getItem("firstName");
 
-    if (typeof window !== "undefined" && "speechSynthesis" in window && !saudacaoExecutada) {
+    if ("speechSynthesis" in window && !saudacaoExecutada) {
       const hora = new Date().getHours();
       const nome = storedFirstName?.split("@")[0];
-      const nomeFormatado = nome ? nome.charAt(0).toUpperCase() + nome.slice(1) : "visitante";
+      const nomeFormatado = nome ? nome.charAt(0).toUpperCase() + nome.slice(1) : "visitantes";
 
       let saudacaoPt = `Você chegou ao fim desta jornada digital. Aqui, cada linha, cada som e cada imagem foram escolhidos para revelar mais do que um currículo — foram feitos para contar uma história real, vivida entre acertos e aprendizados. Agora, é a sua vez: avalie não só este conteúdo, mas o que ele despertou em você. Muito obrigado, ${nomeFormatado}!`;
 
@@ -109,7 +109,7 @@ export default function AvaliacaoPage() {
   return (
     <div className="flex flex-col py-2 items-center justify-center text-center">
       <Image
-        src="/media/photos/icone_security.png"
+        src="/media/photos/icone-security.png"
         alt="Logo Segurança"
         width={350}
         height={350}
@@ -140,7 +140,7 @@ export default function AvaliacaoPage() {
               />
             ))}
           </div>
-          <div className="text-xl font-bold text-green-400 mb-4 text-theme-primary">
+          <div className="text-xl font-bold text-green-400 mb-8 text-theme-primary">
             Sua avaliação: {rating * 2}/10
           </div>
 

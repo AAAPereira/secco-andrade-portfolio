@@ -13,26 +13,26 @@ import { useRouter } from "next/navigation";
 import "@/app/backgrounds/backgrounds.css";
 
 const audioMap = {
-  "azzatelecom2024": "/media/audios/profissional/Amazing Grace.mp3",
-  "cti2022": "/media/audios/profissional/If I Got Jesus.mp3",
-  "embratel2014": "/media/audios/profissional/Home.mp3",
-  "tivit2011": "/media/audios/profissional/Gods Country.mp3",
-  "interchange2006": "/media/audios/profissional/When I Get Where Im Going.mp3",
-  "telecom2004": "/media/audios/profissional/Relaxing Country.mp3",
-  "multinacional2003": "/media/audios/profissional/Baby What You Want Me To Do.mp3",
-  "Manutencao2002": "/media/audios/profissional/Hallelujah.mp3",
-  "suporte2001": "/media/audios/profissional/Sing Me Back Home.mp3",
-  "porteiro2001": "/media/audios/profissional/Hungry Eyes.mp3",
-  "balaoinformatica2000": "/media/audios/profissional/Riding home to you.mp3",
-  "clt1997": "/media/audios/profissional/Kenny Rogers.mp3",
-  "ensinar1995": "/media/audios/profissional/This Body of Mine.mp3",
-  "tecnologia1993": "/media/audios/profissional/Always On My Mind.mp3",
-  "onibus1990": "/media/audios/profissional/Just Breathe.mp3",
-  "samelo1989": "/media/audios/profissional/Livin On Love.mp3",
-  "quartel1988": "/media/audios/profissional/Hes My Brother.mp3",
-  "futebol1985": "/media/audios/profissional/I Trust in Jesus.mp3",
-  "placidio1984": "/media/audios/profissional/Youve Lost That Lovin Feelin.mp3",
-  "fixotec1982": "/media/audios/profissional/Sweet Caroline.mp3"
+  "azzatelecom2024": "/media/audios/profissional/amazing-grace.mp3",
+  "cti2022": "/media/audios/profissional/if-i-got-jesus.mp3",
+  "embratel2014": "/media/audios/profissional/home.mp3",
+  "tivit2011": "/media/audios/profissional/gods-country.mp3",
+  "interchange2006": "/media/audios/profissional/when-i-get-where-im-going.mp3",
+  "telecom2004": "/media/audios/profissional/relaxing-country.mp3",
+  "multinacional2003": "/media/audios/profissional/baby-what-you-want-me-to-do.mp3",
+  "Manutencao2002": "/media/audios/profissional/hallelujah.mp3",
+  "suporte2001": "/media/audios/profissional/sing-me-back-home.mp3",
+  "porteiro2001": "/media/audios/profissional/hungry-eyes.mp3",
+  "balaoinformatica2000": "/media/audios/profissional/riding-home-to-you.mp3",
+  "clt1997": "/media/audios/profissional/kenny-rogers.mp3",
+  "ensinar1995": "/media/audios/profissional/this-body-of-mine.mp3",
+  "tecnologia1993": "/media/audios/profissional/always-on-my-mind.mp3",
+  "onibus1990": "/media/audios/profissional/just-breathe.mp3",
+  "samelo1989": "/media/audios/profissional/livin-on-love.mp3",
+  "quartel1988": "/media/audios/profissional/hes-my-brother.mp3",
+  "futebol1985": "/media/audios/profissional/i-trust-in-jesus.mp3",
+  "placidio1984": "/media/audios/profissional/youve-lost-that-lovin-feelin.mp3",
+  "fixotec1982": "/media/audios/profissional/sweet-caroline.mp3"
 };
 
 function ConteudoTexto() {
@@ -95,8 +95,8 @@ function ConteudoTexto() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <Image src="/media/photos/icone_security.png" alt="Logo Segurança" width={400} height={400} className="animate-pulse logo-neon mx-auto mb-4" />
-            <h1 className="text-xl text-green-400 font-bold">Carregando Página Profissional...</h1>
+            <Image src="/media/photos/icone-security.png" alt="Logo da Segurança" width={400} height={400} priority className="mx-auto mb-4 animate-pulse logo-neon" style={{ height: "auto", filter: "drop-shadow(var(--logo-glow))" }} />
+            <h1 className="text-xl text-theme-primary font-bold">Carregando Página Profissional...</h1>
           </motion.div>
         </div>
       </div>
@@ -189,9 +189,9 @@ function ConteudoTexto() {
 
       {/* Controles de Idioma e Música */}
       <audio ref={audioRef} />
-      <div className="fixed top-32 right-8 flex gap-2 z-20">
-        <button className="toggle-mode" onClick={() => setIdioma(idioma === "pt" ? "en" : "pt")}>{idioma === "pt" ? "EN" : "PT"}</button>
-        <button className="toggle-mode" onClick={handlePlay}>{isPlaying ? <Square className="w-8 h-8" /> : <Music className="w-8 h-8" />}</button>
+      <div className="fixed top-32 right-8 flex gap-2 z-20 ">
+        <button className="toggle-mode bg-theme-primary" onClick={() => setIdioma(idioma === "pt" ? "en" : "pt")}>{idioma === "pt" ? "EN" : "PT"}</button>
+        <button className="toggle-mode bg-theme-primary" onClick={handlePlay}>{isPlaying ? <Square className="w-8 h-8" /> : <Music className="w-8 h-8" />}</button>
       </div>
 
       {/* Botões Extras */}
