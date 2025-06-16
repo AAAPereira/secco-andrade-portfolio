@@ -1,4 +1,4 @@
-// middleware.ts
+// src/middleware.ts
 
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
@@ -6,41 +6,47 @@ import type { NextRequest } from 'next/server';
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
-  // Rotas públicas (acesso sem login)
+  // Rotas públicas (sem login)
   const publicPaths = ['/', '/login'];
   const isPublic = publicPaths.some((path) => pathname === path || pathname.startsWith(`${path}/`));
 
-  // Captura do cookie do usuário ativo
+  // Captura cookie do usuário
   const activeUserCookie = req.cookies.get('activeUser');
   const email = activeUserCookie?.value || "";
   const isLoggedIn = !!activeUserCookie;
 
-  // Rotas restritas que só o André pode acessar
-  const isRestrita =
-    pathname.startsWith("/estatisticas") || pathname.startsWith("/visao-macro");
+  // Rotas restritas que só André pode acessar
+  const isRestrita = pathname.startsWith("/estatisticas") || pathname.startsWith("/visao-macro");
 
-  // Lista de e-mails liberados para áreas restritas
+  // E-mails liberados
   const emailsLiberados = ["fernandre6973@gmail.com"];
   const emailLiberado =
     email.endsWith("@empresa.com") || emailsLiberados.includes(email);
 
-  // BLOQUEIO de acesso às rotas restritas
+  // Bloqueia rotas restritas
   if (isRestrita && (!isLoggedIn || !emailLiberado)) {
     return NextResponse.redirect(new URL('/', req.url));
   }
 
-  // BLOQUEIO de qualquer rota privada sem login
+  // Bloqueia qualquer rota não pública sem login
   if (!isPublic && !isLoggedIn && !isRestrita) {
     return NextResponse.redirect(new URL('/', req.url));
   }
 
-  // Libera o fluxo normal se tudo estiver ok
+  // Libera fluxo normal
   return NextResponse.next();
 }
 
-// Configuração de correspondência de rotas
+// ⚡ Middleware só roda nessas rotas, assets (imagens, MP3, etc.) passam livre!
 export const config = {
   matcher: [
-    '/((?!_next/|favicon.ico|api/|media/|downloads/|grafico/|[^/]+\\.(?:png|jpg|jpeg|gif|webp|mp3|mp4|wav|svg|ico|json|txt)).*)',
+    '/',              // home
+    '/login',         // login
+    '/timeline/:path*',
+    '/sobre/:path*',
+    '/skill-completo/:path*',
+    '/resume-skill/:path*',
+    '/estatisticas/:path*',
+    '/visao-macro/:path*',
   ],
 };
