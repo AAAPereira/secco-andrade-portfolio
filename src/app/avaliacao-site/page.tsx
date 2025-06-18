@@ -109,7 +109,7 @@ export default function AvaliacaoPage() {
   return (
     <div className="flex flex-col py-2 items-center justify-center text-center">
       <Image
-        src="/media/photos/icone-security.png"
+        src="/media/photos/icone-security.webp"
         alt="Logo Segurança"
         width={350}
         height={350}

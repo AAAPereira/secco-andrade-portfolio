@@ -6,11 +6,11 @@
               id: "azzatelecom2024",
               tituloCard: "ANO 2024",
               titulo: "Coordenação o desafio - 2024",
-              imagemCard: "/media/photos/profissional/azza/logo_azza.png",
+              imagemCard: "/media/photos/profissional/azza/logo_azza.webp",
               imagens: [
-                "/media/photos/profissional/azza/azza_projetos_blip.png",
-                "/media/photos/profissional/azza/azza_telecom-crm.png",
-                "/media/photos/profissional/azza/Azza_telecom_empresa.png"
+                "/media/photos/profissional/azza/azza_projetos_blip.webp",
+                "/media/photos/profissional/azza/azza_telecom-crm.webp",
+                "/media/photos/profissional/azza/Azza_telecom_empresa.webp"
               ],
               texto: (
                 <>
@@ -52,11 +52,11 @@
               id: "cti2022",
               tituloCard: "ANO 2022",
               titulo: "Centro de Tecnologia - 2022",
-              imagemCard: "/media/photos/profissional/cti/logo-cti.png",
+              imagemCard: "/media/photos/profissional/cti/logo-cti.webp",
               imagens: [
-               "/media/photos/profissional/cti/cti-projeto_antenas.png",
-               "/media/photos/profissional/cti/cti-projeto_robo.png",
-               "/media/photos/profissional/cti/parque-tecnologico.png"
+               "/media/photos/profissional/cti/cti-projeto_antenas.webp",
+               "/media/photos/profissional/cti/cti-projeto_robo.webp",
+               "/media/photos/profissional/cti/parque-tecnologico.webp"
               ],
               texto: (
                 <>
@@ -88,11 +88,11 @@
               id: "embratel2014",
               tituloCard: "ANO 2014",
               titulo: "Conectando Empresas - 2014",
-              imagemCard: "/media/photos/profissional/embratel/logo-embratel.png",
+              imagemCard: "/media/photos/profissional/embratel/logo-embratel.webp",
               imagens: [
-                "/media/photos/profissional/embratel/embratel_fortinet.png",
-                "/media/photos/profissional/embratel/embratel_cisco-roteador.png",
-                "/media/photos/profissional/embratel/embratel_cisco-switch.png"
+                "/media/photos/profissional/embratel/embratel_fortinet.webp",
+                "/media/photos/profissional/embratel/embratel_cisco-roteador.webp",
+                "/media/photos/profissional/embratel/embratel_cisco-switch.webp"
                ],
                texto: (
                 <>
@@ -137,11 +137,11 @@
               id: "tivit2011",
               tituloCard: "ANO 2011",
               titulo: "A TIVIT - 2011",
-              imagemCard: "/media/photos/profissional/tivit/logo_tivit.png",
+              imagemCard: "/media/photos/profissional/tivit/logo_tivit.webp",
               imagens: [
-                "/media/photos/profissional/tivit/tivit-monitoramento_zabbix.png",
-                "/media/photos/profissional/tivit/tivit-monitoramento_zabbix1.png",
-                "/media/photos/profissional/tivit/TIVIT_Stand.png"
+                "/media/photos/profissional/tivit/tivit-monitoramento_zabbix.webp",
+                "/media/photos/profissional/tivit/tivit-monitoramento_zabbix1.webp",
+                "/media/photos/profissional/tivit/TIVIT_Stand.webp"
                ],
                texto: (
                 <>
@@ -179,11 +179,11 @@
               id: "interchange2006",
               tituloCard: "ANO 2006",
               titulo: "Primeiro Projeto - 2006",
-              imagemCard: "/media/photos/profissional/interchange/logo_interchange.png",
+              imagemCard: "/media/photos/profissional/interchange/logo_interchange.webp",
               imagens: [
-                "/media/photos/profissional/interchange/Interchange_Treinamento.png",
-                "/media/photos/profissional/interchange/interchange_cabeamento_estruturado.png",
-                "/media/photos/profissional/interchange/Interchange_area_wifi.png"
+                "/media/photos/profissional/interchange/Interchange_Treinamento.webp",
+                "/media/photos/profissional/interchange/interchange_cabeamento_estruturado.webp",
+                "/media/photos/profissional/interchange/Interchange_area_wifi.webp"
                ],
                texto: (
                 <>
@@ -222,11 +222,11 @@
               id: "telecom2004",
               tituloCard: "ANO 2004",
               titulo: "Primeiro Contato com Telecom - 2004",
-              imagemCard: "/media/photos/profissional/esps/logo-telecom.png",
+              imagemCard: "/media/photos/profissional/esps/logo-telecom.webp",
               imagens: [
-                "/media/photos/profissional/esps/Banco Itau.png",
-                "/media/photos/profissional/esps/banco-do-brasil.png",
-                "/media/photos/profissional/esps/banco-santander.png"
+                "/media/photos/profissional/esps/Banco Itau.webp",
+                "/media/photos/profissional/esps/banco-do-brasil.webp",
+                "/media/photos/profissional/esps/banco-santander.webp"
                ],
                texto: (
                 <>
@@ -256,11 +256,11 @@
               id: "multinacional2003",
               tituloCard: "ANO 2003",
               titulo: "Primeira Multinacional - 2003",
-              imagemCard: "/media/photos/profissional/vocal/logo-vocal.png",
+              imagemCard: "/media/photos/profissional/vocal/logo-vocal.webp",
               imagens: [
-                "/media/photos/profissional/vocal/vocal_arvore_topologia.png",
-                "/media/photos/profissional/vocal/vocal_ad_novell.png",
-                "/media/photos/profissional/vocal/vocal_estrura_operacao.png"
+                "/media/photos/profissional/vocal/vocal_arvore_topologia.webp",
+                "/media/photos/profissional/vocal/vocal_ad_novell.webp",
+                "/media/photos/profissional/vocal/vocal_estrura_operacao.webp"
                ],
                texto: (
                 <>
@@ -290,11 +290,11 @@
               id: "Manutencao2002",
               tituloCard: "ANO 2002",
               titulo: "Pressão sob Controle - 2002",
-              imagemCard: "/media/photos/profissional/ab-pereira/logo_a.b.pereira.png",
+              imagemCard: "/media/photos/profissional/ab-pereira/logo_a.b.pereira.webp",
               imagens: [
-                "/media/photos/profissional/ab-pereira/caixa_deposito_a.png",
-                "/media/photos/profissional/ab-pereira/caixa_deposito_b.png",
-                "/media/photos/profissional/ab-pereira/caixa_deposito_c.png"
+                "/media/photos/profissional/ab-pereira/caixa_deposito_a.webp",
+                "/media/photos/profissional/ab-pereira/caixa_deposito_b.webp",
+                "/media/photos/profissional/ab-pereira/caixa_deposito_c.webp"
                ],
                texto: (
                 <>
@@ -324,11 +324,11 @@
               id: "suporte2001",
               tituloCard: "ANO 2001",
               titulo: "De volta para a vida de suporte - 2001",
-              imagemCard: "/media/photos/profissional/cdp/logo_cdp_sistemas.png",
+              imagemCard: "/media/photos/profissional/cdp/logo_cdp_sistemas.webp",
               imagens: [
-                "/media/photos/profissional/cdp/cdp_sistemas_switch.png",
-                "/media/photos/profissional/cdp/cdp_sistemas_topologia.png",
-                "/media/photos/profissional/cdp/cdp_sistemas.png"
+                "/media/photos/profissional/cdp/cdp_sistemas_switch.webp",
+                "/media/photos/profissional/cdp/cdp_sistemas_topologia.webp",
+                "/media/photos/profissional/cdp/cdp_sistemas.webp"
                ],
                texto: (
                 <>
@@ -355,11 +355,11 @@
               id: "balaoinformatica2000",
               tituloCard: "ANO 2000",
               titulo: "Suporte / Manutenção - Computadores",
-              imagemCard: "/media/photos/profissional/balao/logo_balao_informatica.png",
+              imagemCard: "/media/photos/profissional/balao/logo_balao_informatica.webp",
               imagens: [
-              "/media/photos/profissional/balao/balao_informatica_a.png",
-              "/media/photos/profissional/balao/balao_informatica_b.png",
-              "/media/photos/profissional/balao/balao_informatica_c.png"
+              "/media/photos/profissional/balao/balao_informatica_a.webp",
+              "/media/photos/profissional/balao/balao_informatica_b.webp",
+              "/media/photos/profissional/balao/balao_informatica_c.webp"
                ],
                texto: (
                 <>
@@ -389,11 +389,11 @@
               id: "clt1997",
               tituloCard: "ANO 1997",
               titulo: "Voltando a CLT - 1997",
-              imagemCard: "/media/photos/profissional/talimar/logo_talimar.png",
+              imagemCard: "/media/photos/profissional/talimar/logo_talimar.webp",
               imagens: [
-                "/media/photos/profissional/talimar/suporte_hardware.png",
-                "/media/photos/profissional/talimar/suporte_geral.png",
-                "/media/photos/profissional/talimar/suporte_impressoras.png"
+                "/media/photos/profissional/talimar/suporte_hardware.webp",
+                "/media/photos/profissional/talimar/suporte_geral.webp",
+                "/media/photos/profissional/talimar/suporte_impressoras.webp"
               ],
               texto: (
                 <>
@@ -423,11 +423,11 @@
               id: "ensinar1995",
               tituloCard: "ANO 1995",
               titulo: "Missão ensinar tecnologia - 1995",
-              imagemCard: "/media/photos/profissional/compucenter/logo_compucenter.png",
+              imagemCard: "/media/photos/profissional/compucenter/logo_compucenter.webp",
               imagens: [
-                "/media/photos/profissional/compucenter/compucenter_autoexec.png",
-                "/media/photos/profissional/compucenter/compucenter_excel.png",
-                "/media/photos/profissional/compucenter/compucenter_word.png"
+                "/media/photos/profissional/compucenter/compucenter_autoexec.webp",
+                "/media/photos/profissional/compucenter/compucenter_excel.webp",
+                "/media/photos/profissional/compucenter/compucenter_word.webp"
               ],
               texto: (
                 <>
@@ -461,11 +461,11 @@
               id: "tecnologia1993",
               tituloCard: "ANO 1993",
               titulo: "Tecnologia o ponto de partida - 1993",
-              imagemCard: "/media/photos/profissional/casa-engenheiro/logo_casa_engenheiro.png",
+              imagemCard: "/media/photos/profissional/casa-engenheiro/logo_casa_engenheiro.webp",
               imagens: [
-                "/media/photos/profissional/casa-engenheiro/ibm-mainframe.png",
-                "/media/photos/profissional/casa-engenheiro/Xerox.png",
-                "/media/photos/profissional/casa-engenheiro/casa_engeiro_produção_d.png"
+                "/media/photos/profissional/casa-engenheiro/ibm-mainframe.webp",
+                "/media/photos/profissional/casa-engenheiro/Xerox.webp",
+                "/media/photos/profissional/casa-engenheiro/casa_engeiro_produção_d.webp"
               ],
               texto: (
                 <>
@@ -493,11 +493,11 @@
               id: "azzatelecom2024",
               tituloCard: "YEAR 2024",
               titulo: "Coordination and Challenge - 2024",
-              imagemCard: "/media/photos/profissional/azza/logo_azza.png",
+              imagemCard: "/media/photos/profissional/azza/logo_azza.webp",
               imagens: [
-                "/media/photos/profissional/azza/azza_projetos_blip.png",
-                "/media/photos/profissional/azza/azza_telecom-crm.png",
-                "/media/photos/profissional/azza/Azza_telecom_empresa.png"
+                "/media/photos/profissional/azza/azza_projetos_blip.webp",
+                "/media/photos/profissional/azza/azza_telecom-crm.webp",
+                "/media/photos/profissional/azza/Azza_telecom_empresa.webp"
               ],
               texto: (
                 <>
@@ -539,11 +539,11 @@
                 id: "cti2022",
                 tituloCard: "YEAR 2022",
                 titulo: "Technology Center - 2022",
-                imagemCard: "/media/photos/profissional/cti/logo-cti.png",
+                imagemCard: "/media/photos/profissional/cti/logo-cti.webp",
                 imagens: [
-                    "/media/photos/profissional/cti/cti-projeto_antenas.png",
-                    "/media/photos/profissional/cti/cti-projeto_robo.png",
-                    "/media/photos/profissional/cti/parque-tecnologico.png"
+                    "/media/photos/profissional/cti/cti-projeto_antenas.webp",
+                    "/media/photos/profissional/cti/cti-projeto_robo.webp",
+                    "/media/photos/profissional/cti/parque-tecnologico.webp"
               ],
               texto: (
                 <>
@@ -575,11 +575,11 @@
               id: "embratel2014",
               tituloCard: "YEAR 2014",
               titulo: "Connecting Businesses - 2014",
-              imagemCard: "/media/photos/profissional/embratel/logo-embratel.png",
+              imagemCard: "/media/photos/profissional/embratel/logo-embratel.webp",
               imagens: [
-                "/media/photos/profissional/embratel/embratel_fortinet.png",
-                "/media/photos/profissional/embratel/embratel_cisco-roteador.png",
-                "/media/photos/profissional/embratel/embratel_cisco-switch.png"
+                "/media/photos/profissional/embratel/embratel_fortinet.webp",
+                "/media/photos/profissional/embratel/embratel_cisco-roteador.webp",
+                "/media/photos/profissional/embratel/embratel_cisco-switch.webp"
                ],
                texto: (
                 <>
@@ -624,11 +624,11 @@
             id: "tivit2011",
             tituloCard: "YEAR 2011",
             titulo: "TIVIT - 2011",
-            imagemCard: "/media/photos/profissional/tivit/logo_tivit.png",
+            imagemCard: "/media/photos/profissional/tivit/logo_tivit.webp",
             imagens: [
-              "/media/photos/profissional/tivit/tivit-monitoramento_zabbix.png",
-              "/media/photos/profissional/tivit/tivit-monitoramento_zabbix1.png",
-              "/media/photos/profissional/tivit/TIVIT_Stand.png"
+              "/media/photos/profissional/tivit/tivit-monitoramento_zabbix.webp",
+              "/media/photos/profissional/tivit/tivit-monitoramento_zabbix1.webp",
+              "/media/photos/profissional/tivit/TIVIT_Stand.webp"
             ],
             texto: (
               <>
@@ -667,11 +667,11 @@
             id: "interchange2006",
             tituloCard: "YEAR 2006",
             titulo: "First Project - 2006",
-            imagemCard: "/media/photos/profissional/interchange/logo_interchange.png",
+            imagemCard: "/media/photos/profissional/interchange/logo_interchange.webp",
             imagens: [
-              "/media/photos/profissional/interchange/Interchange_Treinamento.png",
-              "/media/photos/profissional/interchange/interchange_cabeamento_estruturado.png",
-              "/media/photos/profissional/interchange/Interchange_area_wifi.png"
+              "/media/photos/profissional/interchange/Interchange_Treinamento.webp",
+              "/media/photos/profissional/interchange/interchange_cabeamento_estruturado.webp",
+              "/media/photos/profissional/interchange/Interchange_area_wifi.webp"
             ],
             texto: (
               <>
@@ -711,11 +711,11 @@
               id: "telecom2004",
               tituloCard: "YEAR 2004",
               titulo: "First Contact with Telecom - 2004",
-              imagemCard: "/media/photos/profissional/esps/logo-telecom.png",
+              imagemCard: "/media/photos/profissional/esps/logo-telecom.webp",
               imagens: [
-                "/media/photos/profissional/esps/Banco Itau.png",
-                "/media/photos/profissional/esps/banco-do-brasil.png",
-                "/media/photos/profissional/esps/banco-santander.png"
+                "/media/photos/profissional/esps/Banco Itau.webp",
+                "/media/photos/profissional/esps/banco-do-brasil.webp",
+                "/media/photos/profissional/esps/banco-santander.webp"
               ],
               texto: (
                 <>
@@ -745,11 +745,11 @@
               id: "multinacional2003",
               tituloCard: "YEAR 2003",
               titulo: "First Multinational Experience - 2003",
-              imagemCard: "/media/photos/profissional/vocal/logo-vocal.png",
+              imagemCard: "/media/photos/profissional/vocal/logo-vocal.webp",
               imagens: [
-                "/media/photos/profissional/vocal/vocal_arvore_topologia.png",
-                "/media/photos/profissional/vocal/vocal_ad_novell.png",
-                "/media/photos/profissional/vocal/vocal_estrura_operacao.png"
+                "/media/photos/profissional/vocal/vocal_arvore_topologia.webp",
+                "/media/photos/profissional/vocal/vocal_ad_novell.webp",
+                "/media/photos/profissional/vocal/vocal_estrura_operacao.webp"
               ],
               texto: (
                 <>
@@ -780,11 +780,11 @@
               id: "Manutencao2002",
               tituloCard: "YEAR 2002",
               titulo: "Pressure Under Control - 2002",
-              imagemCard: "/media/photos/profissional/ab-pereira/logo_a.b.pereira.png",
+              imagemCard: "/media/photos/profissional/ab-pereira/logo_a.b.pereira.webp",
               imagens: [
-                "/media/photos/profissional/ab-pereira/caixa_deposito_a.png",
-                "/media/photos/profissional/ab-pereira/caixa_deposito_b.png",
-                "/media/photos/profissional/ab-pereira/caixa_deposito_c.png"
+                "/media/photos/profissional/ab-pereira/caixa_deposito_a.webp",
+                "/media/photos/profissional/ab-pereira/caixa_deposito_b.webp",
+                "/media/photos/profissional/ab-pereira/caixa_deposito_c.webp"
                ],
                texto: (
                 <>
@@ -814,11 +814,11 @@
               id: "suporte2001",
               tituloCard: "YEAR 2001",
               titulo: "Back to Support Life - 2001",
-              imagemCard: "/media/photos/profissional/cdp/logo_cdp_sistemas.png",
+              imagemCard: "/media/photos/profissional/cdp/logo_cdp_sistemas.webp",
               imagens: [
-                "/media/photos/profissional/cdp/cdp_sistemas_switch.png",
-                "/media/photos/profissional/cdp/cdp_sistemas_topologia.png",
-                "/media/photos/profissional/cdp/cdp_sistemas.png"
+                "/media/photos/profissional/cdp/cdp_sistemas_switch.webp",
+                "/media/photos/profissional/cdp/cdp_sistemas_topologia.webp",
+                "/media/photos/profissional/cdp/cdp_sistemas.webp"
                ],
                texto: (
                 <>
@@ -844,11 +844,11 @@
             id: "balaoinformatica2000",
             tituloCard: "YEAR 2000",
             titulo: "Support / Maintenance - Computers",
-            imagemCard: "/media/photos/profissional/balao/logo_balao_informatica.png",
+            imagemCard: "/media/photos/profissional/balao/logo_balao_informatica.webp",
             imagens: [
-              "/media/photos/profissional/balao/balao_informatica_a.png",
-              "/media/photos/profissional/balao/balao_informatica_b.png",
-              "/media/photos/profissional/balao/balao_informatica_c.png"
+              "/media/photos/profissional/balao/balao_informatica_a.webp",
+              "/media/photos/profissional/balao/balao_informatica_b.webp",
+              "/media/photos/profissional/balao/balao_informatica_c.webp"
             ],
             texto: (
               <>
@@ -878,11 +878,11 @@
               id: "clt1997",
               tituloCard: "YEAR 1997",
               titulo: "Returning to CLT - 1997",
-              imagemCard: "/media/photos/profissional/talimar/logo_talimar.png",
+              imagemCard: "/media/photos/profissional/talimar/logo_talimar.webp",
               imagens: [
-                "/media/photos/profissional/talimar/suporte_hardware.png",
-                "/media/photos/profissional/talimar/suporte_geral.png",
-                "/media/photos/profissional/talimar/suporte_impressoras.png"
+                "/media/photos/profissional/talimar/suporte_hardware.webp",
+                "/media/photos/profissional/talimar/suporte_geral.webp",
+                "/media/photos/profissional/talimar/suporte_impressoras.webp"
               ],
               texto: (
                 <>
@@ -912,11 +912,11 @@
               id: "ensinar1995",
               tituloCard: "YEAR 1995",
               titulo: "Mission to Teach Technology - 1995",
-              imagemCard: "/media/photos/profissional/compucenter/logo_compucenter.png",
+              imagemCard: "/media/photos/profissional/compucenter/logo_compucenter.webp",
               imagens: [
-                "/media/photos/profissional/compucenter/compucenter_autoexec.png",
-                "/media/photos/profissional/compucenter/compucenter_excel.png",
-                "/media/photos/profissional/compucenter/compucenter_word.png"
+                "/media/photos/profissional/compucenter/compucenter_autoexec.webp",
+                "/media/photos/profissional/compucenter/compucenter_excel.webp",
+                "/media/photos/profissional/compucenter/compucenter_word.webp"
               ],
               texto: (
                 <>
@@ -950,11 +950,11 @@
               id: "tecnologia1993",
               tituloCard: "YEAR 1993",
               titulo: "Technology as the Starting Point - 1993",
-              imagemCard: "/media/photos/profissional/casa-engenheiro/logo_casa_engenheiro.png",
+              imagemCard: "/media/photos/profissional/casa-engenheiro/logo_casa_engenheiro.webp",
               imagens: [
-                "/media/photos/profissional/casa-engenheiro/ibm-mainframe.png",
-                "/media/photos/profissional/casa-engenheiro/Xerox.png",
-                "/media/photos/profissional/casa-engenheiro/casa_engeiro_produção_d.png"
+                "/media/photos/profissional/casa-engenheiro/ibm-mainframe.webp",
+                "/media/photos/profissional/casa-engenheiro/Xerox.webp",
+                "/media/photos/profissional/casa-engenheiro/casa_engeiro_produção_d.webp"
               ],
               texto: (
                 <>

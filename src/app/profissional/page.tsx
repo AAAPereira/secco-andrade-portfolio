@@ -95,7 +95,7 @@ function ConteudoTexto() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <Image src="/media/photos/icone-security.png" alt="Logo da Segurança" width={400} height={400} priority className="mx-auto mb-4 animate-pulse logo-neon" style={{ height: "auto", filter: "drop-shadow(var(--logo-glow))" }} />
+            <Image src="/media/photos/icone-security.webp" alt="Logo da Segurança" width={400} height={400} priority className="mx-auto mb-4 animate-pulse logo-neon" style={{ height: "auto", filter: "drop-shadow(var(--logo-glow))" }} />
             <h1 className="text-xl text-theme-primary font-bold">Carregando Página Profissional...</h1>
           </motion.div>
         </div>
@@ -173,7 +173,7 @@ function ConteudoTexto() {
                 alt={t.tituloCard}
                 width={128}
                 height={128}
-                className="rounded-xl w-full h-24 object-contain border border-theme-primary bg-white shadow-inner"
+                className="rounded-xl w-full h-26 object-contain border border-theme-primary bg-white shadow-inner"
               />
               <h2 className="text-theme-accent font-bold text-sm">{t.tituloCard}</h2>
             </motion.div>

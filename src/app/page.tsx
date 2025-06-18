@@ -31,7 +31,7 @@ export default function TermosPage() {
       {/* Logo Central */}
       <div className="col-span-12 flex justify-center">
         <Image
-          src="/media/photos/icone-security.png"
+          src="/media/photos/icone-security.webp"
           alt="Logo de Segurança"
           width={350}
           height={350}

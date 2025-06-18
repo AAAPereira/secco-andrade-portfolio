@@ -213,7 +213,7 @@ const handlePlay = () => {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <Image src="/media/photos/icone-security.png" alt="Logo da Segurança" width={400} height={400} priority className="mx-auto mb-4 animate-pulse logo-neon" style={{ height: "auto" , filter: "drop-shadow(var(--logo-glow))" }}/>
+          <Image src="/media/photos/icone-security.webp" alt="Logo da Segurança" width={400} height={400} priority className="mx-auto mb-4 animate-pulse logo-neon" style={{ height: "auto" , filter: "drop-shadow(var(--logo-glow))" }}/>
 
           <h1 className="text-xl text-green-400 font-bold text-theme-primary">Carregando Pagina Timeline...</h1>
         </motion.div>
@@ -230,7 +230,7 @@ const handlePlay = () => {
 
         <div className="col-span-2 space-y-4">
              <div className="relative left-95 z-0 w-full mt-30">
-                <Image src="/media/photos/andre-pereira-b.png" alt="Foto de André Pereira" width={183} height={624}  className="rounded-lg shadow-xl"/>
+                <Image src="/media/photos/andre-pereira-b.webp" alt="Foto de André Pereira" width={183} height={624}  className="rounded-lg shadow-xl"/>
              </div>
         </div>
 

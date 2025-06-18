@@ -11,7 +11,11 @@
 
 /* Modo Neon Futurístico */
 .theme-neon .background-overlay {
-  background: url('/media/photos/robos-futuristas.png') center/cover no-repeat, linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  background: url('/media/photos/robos-futuristas.webp') center/cover no-repeat, linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   color: #ffffff;
   animation: neon-glow 5s infinite alternate;
   opacity: 0.8;
@@ -205,7 +209,7 @@
   --logo-glow: 0 0 25px #00aaff;
   --theme-button: linear-gradient(90deg, #00aaff, #00ffff, #0088cc);
   background-color: #000d1a;
-  background-image: url('/media/backgrounds/tracos-azul-neon.png');
+  background-image: url('/media/backgrounds/tracos-azul-neon.webp');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -220,7 +224,7 @@
   --logo-glow: 0 0 25px #39ff14;
   --theme-button: linear-gradient(90deg, #00ffbf, #39ff14, #00ccaa);
   background-color: #000f0a;
-  background-image: url('/media/backgrounds/tracos-verde-neon.png');
+  background-image: url('/media/backgrounds/tracos-verde-neon.webp');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -234,7 +238,7 @@
   --logo-glow: 0 0 25px #b400ff;
   --theme-button: linear-gradient(120deg, transparent 60%, #00ffbf 65%, transparent 70% #b400ff, #00ffff, #8a00cc);
   background-color: #0a0014;
-  background-image: url('/media/backgrounds/linhas-de-luz-roxa.png');
+  background-image: url('/media/backgrounds/linhas-de-luz-roxa.webp');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -261,7 +265,7 @@
 
   /* Fundo */
   background-color: #000000; /* Preto absoluto */
-  background-image: url('/media/backgrounds/neon-preto.png');
+  background-image: url('/media/backgrounds/neon-preto.webp');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -286,7 +290,7 @@
   );
 
   /* Fundo */
-  background-image: url('/media/backgrounds/neon-preto-laranja.png');
+  background-image: url('/media/backgrounds/neon-preto-laranja.webp');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

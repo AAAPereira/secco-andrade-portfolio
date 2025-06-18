@@ -10,13 +10,13 @@ import { TemaProvider } from "@/app/components/TemaProvider";
 import "@/app/backgrounds/backgrounds.css";
 
 const audioMap = {
-  "SEGURANÇA_1": "/media/audios/profissional/sweet-caroline.mp3",
+  "SEGURANÇA_1": "/media/audios/profissional/i-trust-in-jesus.mp3",
   "SEGURANÇA_2": "/media/audios/profissional/if-i-got-jesus.mp3",
-  "SEGURANÇA_3": "/media/audios/profissional/always-on-my-mind.mp3",
+  "SEGURANÇA_3": "/media/audios/profissional/livin-on-love.mp3",
   "INFRA_1": "/media/audios/profissional/gods-country.mp3",
   "INFRA_2": "/media/audios/profissional/just-breathe.mp3",
-  "INFRA_3": "/media/audios/profissional/kenny-rogers.mp3",
-  "TELECOM_1": "/media/audios/profissional/baby-what-you-want-me-to-do.mp3",
+  "INFRA_3": "/media/audios/profissional/city-of-god.mp3",
+  "TELECOM_1": "/media/audios/profissional/youve-lost-that-lovin-feelin.mp3",
   "TELECOM_2": "/media/audios/profissional/hallelujah.mp3",
   "TELECOM_3": "/media/audios/profissional/hes-my-brother.mp3",
 };
@@ -146,7 +146,7 @@ const SkillDisplay: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <Image src="/media/photos/icone-security.png" alt="Logo da Segurança" width={400} height={400} priority className="mx-auto mb-4 animate-pulse logo-neon" style={{ height: "auto", filter: "drop-shadow(var(--logo-glow))" }} />
+            <Image src="/media/photos/icone-security.webp" alt="Logo da Segurança" width={400} height={400} priority className="mx-auto mb-4 animate-pulse logo-neon" style={{ height: "auto", filter: "drop-shadow(var(--logo-glow))" }} />
             <h1 className="text-xl text-theme-primary font-bold">Carregando Skill Completo...</h1>
           </motion.div>
         </div>
@@ -160,7 +160,7 @@ const SkillDisplay: React.FC = () => {
 
         <div className="col-span-2">
           <div className="relative left-80 z-0 w-full mt-30">
-            <Image src="/media/photos/andrade-pereira.png" alt="Foto de André Pereira" width={243} height={624} className="rounded-lg shadow-xl" />
+            <Image src="/media/photos/andrade-pereira.webp" alt="Foto de André Pereira" width={243} height={624} className="rounded-lg shadow-xl" />
           </div>
         </div>
 

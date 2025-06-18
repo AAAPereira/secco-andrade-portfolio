@@ -109,7 +109,7 @@ export default function ResumeSkillPage() {
             className="text-center"
           >
             <Image
-              src="/media/photos/icone-security.png"
+              src="/media/photos/icone-security.webp"
               alt="Logo"
               width={400}
               height={400}
@@ -131,7 +131,7 @@ export default function ResumeSkillPage() {
       <div className="col-span-3 flex justify-center items-start mt-24">
       <div className="absolute left-85">
         <Image
-          src="/media/photos/andre-pereira-a.png"
+          src="/media/photos/andre-pereira-a.webp"
           alt="Foto de André Pereira"
           width={170}
           height={598}

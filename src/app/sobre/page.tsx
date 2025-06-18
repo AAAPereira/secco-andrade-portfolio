@@ -13,32 +13,34 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 
 const audioMap = {
-  "pt": "/media/audios/pessoal/Stand By Me.mp3",
-  "en": "/media/audios/pessoal/A Thousand Years.mp3",
+  "pt": "/media/audios/profissional/stand-by-me.mp3",
+  "en": "/media/audios/profissional/a-thousand-years.mp3",
 };
 
 const certificados = [
-  '/media/photos/certificados-miniaturas/Certificado - Oracle OCI.png',
-  '/media/photos/certificados-miniaturas/Certificado - NSE1.png',
-  '/media/photos/certificados-miniaturas/Certificado - NSE2.png',
-  '/media/photos/certificados-miniaturas/Certificado - CURSO_CCNA.png',
-  '/media/photos/certificados-miniaturas/Certificado - Analise de Malware.png',
-  '/media/photos/certificados-miniaturas/Certificado - Ethical Hacker.png',
-  '/media/photos/certificados-miniaturas/Certificado - Nivelamento Hackers do Bem.png',
-  '/media/photos/certificados-miniaturas/Certificado - Introdução Pentest.png',
-  '/media/photos/certificados-miniaturas/Certificado - MultiCloud.png',
-  '/media/photos/certificados-miniaturas/Certificado - Política de Cibersegurança.png',
-  '/media/photos/certificados-miniaturas/Certificado - Mikrotik.png',
-  '/media/photos/certificados-miniaturas/Certificado - Segurança Digital_a.png',
-  '/media/photos/certificados-miniaturas/Certificado - BT-ICT-FDN - Foundation.png',
-  '/media/photos/certificados-miniaturas/Certificado - BT-ICT-FDN - Foundation_a.png',
-  '/media/photos/certificados-miniaturas/Certificado - BT-ICT-TC - Conceitos e Fundamentos.png',
-  '/media/photos/certificados-miniaturas/Certificado - BT-ICT-TC - Conceitos e Fundamentos_a.png',
-  '/media/photos/certificados-miniaturas/Certificado - Arquitetura Mainframe.png',
-  '/media/photos/certificados-miniaturas/Certificado - Fundamentos.png',
-  '/media/photos/certificados-miniaturas/Certificado - Praticas Suporte Storage.png',
-  '/media/photos/certificados-miniaturas/Certificado - MBA - Gestao.png',
-  '/media/photos/certificados-miniaturas/Certificado - Diploma Bacharel_a.png'
+'/media/photos/certificados/Certificado-Oracle-OCI.webp',
+'/media/photos/certificados/Certificado-NSE1.webp',
+'/media/photos/certificados/Certificado-NSE2.webp',
+'/media/photos/certificados/Certificado-CURSO_CCNA.webp',
+'/media/photos/certificados/Certificado-Analise-de-Malware.webp',
+'/media/photos/certificados/Certificado-Ethical-Hacker.webp',
+'/media/photos/certificados/Certificado-Nivelamento-Hackers-do-Bem.webp',
+'/media/photos/certificados/Certificado-Introdução-Pentest.webp',
+'/media/photos/certificados/Certificado-MITRE-ATT&CK.webp',
+'/media/photos/certificados/Certificado-Information-Securety-Foundation.webp',
+'/media/photos/certificados/Certificado-MultiCloud.webp',
+'/media/photos/certificados/Certificado-Política-Cibersegurança.webp',
+'/media/photos/certificados/Certificado-Mikrotik.webp',
+'/media/photos/certificados/Certificado-Segurança-Digital.webp',
+'/media/photos/certificados/Certificado-BT-ICT-FDN-Foundation.webp',
+'/media/photos/certificados/Certificado-BT-ICT-FDN-Foundation_verso.webp',
+'/media/photos/certificados/Certificado-BT-ICT-TC-Conceitos-e-Fundamentos.webp',
+'/media/photos/certificados/Certificado-BT-ICT-TC-Conceitos-Fundamentos-verso.webp',
+'/media/photos/certificados/Certificado-Arquitetura-Mainframe.webp',
+'/media/photos/certificados/Certificado-Fundamentos.webp',
+'/media/photos/certificados/Certificado-Praticas-Suporte-Storage.webp',
+'/media/photos/certificados/Certificado-MBA-Gestao.webp',
+'/media/photos/certificados/Certificado-Diploma-Bacharel.webp',
 ];
 
 export default function SobrePage() {
@@ -174,7 +176,7 @@ export default function SobrePage() {
           className="text-center"
         >
           <Image
-              src="/media/photos/icone-security.png"
+              src="/media/photos/icone-security.webp"
               alt="Logo da Segurança"
               width={400}
               height={400}
@@ -217,7 +219,7 @@ export default function SobrePage() {
       <div className="col-span-1  md:col-span-5 z-10 flex justify-center">
       <div className="relative left-40 mt-18">
         <Image
-          src="/media/photos/andre-pereira.png"
+          src="/media/photos/andre-pereira.webp"
           alt="Foto de André Pereira"
           width={169}
           height={555}

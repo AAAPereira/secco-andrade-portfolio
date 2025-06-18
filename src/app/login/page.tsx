@@ -113,7 +113,7 @@ export default function LoginPage() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-            <Image src="/media/photos/icone-security.png" alt="Logo da Segurança" width={400} height={400} priority className="mx-auto mb-4 animate-pulse logo-neon" style={{ height: "auto", filter: "drop-shadow(var(--logo-glow))" }} />
+            <Image src="/media/photos/icone-security.webp" alt="Logo da Segurança" width={400} height={400} priority className="mx-auto mb-4 animate-pulse logo-neon" style={{ height: "auto", filter: "drop-shadow(var(--logo-glow))" }} />
 
           <h1 className="text-xl text-theme-primary font-bold">Carregando Pagina Login...</h1>
         </motion.div>
@@ -127,7 +127,7 @@ export default function LoginPage() {
         {/* Box central */}
         <div className="bg-zinc-900 p-6 rounded-lg shadow-xl w-full max-w-sm text-center border border-theme-primary">
         <Image
-          src="/media/photos/fundo_tela_login.png"
+          src="/media/photos/fundo_tela_login.webp"
           alt="Logo de Segurança"
           width={360}
           height={360}

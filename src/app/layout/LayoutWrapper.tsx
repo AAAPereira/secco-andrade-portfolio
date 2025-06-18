@@ -106,7 +106,7 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
       {/* HEADER */}
       <header className="h-28 w-full border-b-2 border-theme-primary text-center relative z-10 flex items-center justify-center">
         <Image
-          src="/media/photos/icone-security.png"
+          src="/media/photos/icone-security.webp"
           alt="Logo"
           width={90}
           height={90}
