@@ -146,51 +146,68 @@ export default function Certificacoes() {
   }
 
 
-  return (
-    <div id="dashboard-content" className="grid grid-cols-1 lg:grid-cols-12 gap-6 max-w-[1600px] w-full px-4">
-      {/* Imagem lateral */}
-      <div className="absolute left-180 mt-16">
-        <Image src="/media/photos/andre-pereira-b.webp" alt="Foto de André Pereira" width={183} height={624} className="rounded-lg shadow-xl" />
-      </div>
+return (
+  <div className="relative flex flex-col w-full mx-auto px-4">
 
-      {/* Slider de certificados */}
-      <div className="col-span-12 mt-83">
-        <Slider {...settings}>
-          {minhasCertificacoes.map((cert) => (
-            <div key={cert.id} className="p-0">
-              <div className="bg-zinc-900 rounded-xl border border-theme-primary p-2 shadow-lg">
-                <Image
-                  src={cert.src}
-                  alt={cert.id}
-                  width={500}
-                  height={330}
-                  className="object-contain rounded-xl mx-auto"
-                />
-              </div>
-            </div>
-          ))}
-        </Slider>
-      </div>
-
-      {/* Controles de áudio */}
-      <audio ref={audioRef} hidden preload="auto" />
-      <div className="fixed top-32 right-8 z-50 flex gap-4">
-        <button className="toggle-mode border-theme-primary" onClick={handlePlay} title={isPlaying ? "Parar trilha" : "Tocar trilha"}>
-          {isPlaying ? <Square className="w-8 h-8" /> : <Music className="w-8 h-8" />}
-        </button>
-      </div>
-
-      {/* Navegação */}
-      <div className="fixed top-4 right-22 z-20 flex gap-1">
-        <button className="toggle-mode border-theme-primary" onClick={() => router.push('/profissional')}>
-          <ArrowLeft className="w-8 h-8" />
-        </button>
-        {emailAutorizado && (
-          <button className="toggle-mode border-theme-primary" onClick={() => router.push('/estatisticas')}>
-            <ArrowRight className="w-8 h-8" />
-          </button>
-        )}
-      </div>
+    {/* ✅ Imagem do André - Centralizada no topo */}
+    <div className="absolute top-24 left-1/2 transform -translate-x-1/2 z-20">
+      <Image
+        src="/media/photos/andre-pereira-b.webp"
+        alt="Foto de André Pereira"
+        width={183}
+        height={624}
+        className="rounded-lg shadow-xl"
+      />
     </div>
-  );
+
+    {/* ✅ Slider de Certificados */}
+    <div className="mt-[350px] z-50"> {/* Esse margin-top ajusta certinho abaixo da imagem */}
+      <Slider {...settings}>
+        {minhasCertificacoes.map((cert) => (
+          <div key={cert.id} className="p-0">
+            <div className="bg-zinc-900 rounded-xl border border-theme-primary p-2 shadow-lg">
+              <Image
+                src={cert.src}
+                alt={cert.id}
+                width={500}
+                height={330}
+                className="object-contain rounded-xl mx-auto"
+              />
+            </div>
+          </div>
+        ))}
+      </Slider>
+    </div>
+
+    {/* 🔊 Controles de Áudio */}
+    <audio ref={audioRef} hidden preload="auto" />
+    <div className="fixed top-32 right-8 z-50 flex gap-4">
+      <button
+        className="toggle-mode border-theme-primary"
+        onClick={handlePlay}
+        title={isPlaying ? "Parar trilha" : "Tocar trilha"}
+      >
+        {isPlaying ? <Square className="w-8 h-8" /> : <Music className="w-8 h-8" />}
+      </button>
+    </div>
+
+    {/* 🔀 Navegação */}
+    <div className="fixed top-4 right-24 z-50 flex gap-2">
+      <button
+        className="toggle-mode border-theme-primary"
+        onClick={() => router.push('/profissional')}
+      >
+        <ArrowLeft className="w-8 h-8" />
+      </button>
+      {emailAutorizado && (
+        <button
+          className="toggle-mode border-theme-primary"
+          onClick={() => router.push('/estatisticas')}
+        >
+          <ArrowRight className="w-8 h-8" />
+        </button>
+      )}
+    </div>
+  </div>
+);
 }

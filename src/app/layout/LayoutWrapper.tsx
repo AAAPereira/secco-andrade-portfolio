@@ -54,7 +54,7 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
     "theme-cybergrid",
     "theme-laranja-neon",
   ];
-  const [theme, setTheme] = useState<string>("theme-default");
+  const [theme, setTheme] = useState("theme-default");
 
   const isPaginaProfissional = pathname === "/profissional";
 
@@ -84,7 +84,7 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
     }
   };
 
-  const pageTitles: { [key: string]: string } = {
+ const pageTitles: { [key: string]: string } = {
     "/": "TERMO DE USO - LGPD",
     "/login": "ACESSAR INFORMAÇÕES - ANDRÉ PEREIRA",
     "/verificar-token": "VALIDANDO TOKEN - ANDRÉ PEREIRA",
@@ -102,7 +102,7 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
   const title = pageTitles[pathname] || "MUDANDO DE PAGINA - ANDRÉ PEREIRA";
 
   return (
-    <div className={`min-h-screen flex flex-col justify-between overflow-y-auto overflow-x-hidden ${theme}`}>
+    <div className={`min-h-screen flex flex-col justify-between overflow-x-hidden ${theme}`}>
       {/* HEADER */}
       <header className="h-28 w-full border-b-2 border-theme-primary text-center relative z-10 flex items-center justify-center">
         <Image
@@ -113,7 +113,7 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
           className="absolute left-4 top-0 animate-pulse logo-neon"
           style={{ filter: "drop-shadow(var(--logo-glow))" }}
         />
-        <h1 className="text-2xl md:text-3xl font-bold text-theme-primary drop-shadow-lg">
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-theme-primary drop-shadow-lg">
           {title}
         </h1>
         <div className="absolute right-8 top-4 z-50">
@@ -126,7 +126,7 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
         <div className="absolute bottom-[-2px] w-full h-[4px] border-theme-primary "></div>
       </header>
 
-      {/* Menus que só aparecem na página profissional */}
+      {/* Menus da Página Profissional */}
       {isPaginaProfissional && (
         <>
           <div className="fixed top-6 left-60 z-20">
@@ -139,9 +139,9 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
       )}
 
       {/* MAIN */}
-      <main className="relative flex-grow w-full overflow-hidden">
+      <main className="relative flex-grow w-full">
         <div className="background-overlay theme-background-overlay" />
-        <div className="relative z-10 w-full max-w-[1600px] mx-auto px-4">
+        <div className="relative z-10 w-full max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8">
           {children}
         </div>
       </main>
@@ -162,7 +162,7 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
         )}
       </footer>
 
-      {/* MODAL DE CONFIRMAÇÃO DE SAÍDA */}
+      {/* MODAL DE SAÍDA */}
       {showExitModal && (
         <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center">
           <div className="bg-gray-900 border border-theme-primary p-8 rounded-lg text-white max-w-md text-center">

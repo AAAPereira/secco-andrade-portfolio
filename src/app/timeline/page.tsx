@@ -223,33 +223,34 @@ const handlePlay = () => {
   }
 
   return (
-
   <TemaProvider>
 
-     <div id="dashboard-content" className="grid grid-cols-1 lg:grid-cols-12 gap-6 max-w-[1600px] w-full px-4">
+     <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 w-full mx-auto">
+           <div className="absolute col-span-2 left-40 flex justify-center items-start mt-26">
+                <Image src="/media/photos/andre-pereira-b.webp" alt="Foto de André Pereira" width={180} height={600}  className="rounded-lg shadow-xl"/>
+           </div>
+     </div>
 
-        <div className="col-span-2 space-y-4">
-             <div className="relative left-95 z-0 w-full mt-30">
-                <Image src="/media/photos/andre-pereira-b.webp" alt="Foto de André Pereira" width={183} height={624}  className="rounded-lg shadow-xl"/>
-             </div>
-        </div>
+        {/* Coluna Central - Timeline + Texto */}
+        <div className="col-span-10 space-y-6 mt-6">
 
-     <div className="col-span-10 space-y-4 mt-6"> {/* Reduzido de mt-12 para aproximar mais o conteúdo */}
-      <div className="relative flex justify-center items-center">
-        <div className="absolute top-0 -translate-y-1/2 w-full h-1 bg-theme-primary neon-line z-0"></div>
-        {timelineData.map((item) => (
-          <div key={item.ano} className="relative z-10 flex flex-col items-center">
-            <div className="w-1 h-8 bg-theme-primary"></div>
-            <button
-              onClick={() => setTemaHabilidades(item.ano)}
-              className={`timeline-ano text-theme-accent transition-colors focus:outline-none mt-[-14px] ${TemaHabilidades === item.ano ? "font-bold" : ""}`}>
-              <h3 className="text-xl text-theme-accent font-bold text-center">
-              {item.ano}
-              </h3>
-            </button>
+          {/* Linha da Timeline */}
+          <div className="relative flex justify-center items-center">
+            <div className="absolute top-0 w-full h-1 bg-theme-primary neon-line z-0" />
+            {timelineData.map((item) => (
+              <div key={item.ano} className="relative z-10 flex flex-col items-center">
+                <div className="w-1 h-8 bg-theme-primary" />
+                <button
+                  onClick={() => setTemaHabilidades(item.ano)}
+                  className={`timeline-ano mt-[-14px] ${
+                    TemaHabilidades === item.ano ? "font-bold" : ""
+                  }`}
+                >
+                  <h3 className="text-xl text-theme-accent font-bold">{item.ano}</h3>
+                </button>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
 
       <div className="mt-2"> {/* Reduzido ainda mais para colar mais perto da timeline */}
         <AnimatePresence mode="wait">
@@ -260,7 +261,7 @@ const handlePlay = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
-              className="text-theme-accent px-4  max-w-2xl mx-auto z-50 text-left space-y-6 max-h-[65vh] overflow-y-auto custom-scroll"
+              className="relative text-theme-accent px-14 max-w-2xl mx-auto z-50 text-left space-y-6 max-h-[65vh] overflow-y-auto custom-scroll"
             >
               <h3 className="text-xl text-theme-accent font-bold text-center">
                 {language === 'pt' ? selectedData.titulo : selectedData.translations.EN.titulo}
@@ -321,7 +322,7 @@ const handlePlay = () => {
        </div>
 
 
-    </div>
+
    </TemaProvider>
   );
 

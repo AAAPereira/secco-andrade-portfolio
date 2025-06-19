@@ -1,4 +1,4 @@
-// /app/termo
+// src/app/termo/page.tsx
 
 "use client";
 
@@ -26,10 +26,9 @@ export default function TermosPage() {
   };
 
   return (
-    <main className="grid grid-cols-12 gap-4 max-w-[1600px] w-full mx-auto">
-
-      {/* Logo Central */}
-      <div className="col-span-12 flex justify-center">
+    <main className="w-full flex flex-col items-center justify-start flex-grow text-white">
+      {/* LOGO */}
+      <div>
         <Image
           src="/media/photos/icone-security.webp"
           alt="Logo de Segurança"
@@ -41,13 +40,12 @@ export default function TermosPage() {
         />
       </div>
 
-      {/* Texto Termo */}
-      <div className="md:col-span-6 md:col-start-4 text-center space-y-6">
-        <h2 className="text-3xl md:text-3xl text-emerald-400 font-bold text-theme-primary">
+      {/* TEXTO */}
+      <div className="max-w-2xl text-center space-y-6 mt-6">
+        <h2 className="text-3xl font-bold text-theme-primary">
           Termos de Uso e Política de Privacidade
         </h2>
-
-        <p className="text-sm md:text-base text-gray-200 leading-relaxed">
+        <p className="text-base leading-relaxed">
           Este site é destinado exclusivamente para fins profissionais e estatísticos.
           Nenhum e-mail será utilizado para marketing, repasse de dados ou atividades comerciais.
           O endereço de e-mail inserido tem como único propósito registrar o número de visitantes
@@ -66,25 +64,23 @@ export default function TermosPage() {
         </p>
       </div>
 
-      {/* Botões */}
-      <div className="absolute left-150 flex justify-center">
-        <div className="flex gap-6 mt-160">
-          <button
-            onClick={handleAceite}
-            className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-6 rounded shadow-xl button-theme button-acessar-neon"
-          >
-            ✅ Concordo
-          </button>
-          <button
-            onClick={handleDisagree}
-            className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-6 rounded shadow-xl button-theme button-acessar-neon"
-          >
-            ❌ Não Concordo
-          </button>
-        </div>
+      {/* BOTÕES */}
+      <div className="flex gap-6 mt-10">
+        <button
+          onClick={handleAceite}
+          className="button-acessar-neon"
+        >
+          ✅ Concordo
+        </button>
+        <button
+          onClick={handleDisagree}
+          className="button-acessar-neon"
+        >
+          ❌ Não Concordo
+        </button>
       </div>
 
-      {/* Modal de Áudio */}
+      {/* MODAL ÁUDIO */}
       {showAudioModal && (
         <div className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center">
           <div className="bg-zinc-900 text-white border border-theme-primary p-6 rounded-lg max-w-md text-center">
@@ -95,14 +91,14 @@ export default function TermosPage() {
             </p>
             <button
               onClick={handleEntendi}
-              className="px-4 py-2 bg-theme-button rounded text-white hover:brightness-125 button-theme button-acessar-neon"
+              className="px-4 py-2 bg-theme-button rounded text-white hover:brightness-125 button-theme"
             >
               Estou Ciente!
             </button>
           </div>
         </div>
       )}
-
     </main>
+
   );
 }

@@ -5,7 +5,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -91,50 +91,52 @@ export default function LoginPage() {
     }
   };
 
-
   useEffect(() => {
-    // Simula um carregamento de 2 segundos
     const timeout = setTimeout(() => {
       setLoading(false);
-    }, 2000); // 2000 milissegundos = 2 segundos
-
-    // Limpa o timeout ao sair do componente
+    }, 2000);
     return () => clearTimeout(timeout);
   }, []);
 
-
   if (loading) {
     return (
-      <div className="grid grid-cols-12 max-w-screen-xl w-full mx-auto md:px-16 py-30">
-      <div className="col-span-12 md:col-span-12 z-10 flex justify-center">
+      <main className="flex flex-col items-center justify-center min-h-screen w-full">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-            <Image src="/media/photos/icone-security.webp" alt="Logo da Segurança" width={400} height={400} priority className="mx-auto mb-4 animate-pulse logo-neon" style={{ height: "auto", filter: "drop-shadow(var(--logo-glow))" }} />
-
-          <h1 className="text-xl text-theme-primary font-bold">Carregando Pagina Login...</h1>
+          <Image
+            src="/media/photos/icone-security.webp"
+            alt="Logo da Segurança"
+            width={400}
+            height={400}
+            priority
+            className="mx-auto mb-4 animate-pulse logo-neon"
+            style={{ filter: "drop-shadow(var(--logo-glow))" }}
+          />
+          <h1 className="text-xl text-theme-primary font-bold">
+            Carregando Página Login...
+          </h1>
         </motion.div>
-      </div>
-      </div>
+      </main>
     );
   }
 
   return (
-      <div className="col-span-12 md:col-span-6 md:col-start-4 flex flex-col items-center justify-center mt-20 text-white">
-        {/* Box central */}
-        <div className="bg-zinc-900 p-6 rounded-lg shadow-xl w-full max-w-sm text-center border border-theme-primary">
+    <main className="flex flex-col items-center justify-center mt-24 w-full">
+      <div className="bg-zinc-900 p-6 rounded-lg shadow-xl w-full max-w-sm text-center border border-theme-primary">
         <Image
           src="/media/photos/fundo_tela_login.webp"
-          alt="Logo de Segurança"
+          alt="Fundo Login"
           width={360}
           height={360}
           className="mx-auto mb-6 rounded-lg"
         />
-
-        <h2 className="text-theme-primary font-bold mb-4 text-xl">Login de Acesso</h2>
+        <h2 className="text-theme-primary font-bold mb-4 text-xl">
+          Login de Acesso
+        </h2>
 
         <input
           type="email"
@@ -142,24 +144,21 @@ export default function LoginPage() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           onFocus={handleInputFocus}
-          className="w-full p-2 mb-6 text-white rounded border border-zinc-600 focus:outline-none"
+          className="w-full p-2 mb-6 text-white rounded border border-zinc-600 focus:outline-none bg-transparent"
         />
 
-        {/* ✅ Mensagem de sucesso */}
         {emailEnviado && (
           <p className="text-theme-primary mb-2 text-sm">
-            Token enviado para seu e-mail.
+            ✅ Token enviado para seu e-mail.
           </p>
         )}
 
-        {/* ⚠️ Mensagem de erro */}
         {error && (
           <p className="text-red-500 mb-2 text-sm">
             {error}
           </p>
         )}
 
-        {/* ✅ Mensagem de sucesso completa */}
         {successMessage && (
           <p className="text-green-400 mb-2 text-sm">
             {successMessage}
@@ -168,15 +167,17 @@ export default function LoginPage() {
 
         <button
           onClick={enviarCodigo}
-          className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 rounded button-acessar-neon button-theme"
+          className="w-full py-2 rounded button-acessar-neon button-theme"
           style={{
             background: "var(--theme-button)",
             boxShadow: "0 0 10px var(--theme-primary)",
+            color: "white",
+            fontWeight: "bold",
           }}
         >
           Enviar Código
         </button>
       </div>
-    </div>
+    </main>
   );
 }

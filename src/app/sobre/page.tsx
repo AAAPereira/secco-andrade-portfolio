@@ -193,17 +193,12 @@ export default function SobrePage() {
     );
   }
 
-  return (
-    <main className="grid grid-cols-1 lg:grid-cols-12 gap-6 max-w-[1600px] w-ful mx-auto md:px-16">
+ return (
+    <div className="flex flex-col gap-10">
 
       {/* Botões flutuantes fixos */}
       <div className="fixed top-5 right-23 z-20 flex gap-2">
-        <button
-          className="toggle-mode border-theme-primary"
-          onClick={() => router.push("/profissional")}
-        >
-          <ArrowRight className="w-8 h-8" />
-        </button>
+        <button className="toggle-mode border-theme-primary" onClick={() => router.push("/profissional")}> <ArrowRight className="w-8 h-8" /></button>
       </div>
 
       <audio ref={audioRef} />
@@ -215,66 +210,77 @@ export default function SobrePage() {
          <button className="toggle-mode border-theme-primary" onClick={handlePlay}>{isPlaying ? <Square className="w-8 h-8" /> : <Music className="w-8 h-8" />}</button>
       </div>
 
-      {/* COLUNA 1: IMAGEM */}
-      <div className="col-span-1  md:col-span-5 z-10 flex justify-center">
-      <div className="relative left-40 mt-18">
-        <Image
-          src="/media/photos/andre-pereira.webp"
-          alt="Foto de André Pereira"
-          width={169}
-          height={555}
-          className="rounded-lg shadow-xl"
-        />
-      </div>
-      </div>
-
-      {/* COLUNA 2: TEXTO */}
-      <div className="col-span-4 md:col-span-5 text-white text-justify leading-relaxed text-base">
-      <div className="relative text-justify leading-relaxed text-base mt-32">
-        <p>
-          {idioma === "pt" ? (
-            <>André Pereira, 55 anos, residente em Campinas - SP. Casado e pai de dois filhos. Profissional atuante na área de TELECOM e INFRAESTRUTURA, com mais de 15 anos de experiência.
-            Com amplo conhecimento técnico, domina cabeamento estruturado, redes LAN/WAN/WIFI, switches Layer 2 e 3, entrega de portas seguras, servidores Windows e Linux, segurança com firewall Fortinet, monitoramento por CFTV e protocolos de roteamento como BGP, OSPF, EIGRP, RIP.
-            Realiza troubleshooting de portas e rotas com precisão e agilidade.
-            Possui certificações Fortinet NSE1, NSE2, Oracle OCI e diversos cursos na área de segurança da informação com domínio de frameworks como NIST e MITRE ATT&CK.
-            Seu diferencial está no conhecimento prático e na constante atualização frente às tendências e governança da área.</>
-          ) : (
-            <>André Pereira, 55 years old, lives in Campinas - SP, Brazil. Married and father of two. Active professional in the TELECOM and INFRASTRUCTURE field with over 15 years of experience.
-            With broad technical expertise, he masters structured cabling, LAN/WAN/WIFI networks, Layer 2 and 3 switches, secure port delivery, Windows and Linux servers, Fortinet firewall security, CCTV monitoring, and routing protocols such as BGP, OSPF, EIGRP, and RIP.
-            He performs port and route troubleshooting with precision and speed.
-            He holds certifications such as Fortinet NSE1, NSE2, Oracle OCI, and has completed several cybersecurity courses, with proficiency in frameworks like NIST and MITRE ATT&CK.
-            His differential lies in practical knowledge and constant updating in line with industry trends and governance.</>
-          )}
-        </p>
-      </div>
-      </div>
 
 
-      {/* CERTIFICADOS FIXADOS COM DIV ENVOLVENTE */}
-      <div className="col-span-7 md:col-span-5 z-0">
-        <div className="absolute -bottom-20 left-220 transform -translate-x-1/2 w-full max-w-6xl text-center">
-          <h2 className="text-2xl font-bold text-theme-primary mb-4">Certificados</h2>
 
-            <Slider {...settings}>
-              {certificados.map((src, idx) => (
-                <div
-                  key={src + idx}
-                  onClick={() => router.push("/certificados")}
-                  className={`slick-slide-item ${idx === currentSlide ? "active" : ""} rounded-xl shadow-md border border-theme-primary cursor-pointer hover:shadow card`}
-                >
-                  <img
-                    src={src}
-                    alt={src}
-                    width={180}
-                    height={130}
-                    className="object-contain rounded-xl mx-auto"
-                    style={{ maxHeight: "130px" }}
-                  />
-                </div>
-              ))}
-            </Slider>
-          </div>
+      {/* Container de Imagem + Texto */}
+      <div className="flex flex-col lg:flex-row z-50 mt-4 items-center justify-center gap-8">
+
+        {/* 📸 Imagem */}
+        <div className="flex-shrink-0">
+          <Image
+            src="/media/photos/andre-pereira.webp"
+            alt="André Pereira"
+            width={170}
+            height={550}
+            className="rounded-lg shadow-xl"
+          />
         </div>
-    </main>
+
+        {/* 📝 Texto */}
+        <div className="max-w-2xl text-justify leading-relaxed text-white">
+          {idioma === "pt" ? (
+            <>
+              <p>
+                André Pereira, 55 anos, residente em Campinas - SP. Casado e pai de dois filhos. Profissional atuante na área de <strong>TELECOM e INFRAESTRUTURA</strong>, com mais de <strong>15 anos de experiência</strong>.
+                <br /><br />
+                Com amplo conhecimento técnico, domina cabeamento estruturado, redes LAN/WAN/WIFI, switches Layer 2 e 3, entrega de portas seguras, servidores Windows e Linux, segurança com firewall Fortinet, monitoramento por CFTV e protocolos de roteamento como BGP, OSPF, EIGRP e RIP.
+                <br /><br />
+                Possui certificações Fortinet NSE1, NSE2, Oracle OCI e diversos cursos na área de segurança da informação com domínio de frameworks como NIST e MITRE ATT&CK.
+                Seu diferencial está no conhecimento prático e na constante atualização frente às tendências e governança da área.
+              </p>
+            </>
+          ) : (
+            <>
+              <p>
+                André Pereira, 55 years old, lives in Campinas - SP, Brazil. Married and father of two. Active professional in the <strong>TELECOM and INFRASTRUCTURE</strong> field with over <strong>15 years of experience</strong>.
+                <br /><br />
+                With broad technical expertise, he masters structured cabling, LAN/WAN/WIFI networks, Layer 2 and 3 switches, secure port delivery, Windows and Linux servers, Fortinet firewall security, CCTV monitoring, and routing protocols such as BGP, OSPF, EIGRP, and RIP.
+                <br /><br />
+                He holds certifications such as Fortinet NSE1, NSE2, Oracle OCI, and has completed several cybersecurity courses, with proficiency in frameworks like NIST and MITRE ATT&CK.
+                His differential lies in practical knowledge and constant updating in line with industry trends and governance.
+              </p>
+            </>
+          )}
+        </div>
+      </div>
+
+
+      {/* 🎖️ Carrossel de Certificados */}
+      <div className="text-center relative bottom-24">
+        <h2 className="text-2xl font-bold text-theme-primary mb-4">
+          Certificados
+        </h2>
+        <Slider {...settings}>
+          {certificados.map((src, idx) => (
+            <div
+              key={idx}
+              onClick={() => router.push("/certificados")}
+              className="slick-slide-item cursor-pointer rounded-xl shadow-md border border-theme-primary hover:shadow-xl"
+            >
+              <Image
+                src={src}
+                alt={`Certificado ${idx + 1}`}
+                width={190}
+                height={140}
+                className="object-contain rounded-xl mx-auto"
+              />
+            </div>
+          ))}
+        </Slider>
+      </div>
+
+      <audio ref={audioRef} />
+    </div>
   );
-};
+}

@@ -104,7 +104,7 @@ function ConteudoTexto() {
   }
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 max-w-[1600px] w-full px-4">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6  w-full px-4">
 
       {/* Coluna da Esquerda - Imagens */}
       <div className="col-span-3 space-y-4 mt-10">
@@ -133,7 +133,7 @@ function ConteudoTexto() {
       </div>
 
       {/* Coluna Central - Texto */}
-      <div className="col-span-5 space-y-4 mt-4">
+      <div className="col-span-5 space-y-4 mt-14">
         <AnimatePresence mode="wait">
           {temaProfissional && (
             <motion.div

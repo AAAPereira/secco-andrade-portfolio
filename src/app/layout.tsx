@@ -1,11 +1,9 @@
 // src/app/layout.tsx
 
-
 import "./globals.css";
 import type { Metadata } from "next";
 import "@/app/backgrounds/backgrounds.css";
-import LayoutWrapper from "./layout/LayoutWrapper";
-import { logoutAndGoToRating } from "@/app/lib/logout";
+import LayoutWrapper from "@/app/layout/LayoutWrapper";
 
 export const metadata: Metadata = {
   title: "CV DIGITAL",
@@ -19,8 +17,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body suppressHydrationWarning={true}>
-      <LayoutWrapper>{children}</LayoutWrapper>
+      <body className="overflow-x-hidden" suppressHydrationWarning={true}>
+        <LayoutWrapper>{children}</LayoutWrapper>
       </body>
     </html>
   );

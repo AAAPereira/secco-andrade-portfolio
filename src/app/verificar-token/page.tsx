@@ -27,9 +27,9 @@ export default function VerificarTokenPage() {
       setCountdown((prev) => {
         if (prev <= 1) {
           clearInterval(timer);
-          setTokenExpirado(true); // 🚨 Ativa mensagem de expiração
+          setTokenExpirado(true);
           setTimeout(() => {
-            router.push("/login"); // ⏳ Redireciona após 5 segundos
+            router.push("/login");
           }, 5000);
           return 0;
         }
@@ -63,9 +63,9 @@ export default function VerificarTokenPage() {
         throw new Error(data.error || "Falha na verificação");
       }
 
-    const firstName = email.split("@")[0].split(/[._]/)[0];
-    sessionStorage.setItem("firstName", firstName.charAt(0).toUpperCase() + firstName.slice(1));
-    router.push("/sobre");
+      const firstName = email.split("@")[0].split(/[._]/)[0];
+      sessionStorage.setItem("firstName", firstName.charAt(0).toUpperCase() + firstName.slice(1));
+      router.push("/sobre");
     } catch (err: any) {
       alert("Erro: " + err.message);
       setError(err.message);
@@ -74,60 +74,60 @@ export default function VerificarTokenPage() {
     }
   };
 
-
   return (
-    <>
-      <div className="col-span-12 md:col-span-6 md:col-start-4 flex flex-col items-center justify-center mt-20 text-white">
-        {/* Box central */}
-        <div className="bg-zinc-900 p-6 rounded-lg shadow-xl w-full max-w-sm text-center border border-theme-primary">
-          <Image
-            src="/media/photos/fundo_tela_login.webp"
-            alt="Logo de Segurança"
-            width={360}
-            height={360}
-            className="mx-auto mb-6 rounded-lg"
-          />
+    <main className="flex flex-col items-center justify-center mt-16 w-full">
+      <div className="bg-zinc-900 p-6 rounded-lg shadow-xl w-full max-w-sm text-center border border-theme-primary">
+        <Image
+          src="/media/photos/fundo_tela_login.webp"
+          alt="Logo de Segurança"
+          width={360}
+          height={360}
+          className="mx-auto mb-6 rounded-lg"
+        />
 
-          <h2 className="text-emerald-400 font-semibold mb-2 text-theme-primary">Token de Acesso</h2>
+        <h2 className="text-theme-primary font-bold mb-4 text-xl">
+          Token de Acesso
+        </h2>
 
-          <input
-            type="text"
-            placeholder="Código de 6 dígitos"
-            value={token}
-            onChange={(e) => setToken(e.target.value)}
-            className="w-full p-2 mb-4 text-white rounded border border-zinc-600 focus:outline-none"
-          />
+        <input
+          type="text"
+          placeholder="Código de 6 dígitos"
+          value={token}
+          onChange={(e) => setToken(e.target.value)}
+          className="w-full p-2 mb-4 text-white rounded border border-zinc-600 focus:outline-none"
+        />
 
-          <button
-            onClick={handleVerify}
-            className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-2 rounded button-acessar-neon button-theme"
-            disabled={loading}
-            style={{
-              background: "var(--theme-button)",
-              boxShadow: "0 0 10px var(--theme-primary)",
-            }}
-          >
-            {loading ? "Verificando..." : "Validar Token"}
-          </button>
+        <button
+          onClick={handleVerify}
+          className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-2 rounded button-acessar-neon button-theme"
+          disabled={loading}
+          style={{
+            background: "var(--theme-button)",
+            boxShadow: "0 0 10px var(--theme-primary)",
+          }}
+        >
+          {loading ? "Verificando..." : "Validar Token"}
+        </button>
 
-          {/* ✅ Mensagens abaixo do botão */}
-          <div className="mt-4 text-sm text-center">
-            {!tokenExpirado && (
-              <>
-                <p className="text-green-400">Token expira em: {countdown} segundos</p>
-                <p className="text-red-400">Token enviado para seu e-mail.</p>
-              </>
-            )}
-            {tokenExpirado && (
-              <p className="text-yellow-400 font-semibold">
-                ⛔ Token expirado. Redirecionando para o login...
+        <div className="mt-4 text-sm text-center">
+          {!tokenExpirado ? (
+            <>
+              <p className="text-green-400">
+                Token expira em: {countdown} segundos
               </p>
-            )}
-          </div>
-
-          {error && <p className="text-red-500 text-sm text-center mt-2">{error}</p>}
+              <p className="text-red-400">Token enviado para seu e-mail.</p>
+            </>
+          ) : (
+            <p className="text-yellow-400 font-semibold">
+              ⛔ Token expirado. Redirecionando para o login...
+            </p>
+          )}
         </div>
+
+        {error && (
+          <p className="text-red-500 text-sm text-center mt-2">{error}</p>
+        )}
       </div>
-    </>
+    </main>
   );
 }

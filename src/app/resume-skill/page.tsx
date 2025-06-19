@@ -125,11 +125,10 @@ export default function ResumeSkillPage() {
   }
 
   return (
-    <div id="dashboard-content" className="grid grid-cols-1 lg:grid-cols-12 gap-6 max-w-[1600px] w-full px-4">
+    <div className="grid grid-cols-1 lg:grid-cols-12 w-full mx-auto">
 
       {/* 📸 Coluna da Imagem */}
-      <div className="col-span-3 flex justify-center items-start mt-24">
-      <div className="absolute left-85">
+      <div className="col-span-12 lg:col-span-4 flex justify-end items-start mt-24">
         <Image
           src="/media/photos/andre-pereira-a.webp"
           alt="Foto de André Pereira"
@@ -138,12 +137,11 @@ export default function ResumeSkillPage() {
           className="rounded-lg shadow-xl"
         />
       </div>
-      </div>
 
       {/* 📝 Coluna do Texto */}
-      <div className="col-span-7 flex items-start justify-center">
+      <div className="col-span-12 lg:col-span-4 flex items-start justify-center">
         <div
-          className="mt-20 max-w-2xl max-h-[65vh] overflow-y-auto p-4 text-white text-justify leading-relaxed custom-scroll"
+          className="mt-20 max-w-3xl max-h-[65vh] overflow-y-auto p-4 text-white text-justify leading-relaxed custom-scroll"
           dangerouslySetInnerHTML={{ __html: textoResumoSkill[idioma] }}
         />
       </div>
@@ -151,20 +149,33 @@ export default function ResumeSkillPage() {
       {/* 🎧 Controle de áudio e idioma */}
       <audio ref={audioRef} />
       <div className="fixed top-32 right-8 z-50 flex gap-1">
-        <button className="toggle-mode border-theme-primary" onClick={() => setIdioma(idioma === "pt" ? "en" : "pt")}>
+        <button
+          className="toggle-mode border-theme-primary"
+          onClick={() => setIdioma(idioma === "pt" ? "en" : "pt")}
+        >
           {idioma === "pt" ? "EN" : "PT"}
         </button>
-        <button className="toggle-mode border-theme-primary" onClick={handlePlay} title={isPlaying ? "Parar trilha" : "Tocar trilha"}>
+        <button
+          className="toggle-mode border-theme-primary"
+          onClick={handlePlay}
+          title={isPlaying ? "Parar trilha" : "Tocar trilha"}
+        >
           {isPlaying ? <Square className="w-8 h-8" /> : <Music className="w-8 h-8" />}
         </button>
       </div>
 
       {/* 🔀 Navegação */}
       <div className="fixed top-4 right-22 z-50 flex gap-1">
-        <button className="toggle-mode border-theme-primary" onClick={() => router.push('/profissional')}>
+        <button
+          className="toggle-mode border-theme-primary"
+          onClick={() => router.push('/profissional')}
+        >
           <ArrowLeft className="w-8 h-8" />
         </button>
-        <button className="toggle-mode border-theme-primary" onClick={() => router.push('/skill-completo')}>
+        <button
+          className="toggle-mode border-theme-primary"
+          onClick={() => router.push('/skill-completo')}
+        >
           <ArrowRight className="w-8 h-8" />
         </button>
       </div>

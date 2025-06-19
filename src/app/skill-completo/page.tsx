@@ -156,13 +156,11 @@ const SkillDisplay: React.FC = () => {
 
   return (
     <TemaProvider>
-      <div id="dashboard-content" className="grid grid-cols-1 lg:grid-cols-12 gap-6 max-w-[1600px] w-full px-4">
-
-        <div className="col-span-2">
-          <div className="relative left-80 z-0 w-full mt-30">
-            <Image src="/media/photos/andrade-pereira.webp" alt="Foto de André Pereira" width={243} height={624} className="rounded-lg shadow-xl" />
-          </div>
-        </div>
+     <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 w-full mx-auto">
+           <div className="absolute left-40 col-span-2 flex justify-center items-start mt-32">
+                <Image src="/media/photos/andrade-pereira.webp" alt="Foto de André Pereira" width={240} height={660}  className="rounded-lg shadow-xl"/>
+           </div>
+     </div>
 
         <div className="col-span-10 space-y-4 mt-6">
           <div className="relative flex justify-center items-center">
@@ -249,7 +247,7 @@ const SkillDisplay: React.FC = () => {
           </button>
         </div>
 
-      </div>
+
     </TemaProvider>
   );
 };

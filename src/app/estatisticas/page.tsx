@@ -157,7 +157,7 @@ export default function EstatisticasPage() {
         </button>
       </div>
 
-      <div id="dashboard-content" className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 max-w-[1600px] w-full px-4 mt-8">
+      <div id="dashboard-content" className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 w-full px-4 mt-8">
         <div className="w-full bg-[#131a2b] p-4 rounded-xl shadow-xl border border-emerald-400">
           <h2 className="text-lg font-bold text-emerald-300 mb-2">📊 Estatísticas de Visitantes</h2>
           <p>Total de Avaliações: <span className="text-emerald-200">{total}</span></p>
