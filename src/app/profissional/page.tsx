@@ -1,72 +1,66 @@
-// src/app/profissional/page.tsx
-
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { AutoPlayAudio } from "@/app/components/audio/AutoPlayAudio";
-import textos from "@/app/profissional/texto_profissional";
-import { IdiomaProvider, useIdioma } from "@/app/components/idioma/IdiomaContext";
-import { Music, Square, ArrowLeft, ArrowRight } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useAudio } from "@/app/contexts/AudioProvider";
+import { useIdioma } from "@/app/components/idioma/IdiomaContext";
+import textos from "@/app/profissional/texto_profissional";
 import "@/app/backgrounds/backgrounds.css";
 
 const audioMap = {
-  "azzatelecom2024": "/media/audios/profissional/amazing-grace.mp3",
-  "cti2022": "/media/audios/profissional/if-i-got-jesus.mp3",
-  "embratel2014": "/media/audios/profissional/home.mp3",
-  "tivit2011": "/media/audios/profissional/gods-country.mp3",
-  "interchange2006": "/media/audios/profissional/when-i-get-where-im-going.mp3",
-  "telecom2004": "/media/audios/profissional/relaxing-country.mp3",
-  "multinacional2003": "/media/audios/profissional/baby-what-you-want-me-to-do.mp3",
-  "Manutencao2002": "/media/audios/profissional/hallelujah.mp3",
-  "suporte2001": "/media/audios/profissional/sing-me-back-home.mp3",
-  "porteiro2001": "/media/audios/profissional/hungry-eyes.mp3",
-  "balaoinformatica2000": "/media/audios/profissional/riding-home-to-you.mp3",
-  "clt1997": "/media/audios/profissional/kenny-rogers.mp3",
-  "ensinar1995": "/media/audios/profissional/this-body-of-mine.mp3",
-  "tecnologia1993": "/media/audios/profissional/always-on-my-mind.mp3",
-  "onibus1990": "/media/audios/profissional/just-breathe.mp3",
-  "samelo1989": "/media/audios/profissional/livin-on-love.mp3",
-  "quartel1988": "/media/audios/profissional/hes-my-brother.mp3",
-  "futebol1985": "/media/audios/profissional/i-trust-in-jesus.mp3",
-  "placidio1984": "/media/audios/profissional/youve-lost-that-lovin-feelin.mp3",
-  "fixotec1982": "/media/audios/profissional/sweet-caroline.mp3"
+  azzatelecom2024: "/media/audios/profissional/amazing-grace.mp3",
+  cti2022: "/media/audios/profissional/if-i-got-jesus.mp3",
+  embratel2014: "/media/audios/profissional/home.mp3",
+  tivit2011: "/media/audios/profissional/gods-country.mp3",
+  interchange2006: "/media/audios/profissional/when-i-get-where-im-going.mp3",
+  telecom2004: "/media/audios/profissional/relaxing-country.mp3",
+  multinacional2003: "/media/audios/profissional/baby-what-you-want-me-to-do.mp3",
+  Manutencao2002: "/media/audios/profissional/hallelujah.mp3",
+  suporte2001: "/media/audios/profissional/sing-me-back-home.mp3",
+  porteiro2001: "/media/audios/profissional/hungry-eyes.mp3",
+  balaoinformatica2000: "/media/audios/profissional/riding-home-to-you.mp3",
+  clt1997: "/media/audios/profissional/kenny-rogers.mp3",
+  ensinar1995: "/media/audios/profissional/this-body-of-mine.mp3",
+  tecnologia1993: "/media/audios/profissional/always-on-my-mind.mp3",
+  onibus1990: "/media/audios/profissional/just-breathe.mp3",
+  samelo1989: "/media/audios/profissional/livin-on-love.mp3",
+  quartel1988: "/media/audios/profissional/hes-my-brother.mp3",
+  futebol1985: "/media/audios/profissional/i-trust-in-jesus.mp3",
+  placidio1984: "/media/audios/profissional/youve-lost-that-lovin-feelin.mp3",
+  fixotec1982: "/media/audios/profissional/sweet-caroline.mp3",
 };
 
-function ConteudoTexto() {
-  const { idioma, setIdioma } = useIdioma();
+export default function ProfissionalPage() {
+  const { idioma } = useIdioma();
+  const { updateAudioSource, toggleAudio } = useAudio();
   const [temaProfissional, setTemaProfissional] = useState<string | null>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
   const [loading, setLoading] = useState(true);
-  const [firstName, setFirstName] = useState<string | null>(null);
   const [emailAutorizado, setEmailAutorizado] = useState(false);
   const router = useRouter();
 
   const temas = textos[idioma];
 
-  const handlePlay = () => {
-    if (!audioRef.current) return;
-    if (isPlaying) {
-      audioRef.current.pause();
-      setIsPlaying(false);
-    } else {
-      audioRef.current.play();
-      setIsPlaying(true);
-    }
+  // 👉 QUANDO CLICAR NO CARD → TOCA A MÚSICA
+  const handleCardClick = (id: string) => {
+      setTemaProfissional(id);
+      const trilha = audioMap[id as keyof typeof audioMap];
+
+      if (trilha) {
+        updateAudioSource(trilha);
+
+        setTimeout(() => {
+          const audio = document.querySelector("audio");
+          if (audio && audio.paused) {
+            audio.play().catch((e) => {
+              console.error("🚨 Erro ao tentar tocar o áudio:", e);
+            });
+          }
+        }, 100);
+      }
   };
 
-  useEffect(() => {
-    if (audioRef.current && temaProfissional) {
-      audioRef.current.pause();
-      const audioEl = audioRef.current;
-      audioEl.src = audioMap[temaProfissional as keyof typeof audioMap] || "";
-      audioEl.play();
-      setIsPlaying(true);
-    }
-  }, [temaProfissional]);
 
   useEffect(() => {
     const email = localStorage.getItem("email");
@@ -76,12 +70,7 @@ function ConteudoTexto() {
   }, []);
 
   useEffect(() => {
-    const storedFirstName = sessionStorage.getItem("firstName");
-    setFirstName(storedFirstName);
-  }, []);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => setLoading(false), 2000);
+    const timeout = setTimeout(() => setLoading(false), 1500);
     return () => clearTimeout(timeout);
   }, []);
 
@@ -95,8 +84,19 @@ function ConteudoTexto() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <Image src="/media/photos/icone-security.webp" alt="Logo da Segurança" width={400} height={400} priority className="mx-auto mb-4 animate-pulse logo-neon" style={{ height: "auto", filter: "drop-shadow(var(--logo-glow))" }} />
-            <h1 className="text-xl text-theme-primary font-bold">Carregando Página Profissional...</h1>
+            <Image
+              src="/media/photos/icone-security.webp"
+              alt="Logo da Segurança"
+              width={0}
+              height={0}
+              sizes="100vw"
+              priority
+              className="w-[133px] md:w-[266px] lg:w-[400px] mx-auto mb-4 animate-pulse logo-neon"
+              style={{ height: "auto", filter: "drop-shadow(var(--logo-glow))" }}
+            />
+            <h1 className="text-xl text-theme-primary font-bold">
+              Carregando Página Profissional...
+            </h1>
           </motion.div>
         </div>
       </div>
@@ -104,10 +104,10 @@ function ConteudoTexto() {
   }
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6  w-full px-4">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 w-full px-4 mt-12">
 
-      {/* Coluna da Esquerda - Imagens */}
-      <div className="col-span-3 space-y-4 mt-10">
+      {/* 🖼️ Coluna da Esquerda - Imagens */}
+      <div className="col-span-3 space-y-4 mt-12">
         <AnimatePresence mode="wait">
           {temaProfissional && (() => {
             const temaSelecionado = temas.find(t => t.id === temaProfissional);
@@ -123,7 +123,15 @@ function ConteudoTexto() {
               >
                 {temaSelecionado.imagens.map((img, index) => (
                   <div key={img} className="rounded-xl border border-theme-primary shadow-md">
-                    <Image src={img} alt={`${temaSelecionado.titulo} ${index + 1}`} width={400} height={200} className="rounded-xl object-contain" />
+                    <Image
+                      src={img}
+                      alt={`${temaSelecionado.titulo} ${index + 1}`}
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                      priority
+                      className="w-[133px] md:w-[266px] lg:w-[400px] rounded-xl object-contain"
+                    />
                   </div>
                 ))}
               </motion.div>
@@ -132,8 +140,8 @@ function ConteudoTexto() {
         </AnimatePresence>
       </div>
 
-      {/* Coluna Central - Texto */}
-      <div className="col-span-5 space-y-4 mt-14">
+      {/* 📝 Coluna Central - Texto */}
+      <div className="col-span-5 space-y-4">
         <AnimatePresence mode="wait">
           {temaProfissional && (
             <motion.div
@@ -147,7 +155,7 @@ function ConteudoTexto() {
               {temas.filter(t => t.id === temaProfissional).map(t => (
                 <div key={t.id} className="flex flex-col gap-4">
                   <h2 className="text-3xl font-bold text-theme-accent text-center">{t.titulo}</h2>
-                  <div className="text-base text-justify leading-relaxed overflow-y-auto max-h-[60vh] px-2 custom-scroll">
+                  <div className="text-base text-justify leading-relaxed overflow-y-auto max-h-[65vh] px-2 custom-scroll">
                     {t.texto}
                   </div>
                 </div>
@@ -157,23 +165,27 @@ function ConteudoTexto() {
         </AnimatePresence>
       </div>
 
-      {/* Coluna Direita - Cards */}
-      <div className="col-span-4 space-y-4 mt-16">
+      {/* 🔥 Coluna Direita - Cards */}
+      <div className="col-span-4 space-y-4 mt-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-1">
           {temas.map((t) => (
             <motion.div
               key={t.id}
-              onClick={() => setTemaProfissional(t.id)}
+              onClick={() => handleCardClick(t.id)}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className=" bg-gray-800 rounded-xl shadow-md p-2 text-center cursor-pointer hover:shadow-green-500/30"
+              className={`bg-gray-800 rounded-xl shadow-md p-2 text-center cursor-pointer hover:shadow-green-500/30 ${
+                temaProfissional === t.id ? "border border-theme-primary" : ""
+              }`}
             >
               <Image
                 src={t.imagemCard}
                 alt={t.tituloCard}
-                width={128}
-                height={128}
-                className="rounded-xl w-full h-26 object-contain border border-theme-primary bg-white shadow-inner"
+                width={0}
+                height={0}
+                sizes="100vw"
+                priority
+                className="w-[42px] md:w-[84px] lg:w-[128px] rounded-xl w-full h-26 object-contain border border-theme-primary bg-white shadow-inner"
               />
               <h2 className="text-theme-accent font-bold text-sm">{t.tituloCard}</h2>
             </motion.div>
@@ -181,35 +193,29 @@ function ConteudoTexto() {
         </div>
       </div>
 
-      {/* Botões de Navegação */}
-      <div className="fixed top-4 right-23 flex gap-2 z-20">
-        <button className="toggle-mode" onClick={() => router.push("/sobre")}><ArrowLeft className="w-8 h-8" /></button>
-        <button className="toggle-mode" onClick={() => router.push("/timeline")}><ArrowRight className="w-8 h-8" /></button>
-      </div>
-
-      {/* Controles de Idioma e Música */}
-      <audio ref={audioRef} />
-      <div className="fixed top-32 right-8 flex gap-2 z-20 ">
-        <button className="toggle-mode bg-theme-primary" onClick={() => setIdioma(idioma === "pt" ? "en" : "pt")}>{idioma === "pt" ? "EN" : "PT"}</button>
-        <button className="toggle-mode bg-theme-primary" onClick={handlePlay}>{isPlaying ? <Square className="w-8 h-8" /> : <Music className="w-8 h-8" />}</button>
-      </div>
-
-      {/* Botões Extras */}
-      <div className="fixed top-64 right-8 flex flex-col gap-4 z-20">
-        <button className="button-acessar-neon button-theme rounded text-sm text-white" onClick={() => router.push("/timeline")}>Timeline</button>
+      {/* 🎯 Botões Extras */}
+      <div className="fixed top-78 right-8 flex flex-col gap-4 z-20">
+        <button
+          className="button-acessar-neon button-theme rounded text-sm text-white"
+          onClick={() => router.push("/timeline")}
+        >
+          Timeline
+        </button>
         {emailAutorizado && (
-          <button className="button-acessar-neon button-theme rounded text-sm text-white" onClick={() => router.push("/estatisticas")}>Gráficos</button>
+          <button
+            className="button-acessar-neon button-theme rounded text-sm text-white"
+            onClick={() => router.push("/estatisticas")}
+          >
+            Gráficos
+          </button>
         )}
-        <button className="button-acessar-neon button-theme rounded text-sm text-white" onClick={() => router.push("/certificados")}>Certificados</button>
+        <button
+          className="button-acessar-neon button-theme rounded text-sm text-white"
+          onClick={() => router.push("/certificados")}
+        >
+          Certificados
+        </button>
       </div>
     </div>
-  );
-}
-
-export default function Profissional() {
-  return (
-    <IdiomaProvider>
-      <ConteudoTexto />
-    </IdiomaProvider>
   );
 }

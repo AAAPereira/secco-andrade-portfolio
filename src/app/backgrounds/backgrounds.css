@@ -24,15 +24,16 @@
 }
 
 /* Modo Neon Futurístico */
-.theme-neon .background-overlay {
-  background: url('/media/photos/robos-futuristas.webp') center/cover no-repeat, linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-  background-repeat: no-repeat;
+.theme-neon {
+  --theme-primary: #00aaff;
+  --theme-secondary: #0088cc;
+  --theme-accent: #00ffff;
+  --logo-glow: 0 0 25px #00aaff;
+  --theme-button: linear-gradient(90deg, #cccccc, #e0e0e0); /* Gradiente branco para o botão */
+background: url('/media/photos/robo-futurista.webp') center/cover no-repeat, linear-gradient(135deg, #0f0c29, #302b63, #24243e);  background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  color: #ffffff;
-  animation: neon-glow 5s infinite alternate;
-  opacity: 0.8;
   --theme-button: linear-gradient(90deg, #cccccc, #e0e0e0); /* Gradiente branco para o botão */
 }
 
@@ -478,9 +479,6 @@
   padding: 10px;
   animation: neon-pulse 2s infinite alternate;
 }
-
-
-
 
 
 .neon-text {

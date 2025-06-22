@@ -2,14 +2,15 @@
 
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
-import { Music, Square, ArrowLeft, ArrowRight } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useAudio } from "@/app/contexts/AudioProvider";
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const audioMap: Record<string, string> = {
   "oracle-oci": "/media/audios/profissional/amazing-grace.mp3",
@@ -65,40 +66,28 @@ const minhasCertificacoes = [
 
 export default function Certificacoes() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
   const [loading, setLoading] = useState(true);
-  const [emailAutorizado, setEmailAutorizado] = useState(false);
   const router = useRouter();
 
-  useEffect(() => {
-    const email = localStorage.getItem("email");
-    if (email === "fernandre6973@gmail.com") {
-      setEmailAutorizado(true);
-    }
-  }, []);
+  const { updateAudioSource, toggleAudio } = useAudio();
 
-  useEffect(() => {
-    const certAtual = minhasCertificacoes[currentSlide];
-    const audioSrc = audioMap[certAtual?.id];
+useEffect(() => {
+  const certAtual = minhasCertificacoes[currentSlide];
+  const audioSrc = audioMap[certAtual?.id];
 
-    if (!audioRef.current || !audioSrc) return;
+  if (audioSrc) {
+    updateAudioSource(audioSrc);
 
-    audioRef.current.pause();
-    audioRef.current.src = audioSrc;
-    audioRef.current.load();
-    audioRef.current.play().then(() => setIsPlaying(true)).catch(() => setIsPlaying(false));
-  }, [currentSlide]);
+    // Se já estiver tocando, força a troca automática da música
+    setTimeout(() => {
+      const audioEl = document.querySelector('audio');
+      if (audioEl) {
+        audioEl.play().catch(() => {});
+      }
+    }, 200);
+  }
+}, [currentSlide]);
 
-  const handlePlay = () => {
-    if (!audioRef.current) return;
-    if (isPlaying) {
-      audioRef.current.pause();
-    } else {
-      audioRef.current.play().catch(console.warn);
-    }
-    setIsPlaying(!isPlaying);
-  };
 
   const settings = {
     dots: true,
@@ -116,98 +105,73 @@ export default function Certificacoes() {
   };
 
   useEffect(() => {
-    // Simula um carregamento de 2 segundos
-    const timeout = setTimeout(() => {
-      setLoading(false);
-    }, 2000); // 2000 milissegundos = 2 segundos
-
-    // Limpa o timeout ao sair do componente
+    const timeout = setTimeout(() => setLoading(false), 2000);
     return () => clearTimeout(timeout);
   }, []);
-
 
   if (loading) {
     return (
       <div className="grid grid-cols-12 max-w-screen-xl w-full mx-auto md:px-16 py-30">
-      <div className="col-span-12 md:col-span-12 z-10 flex justify-center">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6 }}
-          className="text-center"
-        >
-            <Image src="/media/photos/icone-security.webp" alt="Logo da Segurança" width={400} height={400} priority className="mx-auto mb-4 animate-pulse logo-neon" style={{ height: "auto", filter: "drop-shadow(var(--logo-glow))" }} />
-
-          <h1 className="text-xl text-theme-primary font-bold">Carregando Pagina Certificados...</h1>
-        </motion.div>
-      </div>
+        <div className="col-span-12 flex justify-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            <Image
+              src="/media/photos/icone-security.webp"
+              alt="Logo da Segurança"
+              width={0}
+              height={0}
+              sizes="100vw"
+              priority
+              className="w-[133px] md:w-[266px] lg:w-[400px] mx-auto mb-4 animate-pulse logo-neon"
+              style={{ height: "auto", filter: "drop-shadow(var(--logo-glow))" }}
+            />
+            <h1 className="text-xl text-theme-primary font-bold">Carregando Página Certificados...</h1>
+          </motion.div>
+        </div>
       </div>
     );
   }
 
+  return (
+    <div className="relative flex flex-col w-full mx-auto px-4 mt-12">
 
-return (
-  <div className="relative flex flex-col w-full mx-auto px-4">
+      {/* ✅ Imagem do André */}
+      <div className="absolute top-24 left-1/2 transform -translate-x-1/2 z-20">
+        <Image
+          src="/media/photos/andre-pereira-b.webp"
+          alt="Foto de André Pereira"
+          width={0}
+          height={0}
+          sizes="100vw"
+          priority
+          className="w-[61px] md:w-[122px] lg:w-[183px] rounded-lg shadow-xl"
+        />
+      </div>
 
-    {/* ✅ Imagem do André - Centralizada no topo */}
-    <div className="absolute top-24 left-1/2 transform -translate-x-1/2 z-20">
-      <Image
-        src="/media/photos/andre-pereira-b.webp"
-        alt="Foto de André Pereira"
-        width={183}
-        height={624}
-        className="rounded-lg shadow-xl"
-      />
-    </div>
-
-    {/* ✅ Slider de Certificados */}
-    <div className="mt-[350px] z-50"> {/* Esse margin-top ajusta certinho abaixo da imagem */}
-      <Slider {...settings}>
-        {minhasCertificacoes.map((cert) => (
-          <div key={cert.id} className="p-0">
-            <div className="bg-zinc-900 rounded-xl border border-theme-primary p-2 shadow-lg">
-              <Image
-                src={cert.src}
-                alt={cert.id}
-                width={500}
-                height={330}
-                className="object-contain rounded-xl mx-auto"
-              />
+      {/* ✅ Slider de Certificados */}
+      <div className="mt-[350px] z-50">
+        <Slider {...settings}>
+          {minhasCertificacoes.map((cert) => (
+            <div key={cert.id} className="p-0">
+              <div className="bg-zinc-900 rounded-xl border border-theme-primary p-2 shadow-lg">
+                <Image
+                  src={cert.src}
+                  alt={cert.id}
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  priority
+                  className="w-[166px] md:w-[232px] lg:w-[500px] object-contain rounded-xl mx-auto"
+                />
+              </div>
             </div>
-          </div>
-        ))}
-      </Slider>
+          ))}
+        </Slider>
+      </div>
     </div>
-
-    {/* 🔊 Controles de Áudio */}
-    <audio ref={audioRef} hidden preload="auto" />
-    <div className="fixed top-32 right-8 z-50 flex gap-4">
-      <button
-        className="toggle-mode border-theme-primary"
-        onClick={handlePlay}
-        title={isPlaying ? "Parar trilha" : "Tocar trilha"}
-      >
-        {isPlaying ? <Square className="w-8 h-8" /> : <Music className="w-8 h-8" />}
-      </button>
-    </div>
-
-    {/* 🔀 Navegação */}
-    <div className="fixed top-4 right-24 z-50 flex gap-2">
-      <button
-        className="toggle-mode border-theme-primary"
-        onClick={() => router.push('/profissional')}
-      >
-        <ArrowLeft className="w-8 h-8" />
-      </button>
-      {emailAutorizado && (
-        <button
-          className="toggle-mode border-theme-primary"
-          onClick={() => router.push('/estatisticas')}
-        >
-          <ArrowRight className="w-8 h-8" />
-        </button>
-      )}
-    </div>
-  </div>
-);
+  );
 }

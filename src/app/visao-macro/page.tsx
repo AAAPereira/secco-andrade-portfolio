@@ -129,7 +129,15 @@ export default function VisaoMacroPage() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <Image src="/media/photos/icone-security.webp" alt="Logo da Segurança" width={400} height={400} priority className="mx-auto mb-4 animate-pulse logo-neon" style={{ height: "auto", filter: "drop-shadow(var(--logo-glow))" }} />
+           <Image src="/media/photos/icone-security.webp"
+            alt="Logo da Segurança"
+            width={0}
+            height={0}
+            sizes="100vw"
+            priority
+            className="w-[133px] md:w-[266px] lg:w-[400px] mx-auto mb-4 animate-pulse logo-neon"
+            style={{ height: "auto", filter: "drop-shadow(var(--logo-glow))" }} />
+
             <h1 className="text-xl text-theme-primary font-bold">Carregando Pagina Visão Macro...</h1>
           </motion.div>
         </div>
@@ -204,12 +212,6 @@ export default function VisaoMacroPage() {
         <a href="/estatisticas" className="button-acessar-neon border-theme-primary text-theme-secondary button-theme">
           Fechar
         </a>
-      </div>
-
-      <div className="fixed top-4 right-23 z-20 flex gap-2">
-        <button className="toggle-mode border-theme-primary" onClick={() => window.location.href = '/estatisticas'}>
-          <ArrowLeft className="w-8 h-8" />
-        </button>
       </div>
     </div>
   );

@@ -136,7 +136,14 @@ export default function EstatisticasPage() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-            <Image src="/media/photos/icone-security.webp" alt="Logo da Segurança" width={400} height={400} priority className="mx-auto mb-4 animate-pulse logo-neon" style={{ height: "auto", filter: "drop-shadow(var(--logo-glow))" }} />
+            <Image src="/media/photos/icone-security.webp"
+            alt="Logo da Segurança"
+            width={0}
+            height={0}
+            sizes="100vw"
+            priority
+            className="w-[133px] md:w-[266px] lg:w-[400px] mx-auto mb-4 animate-pulse logo-neon"
+            style={{ height: "auto", filter: "drop-shadow(var(--logo-glow))" }} />
 
           <h1 className="text-xl text-theme-primary font-bold">Carregando Pagina Estatisticas...</h1>
         </motion.div>
@@ -146,7 +153,7 @@ export default function EstatisticasPage() {
   }
 
   return (
-    <div className="relative flex flex-col items-center justify-center text-white">
+    <div className="relative flex flex-col items-center justify-center text-white mt-6">
       <div className="fixed top-5 right-85 z-50 flex gap-2">
         <button
           className={`button-acessar-neon button-theme${isExporting ? 'opacity-50 cursor-not-allowed' : ''}`}
@@ -236,10 +243,6 @@ export default function EstatisticasPage() {
         </div>
       </div>
 
-      <div className="fixed top-4 right-22 z-20 flex gap-1">
-        <button className="toggle-mode border-theme-primary" onClick={() => window.location.href = '/profissional'}><ArrowLeft className="w-8 h-8" /></button>
-        <button className="toggle-mode border-theme-primary" onClick={() => window.location.href = '/visao-macro'}><ArrowRight className="w-8 h-8" /></button>
-      </div>
     </div>
   );
 };

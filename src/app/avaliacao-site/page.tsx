@@ -108,15 +108,16 @@ export default function AvaliacaoPage() {
 
   return (
     <div className="flex flex-col py-2 items-center justify-center text-center">
-      <Image
-        src="/media/photos/icone-security.webp"
-        alt="Logo Segurança"
-        width={350}
-        height={350}
-        priority
-        className="mb-6 animate-pulse logo-neon"
-        style={{ filter: "drop-shadow(var(--logo-glow))" }}
-      />
+    <Image
+      src="/media/photos/icone-security.webp"
+      alt="Logo Segurança"
+      width={0}
+      height={0}
+      sizes="100vw"
+      priority
+      className="w-[100px] md:w-[150px] lg:w-[350px] mb-6 animate-pulse logo-neon"
+      style={{ filter: "drop-shadow(var(--logo-glow))" }}
+    />
 
       {!submitted ? (
         <div className="bg-[#031427] p-5 rounded-2xl border border-theme-primary max-w-xl w-full shadow-lg">

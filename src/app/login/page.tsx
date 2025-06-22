@@ -100,39 +100,42 @@ export default function LoginPage() {
 
   if (loading) {
     return (
-      <main className="flex flex-col items-center justify-center min-h-screen w-full">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6 }}
-          className="text-center"
-        >
-          <Image
-            src="/media/photos/icone-security.webp"
+      <div className="grid grid-cols-12 max-w-screen-xl w-full mx-auto py-30">
+        <div className="col-span-12 flex justify-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            <Image src="/media/photos/icone-security.webp"
             alt="Logo da Segurança"
-            width={400}
-            height={400}
+            width={0}
+            height={0}
+            sizes="100vw"
             priority
-            className="mx-auto mb-4 animate-pulse logo-neon"
-            style={{ filter: "drop-shadow(var(--logo-glow))" }}
-          />
+            className="w-[133px] md:w-[266px] lg:w-[400px] mx-auto mb-4 animate-pulse logo-neon"
+            style={{ height: "auto", filter: "drop-shadow(var(--logo-glow))" }} />
           <h1 className="text-xl text-theme-primary font-bold">
             Carregando Página Login...
           </h1>
         </motion.div>
-      </main>
+        </div>
+      </div>
     );
   }
 
   return (
-    <main className="flex flex-col items-center justify-center mt-24 w-full">
+    <main className="flex flex-col items-center justify-center w-full mt-28">
       <div className="bg-zinc-900 p-6 rounded-lg shadow-xl w-full max-w-sm text-center border border-theme-primary">
         <Image
           src="/media/photos/fundo_tela_login.webp"
           alt="Fundo Login"
-          width={360}
-          height={360}
-          className="mx-auto mb-6 rounded-lg"
+          width={0}
+          height={0}
+          sizes="100vw"
+          priority
+          className="w-[120px] md:w-[240px] lg:w-[360px] mx-auto mb-6 rounded-lg"
         />
         <h2 className="text-theme-primary font-bold mb-4 text-xl">
           Login de Acesso

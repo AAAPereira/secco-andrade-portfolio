@@ -26,16 +26,17 @@ export default function TermosPage() {
   };
 
   return (
-    <main className="w-full flex flex-col items-center justify-start flex-grow text-white">
+    <main className="w-full flex flex-col items-center justify-start flex-grow text-white mt-6">
       {/* LOGO */}
       <div>
         <Image
           src="/media/photos/icone-security.webp"
           alt="Logo de Segurança"
-          width={350}
-          height={350}
+          width={0}
+          height={0}
+          sizes="100vw"
           priority
-          className="drop-shadow-xl animate-pulse logo-neon"
+          className="w-[116px] md:w-[232px] lg:w-[350px] drop-shadow-xl animate-pulse logo-neon"
           style={{ filter: "drop-shadow(var(--logo-glow))" }}
         />
       </div>

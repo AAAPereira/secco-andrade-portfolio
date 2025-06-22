@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import { textoResumoSkill } from "@/app/resume-skill/texto_resumo_skill";
 import "@/app/backgrounds/backgrounds.css";
 import { Music, Square, ArrowLeft, ArrowRight } from "lucide-react";
+import { useIdioma } from "@/app/components/idioma/IdiomaContext";
 import { useRouter } from "next/navigation";
 
 const audioMap = {
@@ -18,34 +19,11 @@ const audioMap = {
 export default function ResumeSkillPage() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [idioma, setIdioma] = useState<"pt" | "en">("pt");
+  const { idioma } = useIdioma();
   const [firstName, setFirstName] = useState<string | null>(null);
   const router = useRouter();
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  // 🎧 Controle do áudio
-  const handlePlay = () => {
-    if (!audioRef.current) return;
-    if (isPlaying) {
-      audioRef.current.pause();
-      setIsPlaying(false);
-    } else {
-      audioRef.current.play().catch(console.warn);
-      setIsPlaying(true);
-    }
-  };
-
-  // 🎧 Troca de idioma troca também a música
-  useEffect(() => {
-    const audio = audioRef.current;
-    if (audio) {
-      audio.pause();
-      audio.src = audioMap[idioma];
-      audio.load();
-      audio.play().catch(console.warn);
-      setIsPlaying(true);
-    }
-  }, [idioma]);
 
   // ⏳ Carregamento simulado
   useEffect(() => {
@@ -108,15 +86,15 @@ export default function ResumeSkillPage() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <Image
-              src="/media/photos/icone-security.webp"
-              alt="Logo"
-              width={400}
-              height={400}
-              priority
-              className="mx-auto mb-4 animate-pulse logo-neon"
-              style={{ filter: "drop-shadow(var(--logo-glow))" }}
-            />
+            <Image src="/media/photos/icone-security.webp"
+            alt="Logo da Segurança"
+            width={0}
+            height={0}
+            sizes="100vw"
+            priority
+            className="w-[133px] md:w-[266px] lg:w-[400px] mx-auto mb-4 animate-pulse logo-neon"
+            style={{ height: "auto", filter: "drop-shadow(var(--logo-glow))" }} />
+
             <h1 className="text-xl text-theme-primary font-bold">Carregando Resumo Skill...</h1>
           </motion.div>
         </div>
@@ -125,59 +103,27 @@ export default function ResumeSkillPage() {
   }
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 w-full mx-auto">
+    <div className="grid grid-cols-1 lg:grid-cols-12 w-full mx-auto mt-18">
 
       {/* 📸 Coluna da Imagem */}
-      <div className="col-span-12 lg:col-span-4 flex justify-end items-start mt-24">
+      <div className="col-span-12 lg:col-span-4 flex justify-end items-start mt-20">
         <Image
           src="/media/photos/andre-pereira-a.webp"
           alt="Foto de André Pereira"
-          width={170}
-          height={598}
-          className="rounded-lg shadow-xl"
+          width={0}
+          height={0}
+          sizes="100vw"
+          priority
+          className="w-[56px] md:w-[112px] lg:w-[170px] rounded-lg shadow-xl"
         />
       </div>
 
       {/* 📝 Coluna do Texto */}
-      <div className="col-span-12 lg:col-span-4 flex items-start justify-center">
+      <div className="col-span-12 lg:col-span-4 flex items-start justify-center mt-12">
         <div
-          className="mt-20 max-w-3xl max-h-[65vh] overflow-y-auto p-4 text-white text-justify leading-relaxed custom-scroll"
+          className="max-w-3xl max-h-[65vh] overflow-y-auto p-4 text-white text-justify leading-relaxed custom-scroll"
           dangerouslySetInnerHTML={{ __html: textoResumoSkill[idioma] }}
         />
-      </div>
-
-      {/* 🎧 Controle de áudio e idioma */}
-      <audio ref={audioRef} />
-      <div className="fixed top-32 right-8 z-50 flex gap-1">
-        <button
-          className="toggle-mode border-theme-primary"
-          onClick={() => setIdioma(idioma === "pt" ? "en" : "pt")}
-        >
-          {idioma === "pt" ? "EN" : "PT"}
-        </button>
-        <button
-          className="toggle-mode border-theme-primary"
-          onClick={handlePlay}
-          title={isPlaying ? "Parar trilha" : "Tocar trilha"}
-        >
-          {isPlaying ? <Square className="w-8 h-8" /> : <Music className="w-8 h-8" />}
-        </button>
-      </div>
-
-      {/* 🔀 Navegação */}
-      <div className="fixed top-4 right-22 z-50 flex gap-1">
-        <button
-          className="toggle-mode border-theme-primary"
-          onClick={() => router.push('/profissional')}
-        >
-          <ArrowLeft className="w-8 h-8" />
-        </button>
-        <button
-          className="toggle-mode border-theme-primary"
-          onClick={() => router.push('/skill-completo')}
-        >
-          <ArrowRight className="w-8 h-8" />
-        </button>
       </div>
     </div>
   );

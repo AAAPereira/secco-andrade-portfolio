@@ -1,18 +1,30 @@
-'use client';
+"use client";
 
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 
-export type Idioma = 'pt' | 'en';
+type Idioma = "pt" | "en";
 
-interface IdiomaContextType {
+interface IdiomaContextProps {
   idioma: Idioma;
   setIdioma: (idioma: Idioma) => void;
 }
 
-const IdiomaContext = createContext<IdiomaContextType | undefined>(undefined);
+const IdiomaContext = createContext<IdiomaContextProps | undefined>(undefined);
 
 export const IdiomaProvider = ({ children }: { children: ReactNode }) => {
-  const [idioma, setIdioma] = useState<Idioma>('pt');
+  const [idioma, setIdiomaState] = useState<Idioma>("pt");
+
+  useEffect(() => {
+    const storedIdioma = localStorage.getItem("idioma") as Idioma;
+    if (storedIdioma) {
+      setIdiomaState(storedIdioma);
+    }
+  }, []);
+
+  const setIdioma = (novoIdioma: Idioma) => {
+    setIdiomaState(novoIdioma);
+    localStorage.setItem("idioma", novoIdioma);
+  };
 
   return (
     <IdiomaContext.Provider value={{ idioma, setIdioma }}>
@@ -21,10 +33,10 @@ export const IdiomaProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export const useIdioma = (): IdiomaContextType => {
+export const useIdioma = (): IdiomaContextProps => {
   const context = useContext(IdiomaContext);
   if (!context) {
-    throw new Error('useIdioma deve ser usado dentro de um IdiomaProvider');
+    throw new Error("useIdioma deve ser usado dentro de um IdiomaProvider");
   }
   return context;
 };

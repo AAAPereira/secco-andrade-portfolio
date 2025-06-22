@@ -75,14 +75,16 @@ export default function VerificarTokenPage() {
   };
 
   return (
-    <main className="flex flex-col items-center justify-center mt-16 w-full">
+    <main className="flex flex-col items-center justify-center w-full mt-22">
       <div className="bg-zinc-900 p-6 rounded-lg shadow-xl w-full max-w-sm text-center border border-theme-primary">
         <Image
           src="/media/photos/fundo_tela_login.webp"
           alt="Logo de Segurança"
-          width={360}
-          height={360}
-          className="mx-auto mb-6 rounded-lg"
+          width={0}
+          height={0}
+          sizes="100vw"
+          priority
+          className="w-[120px] md:w-[240px] lg:w-[360px] mx-auto mb-6 rounded-lg"
         />
 
         <h2 className="text-theme-primary font-bold mb-4 text-xl">
@@ -125,7 +127,7 @@ export default function VerificarTokenPage() {
         </div>
 
         {error && (
-          <p className="text-red-500 text-sm text-center mt-2">{error}</p>
+          <p className="text-red-500 text-sm text-center">{error}</p>
         )}
       </div>
     </main>
