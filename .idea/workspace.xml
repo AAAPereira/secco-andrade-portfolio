@@ -4,7 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9d4bdd57-8d64-40eb-b8f9-826863034640" name="Changes" comment="" />
+    <list default="true" id="9d4bdd57-8d64-40eb-b8f9-826863034640" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/app/api/kv/avaliacoes/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/api/kv/salvar-avaliacao/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/certificados/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/estatisticas/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/skill-completo/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/skill-completo/texto_skill_completo.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/visao-macro/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,29 +48,30 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "F:/cv-digital-site",
+    "last_opened_file_path": "F:/cv-digital-site/src/app/skill-completo",
     "settings.editor.selected.configurable": "editor.preferences.tabs"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\cv-digital-site\src\app\skill-completo" />
       <recent name="F:\andre-pereira-site\app\visualizar-csv" />
       <recent name="F:\andre-pereira-site\app\visitors" />
       <recent name="F:\andre-pereira-site\app\timeline" />
       <recent name="F:\andre-pereira-site\app\resume-skill" />
-      <recent name="F:\andre-pereira-site\app\avaliacao-site" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\cv-digital-site\src\app\api" />
       <recent name="F:\andre-pereira-site\app\api\kv" />
       <recent name="F:\andre-pereira-site\app\login" />
       <recent name="F:\andre-pereira-site\app\main" />
       <recent name="F:\andre-pereira-site\public\downloads" />
-      <recent name="F:\andre-pereira-site\app" />
     </key>
   </component>
   <component name="SharedIndexes">
