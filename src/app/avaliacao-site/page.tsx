@@ -93,36 +93,6 @@ export default function AvaliacaoPage() {
     window.location.href = "https://www.google.com.br";
   };
 
-  useEffect(() => {
-    const saudacaoExecutada = sessionStorage.getItem("saudacaoAvaliacaoExecutada");
-    const storedFirstName = sessionStorage.getItem("firstName");
-
-    if ("speechSynthesis" in window && !saudacaoExecutada) {
-      const hora = new Date().getHours();
-      const nome = storedFirstName?.split("@")[0];
-      const nomeFormatado = nome ? nome.charAt(0).toUpperCase() + nome.slice(1) : "visitantes";
-
-      let saudacaoPt = `Você chegou ao fim desta jornada digital. Aqui, cada linha, cada som e cada imagem foram escolhidos para revelar mais do que um currículo — foram feitos para contar uma história real, vivida entre acertos e aprendizados. Agora, é a sua vez: avalie não só este conteúdo, mas o que ele despertou em você. Muito obrigado, ${nomeFormatado}!`;
-
-      let saudacaoEn = `You've reached the end of this digital journey. Everything here was designed to show more than just a resume — it tells a real story shaped by lessons and achievements. Now it’s your turn: evaluate not only the content but also what it inspired in you. Thank you, ${nomeFormatado}!`;
-
-      if (hora >= 12 && hora < 18) {
-        saudacaoPt = saudacaoPt.replace("Bom dia", "Boa tarde");
-        saudacaoEn = saudacaoEn.replace("Good morning", "Good afternoon");
-      } else if (hora >= 18 || hora < 5) {
-        saudacaoPt = saudacaoPt.replace("Bom dia", "Boa noite");
-        saudacaoEn = saudacaoEn.replace("Good morning", "Good evening");
-      }
-
-      const utter = new SpeechSynthesisUtterance(`${saudacaoPt} ${saudacaoEn}`);
-      utter.lang = "pt-BR";
-      utter.rate = 0.95;
-      utter.pitch = 1.1;
-
-      window.speechSynthesis.speak(utter);
-      sessionStorage.setItem("saudacaoAvaliacaoExecutada", "true");
-    }
-  }, []);
 
   useEffect(() => {
     const timeout = setTimeout(() => setLoading(false), 1500);

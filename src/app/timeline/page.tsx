@@ -11,22 +11,6 @@ import { TemaProvider } from "@/app/components/TemaProvider";
 import { useIdioma } from "@/app/components/idioma/IdiomaContext";
 
 
-const audioMap = {
-  "1993": "/media/audios/profissional/sweet-caroline.mp3",
-  "1995": "/media/audios/profissional/if-i-got-jesus.mp3",
-  "1997": "/media/audios/profissional/always-on-my-mind.mp3",
-  "2000": "/media/audios/profissional/gods-country.mp3",
-  "2001": "/media/audios/profissional/just-breathe.mp3",
-  "2002": "/media/audios/profissional/kenny-rogers.mp3",
-  "2003": "/media/audios/profissional/baby-what-you-want-me-to-do.mp3",
-  "2004": "/media/audios/profissional/hallelujah.mp3",
-  "2006": "/media/audios/profissional/sing-me-back-home.mp3",
-  "2011": "/media/audios/profissional/hungry-eyes.mp3",
-  "2014": "/media/audios/profissional/riding-home-to-you.mp3",
-  "2022": "/media/audios/profissional/hes-my-brother.mp3",
-  "2024": "/media/audios/profissional/this-body-of-mine.mp3",
-};
-
 const TimelineDisplay = () => {
   const [TemaHabilidades, setTemaHabilidades] = useState("2024");
   const [selectedData, setSelectedData] = useState<textoHabilidadesItem | null>(null);
@@ -58,22 +42,6 @@ const TimelineDisplay = () => {
   // 🎧 Controle de áudio
   const handleYearClick = (ano: string) => {
     setTemaHabilidades(ano);
-    const trilha = audioMap[ano as keyof typeof audioMap];
-
-    if (trilha) {
-      const audio = document.querySelector("audio") as HTMLAudioElement | null;
-      if (audio) {
-        audio.pause();
-        audio.src = trilha;
-        setTimeout(() => {
-          if (audio.paused) {
-            audio.play().catch((e) => {
-              console.error("🚨 Erro ao tentar tocar o áudio:", e);
-            });
-          }
-        }, 100);
-      }
-    }
   };
 
   if (loading) {

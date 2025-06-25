@@ -1,25 +1,18 @@
 "use client";
 
 import { useRouter, usePathname } from "next/navigation";
-import { useAudio } from "@/app/contexts/AudioProvider";
 import { useIdioma } from "@/app/components/idioma/IdiomaContext";
 import "@/app/backgrounds/backgrounds.css";
-import { Music, VolumeX, ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
-const audioMap = {
-  pt: "/media/audios/profissional/stand-by-me.mp3",
-  en: "/media/audios/profissional/a-thousand-years.mp3",
-};
 
 interface NavigationControlsProps {
-  showAudio?: boolean;
   showLanguage?: boolean;
   next: string;
   prev: string;
 }
 
 export default function NavigationControls({
-  showAudio = false,
   showLanguage = false,
   next,
   prev,
@@ -28,17 +21,11 @@ export default function NavigationControls({
   const pathname = usePathname();
 
   const { idioma, setIdioma } = useIdioma();
-  const { isPlaying, toggleAudio, updateAudioSource } = useAudio();
 
   const handleIdiomaChange = () => {
     const novoIdioma = idioma === "pt" ? "en" : "pt";
     setIdioma(novoIdioma);
 
-    const trilha = audioMap[novoIdioma];
-    if (trilha) {
-      updateAudioSource(trilha);
-      toggleAudio();
-    }
   };
 
   const showPrev = [
@@ -92,7 +79,7 @@ export default function NavigationControls({
 
       {/* 🌐 Botão PT/EN */}
       {showLanguage && (
-        <div className="fixed top-56 right-24 z-50">
+        <div className="fixed top-4 right-24 z-50">
           <button
             onClick={handleIdiomaChange}
             className="toggle-mode bg-theme-primary rounded-full px-4 py-2 hover:scale-105 transition"
@@ -102,21 +89,6 @@ export default function NavigationControls({
         </div>
       )}
 
-      {/* 🔊 Botão Áudio Manual */}
-      {showAudio && (
-        <div className="fixed top-56 right-8 z-50">
-          <button
-            onClick={toggleAudio}
-            className=" toggle-mode bg-theme-primary rounded-full px-4 p-2 hover:scale-105 transition"
-          >
-            {isPlaying ? (
-              <VolumeX className="w-8 h-8" />
-            ) : (
-              <Music className="w-8 h-8" />
-            )}
-          </button>
-        </div>
-      )}
     </>
   );
 }

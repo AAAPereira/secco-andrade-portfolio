@@ -3,24 +3,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Music, Square, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { detailedSkillsData, DetailedSkillItem } from "@/app/skill-completo/texto_skill_completo";
-import { TemaProvider } from "@/app/components/TemaProvider";
 import { useIdioma } from "@/app/components/idioma/IdiomaContext";
 import "@/app/backgrounds/backgrounds.css";
-
-const audioMap = {
-  "SEGURANÇA_1": "/media/audios/profissional/i-trust-in-jesus.mp3",
-  "SEGURANÇA_2": "/media/audios/profissional/if-i-got-jesus.mp3",
-  "SEGURANÇA_3": "/media/audios/profissional/livin-on-love.mp3",
-  "INFRA_1": "/media/audios/profissional/gods-country.mp3",
-  "INFRA_2": "/media/audios/profissional/just-breathe.mp3",
-  "INFRA_3": "/media/audios/profissional/city-of-god.mp3",
-  "TELECOM_1": "/media/audios/profissional/youve-lost-that-lovin-feelin.mp3",
-  "TELECOM_2": "/media/audios/profissional/hallelujah.mp3",
-  "TELECOM_3": "/media/audios/profissional/hes-my-brother.mp3",
-};
 
 const SkillDisplay: React.FC = () => {
   const [temaSkillCompleto, setTemaSkillCompleto] = useState("TELECOM_3");
@@ -63,58 +50,7 @@ const SkillDisplay: React.FC = () => {
   // 🎧 Controle de áudio
   const handleYearClick = (ano: string) => {
     setTemaSkillCompleto(ano);
-    const trilha = audioMap[ano as keyof typeof audioMap];
-
-    if (trilha) {
-      const audio = document.querySelector("audio") as HTMLAudioElement | null;
-      if (audio) {
-        audio.pause();
-        audio.src = trilha;
-        setTimeout(() => {
-          if (audio.paused) {
-            audio.play().catch((e) => {
-              console.error("🚨 Erro ao tentar tocar o áudio:", e);
-            });
-          }
-        }, 100);
-      }
-    }
   };
-
-  // 🔥 Saudação bilíngue
-  useEffect(() => {
-    const saudacaoExecutada = sessionStorage.getItem("saudacaoSkillCompletoExecutada");
-    const storedFirstName = sessionStorage.getItem("firstName");
-
-    if ("speechSynthesis" in window && !saudacaoExecutada) {
-      const hora = new Date().getHours();
-      const nome = storedFirstName?.split("@")[0];
-      const nomeFormatado = nome ? nome.charAt(0).toUpperCase() + nome.slice(1) : "visitante";
-
-      let saudacaoPt = `Esta é a página de habilidades completa. Aqui você terá uma visão aprofundada das experiências que André Pereira acumulou ao longo de mais de 15 anos de trajetória profissional. Explore as seções de Segurança, Infraestrutura e Telecom clicando em cada uma delas. Boa leitura e muito obrigado pela visita, ${nomeFormatado}!`;
-
-      let saudacaoEn = `This is the complete skills page. Here, you'll find an in-depth overview of the experiences André Pereira has accumulated over more than 15 years of professional work. Explore the sections on Security, Infrastructure, and Telecom by clicking on each one. Enjoy the read, and thank you for your visit, ${nomeFormatado}!`;
-
-      if (hora >= 5 && hora < 12) {
-        saudacaoPt = `Bom dia! ${saudacaoPt}`;
-        saudacaoEn = `Good morning! ${saudacaoEn}`;
-      } else if (hora >= 12 && hora < 18) {
-        saudacaoPt = `Boa tarde! ${saudacaoPt}`;
-        saudacaoEn = `Good afternoon! ${saudacaoEn}`;
-      } else {
-        saudacaoPt = `Boa noite! ${saudacaoPt}`;
-        saudacaoEn = `Good evening! ${saudacaoEn}`;
-      }
-
-      const utter = new SpeechSynthesisUtterance(`${saudacaoPt} ${saudacaoEn}`);
-      utter.lang = "pt-BR";
-      utter.rate = 0.95;
-      utter.pitch = 1.1;
-
-      window.speechSynthesis.speak(utter);
-      sessionStorage.setItem("saudacaoSkillCompletoExecutada", "true");
-    }
-  }, []);
 
 
   if (loading) {

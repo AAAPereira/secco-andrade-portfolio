@@ -7,22 +7,17 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { textoResumoSkill } from "@/app/resume-skill/texto_resumo_skill";
 import "@/app/backgrounds/backgrounds.css";
-import { Music, Square, ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useIdioma } from "@/app/components/idioma/IdiomaContext";
 import { useRouter } from "next/navigation";
 
-const audioMap = {
-  pt: "/media/audios/pessoal/Stand By Me.mp3",
-  en: "/media/audios/pessoal/A Thousand Years.mp3",
-};
 
 export default function ResumeSkillPage() {
-  const [isPlaying, setIsPlaying] = useState(false);
   const [loading, setLoading] = useState(true);
   const { idioma } = useIdioma();
   const [firstName, setFirstName] = useState<string | null>(null);
   const router = useRouter();
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+
 
 
   // ⏳ Carregamento simulado
@@ -31,44 +26,6 @@ export default function ResumeSkillPage() {
     return () => clearTimeout(timeout);
   }, []);
 
-  // 👋 Saudação com voz bilíngue
-  useEffect(() => {
-    const saudacaoExecutada = sessionStorage.getItem("saudacaoResumeSkillExecutada");
-    const storedFirstName = sessionStorage.getItem("firstName");
-
-    if ("speechSynthesis" in window && !saudacaoExecutada) {
-      const hora = new Date().getHours();
-      const nome = storedFirstName?.split("@")[0]?.replace(/^./, (c) => c.toUpperCase()) || "visitante";
-
-      let saudacaoPt = `Você chegou na página de resumo das minhas habilidades. Aqui você verá de forma compacta toda a trajetória técnica de André Pereira. Explore com atenção, ${nome}.`;
-      let saudacaoEn = `Welcome to the summary page of my skills. Here you will quickly understand the technical journey of André Pereira. Explore carefully, ${nome}.`;
-
-      if (hora >= 5 && hora < 12) {
-        saudacaoPt = `Bom dia! ${saudacaoPt}`;
-        saudacaoEn = `Good morning! ${saudacaoEn}`;
-      } else if (hora >= 12 && hora < 18) {
-        saudacaoPt = `Boa tarde! ${saudacaoPt}`;
-        saudacaoEn = `Good afternoon! ${saudacaoEn}`;
-      } else {
-        saudacaoPt = `Boa noite! ${saudacaoPt}`;
-        saudacaoEn = `Good evening! ${saudacaoEn}`;
-      }
-
-      const utterPt = new SpeechSynthesisUtterance(saudacaoPt);
-      utterPt.lang = "pt-BR";
-      utterPt.rate = 0.95;
-      utterPt.pitch = 1.1;
-
-      const utterEn = new SpeechSynthesisUtterance(saudacaoEn);
-      utterEn.lang = "en-US";
-      utterEn.rate = 1.0;
-      utterEn.pitch = 1.0;
-
-      window.speechSynthesis.speak(utterPt);
-      window.speechSynthesis.speak(utterEn);
-      sessionStorage.setItem("saudacaoResumeSkillExecutada", "true");
-    }
-  }, []);
 
   // 🔥 Nome do usuário
   useEffect(() => {

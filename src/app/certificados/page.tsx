@@ -7,36 +7,10 @@ import { motion } from "framer-motion";
 import Slider from "react-slick";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useAudio } from "@/app/contexts/AudioProvider";
+
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-const audioMap: Record<string, string> = {
-  "oracle-oci": "/media/audios/profissional/amazing-grace.mp3",
-  "nse1": "/media/audios/profissional/who-am-i.mp3",
-  "nse2": "/media/audios/profissional/stand-by-me.mp3",
-  "ccna": "/media/audios/profissional/goodness-of-god.mp3",
-  "malware": "/media/audios/profissional/city-of-god.mp3",
-  "ethical-hacker": "/media/audios/profissional/dont-cry-daddy.mp3",
-  "nivelamento-hackers": "/media/audios/profissional/bailando.mp3",
-  "pentest": "/media/audios/profissional/in-the-ghetto.mp3",
-  "mitre": "/media/audios/profissional/sweet-caroline.mp3",
-  "securety": "/media/audios/profissional/this-body-of-mine.mp3",
-  "multicloud": "/media/audios/profissional/a-thousand-years.mp3",
-  "politica-ciber": "/media/audios/profissional/oceans-where-feet-may-fail.mp3",
-  "mikrotik": "/media/audios/profissional/when-i-get-where-im-going.mp3",
-  "seguranca-digital": "/media/audios/profissional/baby-what-you-want-me-to-do.mp3",
-  "bt-fdn": "/media/audios/profissional/hallelujah.mp3",
-  "bt-fdn-a": "/media/audios/profissional/sing-me-back-home.mp3",
-  "bt-tc": "/media/audios/profissional/riding-home-to-you.mp3",
-  "bt-tc-a": "/media/audios/profissional/relaxing-country.mp3",
-  "mainframe": "/media/audios/profissional/livin-on-love.mp3",
-  "fundamentos": "/media/audios/profissional/youve-lost-that-lovin-feelin.mp3",
-  "storage": "/media/audios/profissional/home.mp3",
-  "mba-gestao": "/media/audios/profissional/hungry-eyes.mp3",
-  "diploma": "/media/audios/profissional/always-on-my-mind.mp3",
-};
 
 const minhasCertificacoes = [
   { id: 'oracle-oci', src: '/media/photos/certificados/Certificado-Oracle-OCI.webp' },
@@ -49,6 +23,7 @@ const minhasCertificacoes = [
   { id: 'pentest', src: '/media/photos/certificados/Certificado-Introdução-Pentest.webp' },
   { id: 'mitre', src: '/media/photos/certificados/Certificado-MITRE-ATT&CK.webp'},
   { id: 'securety', src: '/media/photos/certificados/Certificado-Information-Securety-Foundation.webp'},
+  { id: 'blueteam', src: '/media/photos/certificados/certi-blue-team.png'},
   { id: 'multicloud', src: '/media/photos/certificados/Certificado-MultiCloud.webp' },
   { id: 'politica-ciber', src: '/media/photos/certificados/Certificado-Política-Cibersegurança.webp' },
   { id: 'mikrotik', src: '/media/photos/certificados/Certificado-Mikrotik.webp' },
@@ -69,24 +44,7 @@ export default function Certificacoes() {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
-  const { updateAudioSource, toggleAudio } = useAudio();
 
-useEffect(() => {
-  const certAtual = minhasCertificacoes[currentSlide];
-  const audioSrc = audioMap[certAtual?.id];
-
-  if (audioSrc) {
-    updateAudioSource(audioSrc);
-
-    // Se já estiver tocando, força a troca automática da música
-    setTimeout(() => {
-      const audioEl = document.querySelector('audio');
-      if (audioEl) {
-        audioEl.play().catch(() => {});
-      }
-    }, 200);
-  }
-}, [currentSlide]);
 
 
   const settings = {

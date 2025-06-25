@@ -58,38 +58,6 @@ export default function LoginPage() {
     }
   };
 
-  const handleInputFocus = () => {
-    const hora = new Date().getHours();
-
-    let saudacaoPt = "Olá! Seja bem-vindo à página de login. Entre com seu e-mail corporativo para receber o token de acesso.";
-    let saudacaoEn = "Hello! Welcome to the login page. Enter your corporate email to receive your access token.";
-
-    if (hora >= 5 && hora < 12) {
-      saudacaoPt = "Bom dia! " + saudacaoPt;
-      saudacaoEn = "Good morning! " + saudacaoEn;
-    } else if (hora >= 12 && hora < 18) {
-      saudacaoPt = "Boa tarde! " + saudacaoPt;
-      saudacaoEn = "Good afternoon! " + saudacaoEn;
-    } else {
-      saudacaoPt = "Boa noite! " + saudacaoPt;
-      saudacaoEn = "Good evening! " + saudacaoEn;
-    }
-
-    const utterPt = new SpeechSynthesisUtterance(saudacaoPt);
-    utterPt.lang = "pt-BR";
-    utterPt.rate = 0.98;
-    utterPt.pitch = 1.1;
-
-    const utterEn = new SpeechSynthesisUtterance(saudacaoEn);
-    utterEn.lang = "en-US";
-    utterEn.rate = 1.0;
-    utterEn.pitch = 1.0;
-
-    if (speechSynthesis) {
-      speechSynthesis.speak(utterPt);
-      speechSynthesis.speak(utterEn);
-    }
-  };
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -146,7 +114,6 @@ export default function LoginPage() {
           placeholder="Seu e-mail corporativo"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          onFocus={handleInputFocus}
           className="w-full p-2 mb-6 text-white rounded border border-zinc-600 focus:outline-none bg-transparent"
         />
 

@@ -4,37 +4,13 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { useAudio } from "@/app/contexts/AudioProvider";
 import { useIdioma } from "@/app/components/idioma/IdiomaContext";
 import textos from "@/app/profissional/texto_profissional";
 import "@/app/backgrounds/backgrounds.css";
 
-const audioMap = {
-  azzatelecom2024: "/media/audios/profissional/amazing-grace.mp3",
-  cti2022: "/media/audios/profissional/if-i-got-jesus.mp3",
-  embratel2014: "/media/audios/profissional/home.mp3",
-  tivit2011: "/media/audios/profissional/gods-country.mp3",
-  interchange2006: "/media/audios/profissional/when-i-get-where-im-going.mp3",
-  telecom2004: "/media/audios/profissional/relaxing-country.mp3",
-  multinacional2003: "/media/audios/profissional/baby-what-you-want-me-to-do.mp3",
-  Manutencao2002: "/media/audios/profissional/hallelujah.mp3",
-  suporte2001: "/media/audios/profissional/sing-me-back-home.mp3",
-  porteiro2001: "/media/audios/profissional/hungry-eyes.mp3",
-  balaoinformatica2000: "/media/audios/profissional/riding-home-to-you.mp3",
-  clt1997: "/media/audios/profissional/kenny-rogers.mp3",
-  ensinar1995: "/media/audios/profissional/this-body-of-mine.mp3",
-  tecnologia1993: "/media/audios/profissional/always-on-my-mind.mp3",
-  onibus1990: "/media/audios/profissional/just-breathe.mp3",
-  samelo1989: "/media/audios/profissional/livin-on-love.mp3",
-  quartel1988: "/media/audios/profissional/hes-my-brother.mp3",
-  futebol1985: "/media/audios/profissional/i-trust-in-jesus.mp3",
-  placidio1984: "/media/audios/profissional/youve-lost-that-lovin-feelin.mp3",
-  fixotec1982: "/media/audios/profissional/sweet-caroline.mp3",
-};
 
 export default function ProfissionalPage() {
   const { idioma } = useIdioma();
-  const { updateAudioSource, toggleAudio } = useAudio();
   const [temaProfissional, setTemaProfissional] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [emailAutorizado, setEmailAutorizado] = useState(false);
@@ -45,20 +21,6 @@ export default function ProfissionalPage() {
   // 👉 QUANDO CLICAR NO CARD → TOCA A MÚSICA
   const handleCardClick = (id: string) => {
       setTemaProfissional(id);
-      const trilha = audioMap[id as keyof typeof audioMap];
-
-      if (trilha) {
-        updateAudioSource(trilha);
-
-        setTimeout(() => {
-          const audio = document.querySelector("audio");
-          if (audio && audio.paused) {
-            audio.play().catch((e) => {
-              console.error("🚨 Erro ao tentar tocar o áudio:", e);
-            });
-          }
-        }, 100);
-      }
   };
 
 

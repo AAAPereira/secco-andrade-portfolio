@@ -100,15 +100,8 @@ export default function SobrePage() {
 
   // Conteúdo Principal da Página Sobre
   return (
-    // Grid principal para o layout de 2 colunas no desktop e 1 coluna em mobile
-    // Adapta-se à largura do main do LayoutWrapper.
-    // Adicionado `overflow-hidden` para garantir que o conteúdo não cause scroll horizontal no nível da página.
-    <div className="grid grid-cols-2 md:grid-cols-12 gap-6"> {/* max-w-5xl para controlar a largura máxima e centralizar */}
 
-      {/* Seção da Imagem (Coluna Esquerda no Desktop) */}
-      {/* Em mobile, ocupa a largura total (`col-span-1`). Em telas grandes (`lg:col-span-4`),
-          ocupa 4 das 12 colunas. Usa flexbox para centralizar a imagem dentro da sua coluna.
-          Adicionado `relative z-20` para garantir que a imagem fique sobreposta. */}
+    <div className="grid grid-cols-2 md:grid-cols-12 gap-6">
       <div className="lg:col-span-4 mt-12 z-50 w-full flex flex-col justify-center items-center">
         <Image
           src="/media/photos/andre-pereira.webp"
@@ -117,14 +110,10 @@ export default function SobrePage() {
           height={0}
           sizes="100vw"
           priority
-          // Tamanhos responsivos para a imagem do perfil
           className="w-16 md:w-24 lg:w-40 h-auto"
         />
       </div>
 
-      {/* Seção do Texto (Coluna Direita no Desktop) */}
-      {/* Em mobile, ocupa a largura total (`col-span-1`). Em telas grandes (`lg:col-span-8`),
-          ocupa 8 das 12 colunas restantes. Adicionado `relative z-10` para a camada. */}
       <div className="lg:col-span-5 mt-6 w-full flex flex-col justify-center items-center">
         {idioma === "pt" ? (
           <p>
@@ -165,11 +154,6 @@ export default function SobrePage() {
         )}
       </div>
 
-      {/* Seção de Certificados (Ocupa a linha toda, abaixo da imagem e texto) */}
-      {/* `col-span-full` faz com que ocupe todas as 12 colunas em qualquer breakpoint. */}
-      {/* `mt-8` para espaçamento superior. `text-center` para o título.
-          ADICIONADO `lg:mt-[-4rem]` para criar a sobreposição no desktop.
-          Ajuste o valor `-4rem` (-64px) para o quanto você quer que a imagem "pise" na borda. */}
       <div className="col-span-full mt-8 lg:mt-[-6rem] space-y-6 max-w-full overflow-hidden">
         <h2 className="text-2xl font-bold text-theme-primary mb-4 text-center">Certificados</h2>
         <Slider {...settings}>

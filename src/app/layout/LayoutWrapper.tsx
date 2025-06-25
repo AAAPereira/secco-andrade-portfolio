@@ -46,9 +46,6 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
 
   const isPaginaProfissional = pathname === "/profissional";
 
-  // Controle de áudio
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-  const [isMuted, setIsMuted] = useState(false);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") || "theme-default";
@@ -57,12 +54,7 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
 
     const storedFirstName = sessionStorage.getItem("firstName");
     setFirstName(storedFirstName);
-
-    if (audioRef.current) {
-      audioRef.current.volume = 0.2;
-      isMuted ? audioRef.current.pause() : audioRef.current.play();
-    }
-  }, [pathname, isMuted]);
+  }, [pathname]);
 
   const toggleTheme = () => {
     const indexAtual = temas.indexOf(theme);
@@ -139,9 +131,7 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
           <button className="toggle-mode border-theme-primary" onClick={toggleTheme}>
             {(theme && modeIcons[theme]) || "🎨"}
           </button>
-          <button className="toggle-mode border-theme-primary" onClick={() => setIsMuted(!isMuted)}>
-            {isMuted ? "🔇" : "🔊"}
-          </button>
+
         </div>
 
         <div className="absolute bottom-6 w-full h-[2px] border-theme-primary bg-theme-primary"></div>
@@ -179,7 +169,6 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
       {/* CONTROLES DE NAVEGAÇÃO */}
       {!["/login", "/verificar-token", "/"].includes(pathname) && (
         <NavigationControls
-          showAudio={!["/", "/login", "/verificar-token"].includes(pathname)}
           showLanguage={!["/estatisticas"].includes(pathname)}
           next={proximaPagina}
           prev={paginaAnterior}

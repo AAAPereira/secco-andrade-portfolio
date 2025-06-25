@@ -51,10 +51,4 @@ export const AudioProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export const useAudio = () => {
-  const context = useContext(AudioContext);
-  if (!context) {
-    throw new Error("useAudio deve ser usado dentro de um AudioProvider");
-  }
-  return context;
-};
+
