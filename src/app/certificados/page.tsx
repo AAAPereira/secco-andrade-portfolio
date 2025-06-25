@@ -23,7 +23,7 @@ const minhasCertificacoes = [
   { id: 'pentest', src: '/media/photos/certificados/Certificado-Introdução-Pentest.webp' },
   { id: 'mitre', src: '/media/photos/certificados/Certificado-MITRE-ATT&CK.webp'},
   { id: 'securety', src: '/media/photos/certificados/Certificado-Information-Securety-Foundation.webp'},
-  { id: 'blueteam', src: '/media/photos/certificados/certi-blue-team.png'},
+  { id: 'blueteam', src: '/media/photos/certificados/certi-blue-team.webp'},
   { id: 'multicloud', src: '/media/photos/certificados/Certificado-MultiCloud.webp' },
   { id: 'politica-ciber', src: '/media/photos/certificados/Certificado-Política-Cibersegurança.webp' },
   { id: 'mikrotik', src: '/media/photos/certificados/Certificado-Mikrotik.webp' },
