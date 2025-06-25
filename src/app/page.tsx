@@ -85,16 +85,16 @@ export default function TermosPage() {
       {showAudioModal && (
         <div className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center">
           <div className="bg-zinc-900 text-white border border-theme-primary p-6 rounded-lg max-w-md text-center">
-            <h2 className="text-xl font-bold mb-4 text-yellow-400">🔊 Alerta Importante</h2>
+            <h2 className="text-xl font-bold mb-4 text-yellow-400">🚀🕵️ Obrigado Recrutador</h2>
             <p className="mb-4">
-              Este site possui trilhas sonoras e saudações em áudio.
-              Para uma melhor experiência, utilize fones de ouvido ou mantenha o som do seu dispositivo no mudo se preferir evitar sons.
+              Este site possui informações relevantes de todas as empresas que o Andre Pereira trabalhou na area de tecnologia.
+              Para uma experiência mais ampla, navegue em todas as paginas e espero que o conteúdo ajude você na tomada de decisão.
             </p>
             <button
               onClick={handleEntendi}
               className="px-4 py-2 bg-theme-button rounded text-white hover:brightness-125 button-theme"
             >
-              Estou Ciente!
+              FECHAR!
             </button>
           </div>
         </div>
