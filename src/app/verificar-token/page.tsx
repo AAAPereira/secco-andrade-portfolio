@@ -65,6 +65,14 @@ export default function VerificarTokenPage() {
 
       const firstName = email.split("@")[0].split(/[._]/)[0];
       sessionStorage.setItem("firstName", firstName.charAt(0).toUpperCase() + firstName.slice(1));
+
+      // ✅ ENVIA E-MAIL AO LOGAR
+      await fetch("/api/enviar-login", {
+         method: "POST",
+         headers: { "Content-Type": "application/json" },
+         body: JSON.stringify({ email }),
+      });
+
       router.push("/sobre");
     } catch (err: any) {
       alert("Erro: " + err.message);
