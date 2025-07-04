@@ -10,8 +10,77 @@ export async function POST(req: NextRequest) {
   const emailNormalizado = email.toLowerCase().trim();
   const dominio = emailNormalizado.split("@")[1];
 
-  const blocosProibidos = ["gmail.com", "hotmail.com", "yahoo.com", "outlook.com"];
-  const excecoesPermitidas = ["fernandre6973@gmail.com", "andrade_pereira@hotmail.com"];
+  const blocosProibidos = [
+    // INTERNACIONAIS
+    "gmail.com",
+    "yahoo.com",
+    "hotmail.com",
+    "outlook.com",
+    "msn.com",
+    "live.com",
+    "aol.com",
+    "icloud.com",
+    "protonmail.com",
+    "zoho.com",
+    "mail.com",
+    "gmx.com",
+    "inbox.com",
+    "me.com",
+    "yandex.com",
+    "fastmail.com",
+    "tutanota.com",
+    "hushmail.com",
+    "pm.me",
+
+    // BRASILEIROS — COM E .COM.BR
+    "uol.com",
+    "uol.com.br",
+    "bol.com",
+    "bol.com.br",
+    "terra.com",
+    "terra.com.br",
+    "ig.com",
+    "ig.com.br",
+    "zipmail.com",
+    "zipmail.com.br",
+    "globo.com",
+    "globo.com.br",
+    "oi.com",
+    "oi.com.br",
+    "r7.com",
+    "r7.com.br",
+    "pop.com",
+    "pop.com.br",
+    "ibest.com",
+    "ibest.com.br",
+    "folha.com",
+    "folha.com.br",
+    "superig.com",
+    "superig.com.br",
+    "brturbo.com",
+    "brturbo.com.br",
+    "itelefonica.com",
+    "itelefonica.com.br",
+    "igmail.com",
+    "igmail.com.br",
+
+    // TEMPORÁRIOS / SPAM
+    "10minutemail.com",
+    "tempmail.com",
+    "guerrillamail.com",
+    "mailinator.com",
+    "dispostable.com",
+    "yopmail.com",
+    "trashmail.com",
+    "fakeinbox.com",
+    "maildrop.cc",
+    "getnada.com"
+  ];
+
+  const excecoesPermitidas = [
+    "fernandre6973@gmail.com",
+    "andrade_pereira@hotmail.com"
+  ];
 
   const ehDominioProibido = blocosProibidos.includes(dominio);
   const ehExcecao = excecoesPermitidas.includes(emailNormalizado);
