@@ -7,18 +7,23 @@ import nodemailer from "nodemailer";
 export async function POST(req: NextRequest) {
   const { email } = await req.json();
 
-  const allowed = ["fernandre6973@gmail.com", "andrade_pereira@hotmail.com"];
-  if (!allowed.includes(email.toLowerCase().trim())) {
+  const emailNormalizado = email.toLowerCase().trim();
+  const dominio = emailNormalizado.split("@")[1];
+
+  const blocosProibidos = ["gmail.com", "hotmail.com", "yahoo.com", "outlook.com"];
+  const excecoesPermitidas = ["fernandre6973@gmail.com", "andrade_pereira@hotmail.com"];
+
+  const ehDominioProibido = blocosProibidos.includes(dominio);
+  const ehExcecao = excecoesPermitidas.includes(emailNormalizado);
+
+  if (ehDominioProibido && !ehExcecao) {
     return NextResponse.json({ error: "E-mail não autorizado." }, { status: 403 });
   }
 
   const token = Math.floor(100000 + Math.random() * 900000).toString();
   const expiresAt = Date.now() + 1 * 60 * 1000; // 1 minuto
 
-  await kv.set(`token:${email}`, JSON.stringify({ token, expiresAt }), { ex: 300 });
-
-  console.log("GMAIL_USER:", process.env.GMAIL_USER);
-  console.log("GMAIL_PASS:", process.env.GMAIL_PASS);
+  await kv.set(`token:${emailNormalizado}`, JSON.stringify({ token, expiresAt }), { ex: 300 });
 
   const transporter = nodemailer.createTransport({
     service: "gmail",

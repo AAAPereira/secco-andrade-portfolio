@@ -15,18 +15,8 @@ export default function LoginPage() {
   const [emailEnviado, setEmailEnviado] = useState(false);
   const router = useRouter();
 
-  const allowedEmails = [
-    "fernandre6973@gmail.com",
-    "andrade_pereira@hotmail.com",
-  ];
-
   const enviarCodigo = async () => {
     const emailTrimmed = email.trim().toLowerCase();
-
-    if (!allowedEmails.includes(emailTrimmed)) {
-      setError("⛔ E-mail não autorizado. Acesso permitido somente a e-mails cadastrados.");
-      return;
-    }
 
     setError("");
     setSuccessMessage("");
@@ -58,7 +48,6 @@ export default function LoginPage() {
     }
   };
 
-
   useEffect(() => {
     const timeout = setTimeout(() => {
       setLoading(false);
@@ -76,18 +65,20 @@ export default function LoginPage() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <Image src="/media/photos/icone-security.webp"
-            alt="Logo da Segurança"
-            width={0}
-            height={0}
-            sizes="100vw"
-            priority
-            className="w-[133px] md:w-[266px] lg:w-[400px] mx-auto mb-4 animate-pulse logo-neon"
-            style={{ height: "auto", filter: "drop-shadow(var(--logo-glow))" }} />
-          <h1 className="text-xl text-theme-primary font-bold">
-            Carregando Página Login...
-          </h1>
-        </motion.div>
+            <Image
+              src="/media/photos/icone-security.webp"
+              alt="Logo da Segurança"
+              width={0}
+              height={0}
+              sizes="100vw"
+              priority
+              className="w-[133px] md:w-[266px] lg:w-[400px] mx-auto mb-4 animate-pulse logo-neon"
+              style={{ height: "auto", filter: "drop-shadow(var(--logo-glow))" }}
+            />
+            <h1 className="text-xl text-theme-primary font-bold">
+              Carregando Página Login...
+            </h1>
+          </motion.div>
         </div>
       </div>
     );
