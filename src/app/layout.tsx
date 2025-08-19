@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import "@/app/backgrounds/backgrounds.css";
 import LayoutWrapper from "@/app/layout/LayoutWrapper";
 import { IdiomaProvider } from "@/app/components/idioma/IdiomaContext";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 
 export const metadata: Metadata = {
@@ -22,6 +23,7 @@ export default function RootLayout({
       <body className="overflow-x-hidden" suppressHydrationWarning={true}>
         <IdiomaProvider>
             <LayoutWrapper>{children}</LayoutWrapper>
+            <SpeedInsights/>
         </IdiomaProvider>
       </body>
     </html>

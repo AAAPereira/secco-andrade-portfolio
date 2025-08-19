@@ -39,3 +39,5 @@ build
 !.yarn/versions
 
 .vercel
+
+.env*.local
