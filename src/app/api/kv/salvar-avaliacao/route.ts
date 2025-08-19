@@ -6,6 +6,10 @@ import { appendFile, access, writeFile } from 'fs/promises';
 import { constants } from 'fs';
 import path from 'path';
 
+export const runtime = 'nodejs';
+import dns from 'node:dns';
+dns.setDefaultResultOrder('ipv4first');
+
 export async function POST(req: Request) {
   try {
     const data = await req.json();

@@ -17,6 +17,8 @@ const minhasCertificacoes = [
   { id: 'nse1', src: '/media/photos/certificados/Certificado-NSE1.webp' },
   { id: 'nse2', src: '/media/photos/certificados/Certificado-NSE2.webp' },
   { id: 'ccna', src: '/media/photos/certificados/Certificado-CURSO_CCNA.webp' },
+  { id: 'soc', src: '/media/photos/certificados/Certificado-imersao_SOC.webp' },
+  { id: 'soc', src: '/media/photos/certificados/Certificado-GRC_Seguranca_Cibernetica.webp' },
   { id: 'malware', src: '/media/photos/certificados/Certificado-Analise-de-Malware.webp' },
   { id: 'ethical-hacker', src: '/media/photos/certificados/Certificado-Ethical-Hacker.webp' },
   { id: 'nivelamento-hackers', src: '/media/photos/certificados/Certificado-Nivelamento-Hackers-do-Bem.webp' },

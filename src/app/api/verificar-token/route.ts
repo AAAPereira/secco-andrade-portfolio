@@ -2,6 +2,9 @@
 
 import { kv } from "@vercel/kv";
 import { NextRequest, NextResponse } from "next/server";
+export const runtime = 'nodejs';
+import dns from 'node:dns';
+dns.setDefaultResultOrder('ipv4first');
 
 export async function POST(req: NextRequest) {
   try {
