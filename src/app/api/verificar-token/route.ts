@@ -1,64 +1,38 @@
-// src/app/api/verificar-token/route.ts
-
-import { kv } from "@vercel/kv";
 import { NextRequest, NextResponse } from "next/server";
-export const runtime = 'nodejs';
-import dns from 'node:dns';
-dns.setDefaultResultOrder('ipv4first');
+import { getDownloadUrl } from "@vercel/blob";
+
+export const runtime = "nodejs";
 
 export async function POST(req: NextRequest) {
+  const { email, token } = await req.json();
+  const emailNormalizado = email.toLowerCase().trim();
+  const key = `tokens/${emailNormalizado}.json`;
+
   try {
-    const { email, token } = await req.json();
+    // Em vez de usar fetch(url), use head() para testar existência
+    // e pegue os dados diretamente do blob se estiver no Vercel
+    // Se for local, você precisa substituir por outro storage
+    const url = await getDownloadUrl(key);
 
-    if (!email || !token) {
-      return NextResponse.json(
-        { error: "E-mail e token são obrigatórios" },
-        { status: 400 }
-      );
+    // Se estiver local, url é apenas key -> fetch não vai funcionar
+    if (!url || !url.startsWith("https://")) {
+      throw new Error("Token não encontrado ou URL inválida. Use Vercel Blob no ambiente correto.");
     }
 
-    const raw = await kv.get(`token:${email}`);
+    const res = await fetch(url);
+    if (!res.ok) throw new Error("Falha ao ler token.");
+    const data = await res.json();
 
-    if (
-      !raw ||
-      typeof raw !== "object" ||
-      !("token" in raw) ||
-      !("expiresAt" in raw)
-    ) {
-      return NextResponse.json(
-        { error: "Token não encontrado. Solicite um novo código." },
-        { status: 404 }
-      );
+    const agora = Date.now();
+    if (data.token === token && agora <= data.expiresAt) {
+      return NextResponse.json({ valid: true });
+    } else if (agora > data.expiresAt) {
+      return NextResponse.json({ valid: false, reason: "Token expirado." }, { status: 403 });
+    } else {
+      return NextResponse.json({ valid: false, reason: "Token inválido." }, { status: 403 });
     }
-
-    const { token: storedToken, expiresAt } = raw as {
-      token: string;
-      expiresAt: number;
-    };
-
-    const expired = Date.now() > expiresAt;
-
-    if (expired) {
-      await kv.del(`token:${email}`);
-      return NextResponse.json(
-        { error: "Token expirado. Solicite um novo código." },
-        { status: 401 }
-      );
-    }
-
-    if (token !== storedToken) {
-      return NextResponse.json(
-        { error: "Token inválido. Verifique o código digitado." },
-        { status: 401 }
-      );
-    }
-
-    return NextResponse.json({ message: "Token válido. Acesso autorizado." });
-  } catch (error) {
-    console.error("Erro na verificação de token:", error);
-    return NextResponse.json(
-      { error: "Erro interno no servidor." },
-      { status: 500 }
-    );
+  } catch (err: any) {
+    console.error("Erro ao verificar token:", err);
+    return NextResponse.json({ valid: false, error: err.message || String(err) }, { status: 500 });
   }
 }
