@@ -6,6 +6,7 @@ import "@/app/backgrounds/backgrounds.css";
 import LayoutWrapper from "@/app/layout/LayoutWrapper";
 import { IdiomaProvider } from "@/app/components/idioma/IdiomaContext";
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/next"
 
 
 export const metadata: Metadata = {
@@ -24,6 +25,7 @@ export default function RootLayout({
         <IdiomaProvider>
             <LayoutWrapper>{children}</LayoutWrapper>
             <SpeedInsights/>
+            <Analytics/>
         </IdiomaProvider>
       </body>
     </html>
