@@ -68,6 +68,10 @@ export async function POST(req: NextRequest) {
     text: `Olá! Seu código de acesso é: ${token}\n\nEste código expira em 1 minuto.`,
   };
 
+    console.log("GMAIL_USER:", process.env.GMAIL_USER);
+    console.log("GMAIL_PASS existe:", Boolean(process.env.GMAIL_PASS));
+    console.log("GMAIL_PASS tamanho:", process.env.GMAIL_PASS?.length);
+
   try {
     const info = await transporter.sendMail(mailOptions);
     console.log("E-mail enviado:", info);
