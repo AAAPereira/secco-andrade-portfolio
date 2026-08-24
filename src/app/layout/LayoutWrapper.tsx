@@ -80,7 +80,7 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
     "/sobre": "SOBRE O PROFISSIONAL - ANDRÉ PEREIRA",
     "/profissional": "EMPRESAS E APRENDIZADOS - ANDRÉ PEREIRA",
     "/resume-skill": "RESUMO DO SKILL - ANDRÉ PEREIRA",
-    "/skill-completo": "SKILL COMPLETO - ANDRÉ PEREIRA",
+    "/skill-completo": "COMPETÊNCIAS TÉCNICAS - ANDRÉ PEREIRA",
     "/certificados": "CERTIFICADOS DIGITAIS",
     "/timeline": "LINHA DO TEMPO - ANDRÉ PEREIRA",
     "/estatisticas": "GRAFICO ESTATÍSTICO - ANDRÉ PEREIRA",
@@ -144,7 +144,7 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
           <button onClick={() => router.push("/sobre")} className="btn-neon">Sobre</button>
           <button onClick={() => router.push("/profissional")} className="btn-neon">Profissional</button>
           <button onClick={() => router.push("/resume-skill")} className="btn-neon">Skill Resumido</button>
-          <button onClick={() => router.push("/skill-completo")} className="btn-neon">Skill Completo</button>
+          <button onClick={() => router.push("/skill-completo")} className="btn-neon">Competências Técnicas</button>
           <button onClick={() => router.push("/timeline")} className="btn-neon">Timeline</button>
           <button onClick={() => router.push("/estatisticas")} className="btn-neon">Estatísticas</button>
           <button onClick={() => router.push("/visao-macro")} className="btn-neon">Visão Macro</button>
@@ -185,7 +185,7 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
 
       {/* FOOTER */}
       <footer className="h-14 border-t-2 border-theme-primary text-center text-sm flex items-center justify-center relative">
-        CRIADO POR IA - SECCO&ANDRADE v.2
+        CREATED BY - SECCO&ANDRADE v.3
         {firstName && !["/avaliacao-site", "/", "/sobre"].includes(pathname) && (
           <div className="absolute right-4 top-3 flex gap-3 items-center">
             <span className="text-theme-accent font-semibold text-sm">Olá {firstName}</span>

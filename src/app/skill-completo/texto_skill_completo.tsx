@@ -239,5 +239,39 @@ export const detailedSkillsData: DetailedSkillItem[] = [
         },
       },
     },
+    {
+        ano: "TELECOM_4",
+        titulo: "ARQUITETURA INTEGRADA DE SERVIÇOS - PROJETO FUMEC",
+
+        tecnologias: "✔️ Proxmox, ✔️ Windows Server, ✔️ Linux, ✔️ 4 Controladores de Domínio Active Directory, ✔️ Trust entre domínios, ✔️ DNS, ✔️ LDAP, ✔️ FreeRADIUS, ✔️ NTP, ✔️ Zabbix, ✔️ Grafana, ✔️ Integração com roteadores, switches e OLTs.",
+
+        habilidades: "✔️ Implantação e organização de uma infraestrutura composta por 19 servidores, ✔️ Estruturação de serviços Windows e Linux em ambiente virtualizado com Proxmox, ✔️ Implantação de quatro Controladores de Domínio e integração entre diferentes domínios por meio de relações de confiança, ✔️ Estruturação dos serviços de identidade e autenticação utilizando Active Directory, LDAP e FreeRADIUS, ✔️ Centralização do login e autenticação de equipamentos de rede, ✔️ Padronização e sincronização de horário entre servidores, roteadores, switches e OLTs por meio de NTP, ✔️ Integração entre infraestrutura de servidores e equipamentos de Telecom, ✔️ Monitoramento e observabilidade utilizando Zabbix e Grafana, ✔️ Troubleshooting entre diferentes camadas do ambiente e análise de causa raiz.",
+
+        impacto: "✔️ Construção de uma arquitetura integrada para sustentar os serviços do Projeto FUMEC, ✔️ Maior organização e centralização dos serviços de identidade e autenticação, ✔️ Interoperabilidade entre diferentes domínios Active Directory, ✔️ Padronização do horário entre servidores e equipamentos de rede, essencial para autenticação, logs, auditoria e troubleshooting, ✔️ Centralização do acesso aos equipamentos por LDAP e RADIUS, ✔️ Maior visibilidade operacional sobre os 19 servidores por meio do AD Replication Mission Control, Zabbix e Grafana, ✔️ Integração entre servidores, identidade, autenticação, monitoramento e infraestrutura de Telecom em um único ecossistema operacional.",
+
+        translations: {
+            PT: {
+                ano: "TELECOM_4",
+                titulo: "ARQUITETURA INTEGRADA DE SERVIÇOS - PROJETO FUMEC",
+
+                tecnologias: "✔️ Proxmox, ✔️ Windows Server, ✔️ Linux, ✔️ 4 Controladores de Domínio Active Directory, ✔️ Trust entre domínios, ✔️ DNS, ✔️ LDAP, ✔️ FreeRADIUS, ✔️ NTP, ✔️ Zabbix, ✔️ Grafana, ✔️ Integração com roteadores, switches e OLTs.",
+
+                habilidades: "✔️ Implantação e organização de uma infraestrutura composta por 19 servidores, ✔️ Estruturação de serviços Windows e Linux em ambiente virtualizado com Proxmox, ✔️ Implantação de quatro Controladores de Domínio e integração entre diferentes domínios por meio de relações de confiança, ✔️ Estruturação dos serviços de identidade e autenticação utilizando Active Directory, LDAP e FreeRADIUS, ✔️ Centralização do login e autenticação de equipamentos de rede, ✔️ Padronização e sincronização de horário entre servidores, roteadores, switches e OLTs por meio de NTP, ✔️ Integração entre infraestrutura de servidores e equipamentos de Telecom, ✔️ Monitoramento e observabilidade utilizando Zabbix e Grafana, ✔️ Troubleshooting entre diferentes camadas do ambiente e análise de causa raiz.",
+
+                impacto: "✔️ Construção de uma arquitetura integrada para sustentar os serviços do Projeto FUMEC, ✔️ Maior organização e centralização dos serviços de identidade e autenticação, ✔️ Interoperabilidade entre diferentes domínios Active Directory, ✔️ Padronização do horário entre servidores e equipamentos de rede, essencial para autenticação, logs, auditoria e troubleshooting, ✔️ Centralização do acesso aos equipamentos por LDAP e RADIUS, ✔️ Maior visibilidade operacional sobre os 19 servidores por meio do AD Replication Mission Control, Zabbix e Grafana, ✔️ Integração entre servidores, identidade, autenticação, monitoramento e infraestrutura de Telecom em um único ecossistema operacional.",
+            },
+
+            EN: {
+                ano: "TELECOM_4",
+                titulo: "INTEGRATED SERVICES ARCHITECTURE - FUMEC PROJECT",
+
+                tecnologias: "✔️ Proxmox, ✔️ Windows Server, ✔️ Linux, ✔️ 4 Active Directory Domain Controllers, ✔️ Inter-domain trust relationships, ✔️ DNS, ✔️ LDAP, ✔️ FreeRADIUS, ✔️ NTP, ✔️ Zabbix, ✔️ Grafana, ✔️ Integration with routers, switches and OLTs.",
+
+                habilidades: "✔️ Deployment and organization of an infrastructure composed of 19 servers, ✔️ Implementation of Windows and Linux services in a Proxmox virtualized environment, ✔️ Deployment of four Domain Controllers and integration between different domains through trust relationships, ✔️ Implementation of identity and authentication services using Active Directory, LDAP and FreeRADIUS, ✔️ Centralized login and authentication for network equipment, ✔️ Time synchronization across servers, routers, switches and OLTs using NTP, ✔️ Integration between server infrastructure and Telecom equipment, ✔️ Monitoring and observability using Zabbix and Grafana, ✔️ Troubleshooting across different infrastructure layers and root-cause analysis.",
+
+                impacto: "✔️ Development of an integrated architecture supporting FUMEC Project services, ✔️ Greater organization and centralization of identity and authentication services, ✔️ Interoperability between different Active Directory domains, ✔️ Consistent time synchronization across servers and network equipment, supporting authentication, logging, auditing and troubleshooting, ✔️ Centralized equipment access through LDAP and RADIUS, ✔️ Greater operational visibility across 19 servers through the AD Replication Mission Control, Zabbix and Grafana, ✔️ Integration of servers, identity, authentication, monitoring and Telecom infrastructure into a unified operational ecosystem.",
+            },
+        },
+    },
 ];
 

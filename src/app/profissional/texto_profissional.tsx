@@ -1,7 +1,99 @@
         'use client';
 
         const textos = {
-          pt: [
+            pt: [
+                {
+                    id: "3corp2025",
+                    tituloCard: "ANO 2025",
+                    titulo: "Projeto FUMEC - Infraestrutura, Redes e Telecom | 2025 - Atual",
+                    imagemCard: "/media/photos/profissional/3corp/logo_3corp.webp",
+                    imagens: [
+                        "/media/photos/profissional/3corp/3corp_servidores.webp",
+                        "/media/photos/profissional/3corp/3corp_roteadores.webp",
+                        "/media/photos/profissional/3corp/3corp_empresa.webp"
+                    ],
+                    texto: (
+                        <>
+                            <p className="mb-4">
+                                Em setembro de 2025, iniciei minha atuação na <strong>3CORP</strong> como{" "}
+                                <strong>Analista de Redes Sênior</strong>, contratado para atuar no{" "}
+                                <strong>Projeto FUMEC</strong>. Desde então, venho trabalhando na recuperação,
+                                implantação, integração e evolução de um ambiente que reúne{" "}
+                                <strong>Telecom, Redes e Infraestrutura de TI</strong>, com foco em
+                                disponibilidade, organização, segurança e continuidade operacional.
+                            </p>
+
+                            <p className="mb-4">
+                                Ao assumir o projeto, uma das primeiras etapas foi compreender o ambiente
+                                existente, identificar pendências técnicas e estabelecer uma visão integrada
+                                da infraestrutura. A atuação passou a envolver desde os serviços de rede e
+                                servidores até os elementos de Telecom que sustentam a conectividade do
+                                ambiente, exigindo análise técnica, troubleshooting e acompanhamento das
+                                diferentes camadas da solução.
+                            </p>
+
+                            <p className="mb-4">
+                                Na infraestrutura de Telecom, atuo em um{" "}
+                                <strong>anel óptico Huawei composto por 8 pontos estratégicos</strong>,
+                                envolvendo tecnologias e equipamentos como{" "}
+                                <strong>DWDM, roteadores, OLTs e ONUs</strong>. O trabalho inclui ambientes
+                                Layer 2 e Layer 3, conectividade, roteamento, redundância e troubleshooting
+                                de backbone, além da investigação de falhas e análise de causa raiz em
+                                incidentes que afetam a comunicação entre os diferentes pontos da rede.
+                            </p>
+
+                            <p className="mb-4">
+                                Paralelamente, participei da construção e organização da infraestrutura de
+                                servidores que sustenta os serviços do projeto. O ambiente utiliza{" "}
+                                <strong>Proxmox</strong> como plataforma de virtualização, com servidores{" "}
+                                <strong>Linux e Windows</strong> e integração de serviços de identidade e
+                                autenticação utilizando <strong>Active Directory, LDAP e FreeRADIUS</strong>.
+                                Essa estrutura permitiu avançar também na centralização da autenticação de
+                                equipamentos de rede e na organização dos serviços necessários à operação.
+                            </p>
+
+                            <p className="mb-4">
+                                Outra frente importante foi a evolução do monitoramento e da observabilidade.
+                                Nesse contexto, desenvolvo e aprimoro o{" "}
+                                <strong>AD Replication Mission Control</strong>, utilizando{" "}
+                                <strong>Zabbix e Grafana</strong> para consolidar em uma única visão
+                                informações de saúde, disponibilidade de serviços, utilização de recursos
+                                e auditoria operacional de <strong>19 servidores</strong>. O objetivo é
+                                transformar informações técnicas dispersas em uma visão mais clara do
+                                ambiente, facilitando a identificação preventiva de problemas e o
+                                troubleshooting.
+                            </p>
+
+                            <p className="mb-4">
+                                Durante o projeto, também participei de atividades de recuperação e
+                                estabilização de elementos da infraestrutura de Telecom, incluindo
+                                gerenciamento de equipamentos DWDM e análise de incidentes de backbone.
+                                Essa atuação exige transitar entre infraestrutura física e óptica,
+                                equipamentos de rede, protocolos, servidores e ferramentas de monitoramento,
+                                sempre buscando identificar não apenas o sintoma, mas a{" "}
+                                <strong>causa raiz das falhas</strong>.
+                            </p>
+
+                            <p className="mb-4">
+                                A experiência na <strong>3CORP / Projeto FUMEC</strong> representa uma etapa
+                                importante da minha trajetória por reunir, em um único ambiente, conhecimentos
+                                construídos ao longo de anos em Redes, Telecom, servidores, segurança e
+                                monitoramento. Mais do que administrar tecnologias isoladas, minha atuação
+                                tem como objetivo <strong>integrar essas diferentes camadas</strong> para
+                                contribuir com um ambiente mais organizado, observável, resiliente e preparado
+                                para sustentar a operação.
+                            </p>
+
+                            <p className="mb-4">
+                                <strong>Principais tecnologias e competências:</strong> redes Layer 2 e
+                                Layer 3, backbone óptico, Huawei, DWDM, OLT, ONU, Proxmox, Linux, Windows,
+                                Active Directory, LDAP, FreeRADIUS, Zabbix, Grafana, troubleshooting,
+                                análise de causa raiz, monitoramento, observabilidade e integração de
+                                infraestrutura de TI e Telecom.
+                            </p>
+                        </>
+                    )
+                },
             {
               id: "azzatelecom2024",
               tituloCard: "ANO 2024",
@@ -489,6 +581,96 @@
             },
           ],
             en: [
+                {
+                    id: "3corp2025",
+                    tituloCard: "YEAR 2025",
+                    titulo: "FUMEC Project - Infrastructure, Networks and Telecom | 2025 - Present",
+                    imagemCard: "/media/photos/profissional/3corp/logo_3corp.webp",
+                    imagens: [
+                        "/media/photos/profissional/3corp/3corp_servidores.webp",
+                        "/media/photos/profissional/3corp/3corp_roteadores.webp",
+                        "/media/photos/profissional/3corp/3corp_empresa.webp"
+                    ],
+                    texto: (
+                        <>
+                            <p className="mb-4">
+                                In September 2025, I joined <strong>3CORP</strong> as a{" "}
+                                <strong>Senior Network Analyst</strong>, assigned to the{" "}
+                                <strong>FUMEC Project</strong>. Since then, I have been working on the
+                                recovery, implementation, integration, and evolution of an environment
+                                combining <strong>Telecom, Networking, and IT Infrastructure</strong>,
+                                with a focus on availability, organization, security, and operational
+                                continuity.
+                            </p>
+
+                            <p className="mb-4">
+                                One of my first responsibilities was to understand the existing environment,
+                                identify technical gaps, and establish an integrated view of the
+                                infrastructure. My work spans network services, servers, and the Telecom
+                                components supporting connectivity, requiring technical analysis,
+                                troubleshooting, and interaction across different layers of the solution.
+                            </p>
+
+                            <p className="mb-4">
+                                Within the Telecom infrastructure, I work with a{" "}
+                                <strong>Huawei optical ring consisting of 8 strategic points</strong>,
+                                involving technologies and equipment such as{" "}
+                                <strong>DWDM, routers, OLTs, and ONUs</strong>. My activities include
+                                Layer 2 and Layer 3 environments, connectivity, routing, redundancy,
+                                backbone troubleshooting, fault investigation, and root-cause analysis
+                                of incidents affecting communication across the network.
+                            </p>
+
+                            <p className="mb-4">
+                                In parallel, I participated in building and organizing the server
+                                infrastructure supporting the project. The environment uses{" "}
+                                <strong>Proxmox</strong> as its virtualization platform, with{" "}
+                                <strong>Linux and Windows</strong> servers and identity and authentication
+                                services integrated through{" "}
+                                <strong>Active Directory, LDAP, and FreeRADIUS</strong>. This architecture
+                                also supports centralized authentication for network equipment and better
+                                organization of the services required by the operation.
+                            </p>
+
+                            <p className="mb-4">
+                                Another important area has been the evolution of monitoring and
+                                observability. In this context, I develop and enhance the{" "}
+                                <strong>AD Replication Mission Control</strong>, using{" "}
+                                <strong>Zabbix and Grafana</strong> to consolidate health, service
+                                availability, resource utilization, and operational audit information
+                                from <strong>19 servers</strong>. The goal is to transform dispersed
+                                technical information into a clearer operational view, supporting
+                                proactive problem identification and troubleshooting.
+                            </p>
+
+                            <p className="mb-4">
+                                Throughout the project, I have also worked on the recovery and
+                                stabilization of Telecom infrastructure components, including DWDM
+                                management and backbone incident analysis. This work requires moving
+                                across physical and optical infrastructure, network equipment, protocols,
+                                servers, and monitoring tools, always seeking to identify not only the
+                                symptom but the <strong>root cause of failures</strong>.
+                            </p>
+
+                            <p className="mb-4">
+                                My experience at <strong>3CORP / FUMEC Project</strong> represents an
+                                important stage of my career because it brings together knowledge developed
+                                over many years in Networking, Telecom, servers, security, and monitoring.
+                                Rather than managing isolated technologies, my role is focused on{" "}
+                                <strong>integrating these different layers</strong> to contribute to a more
+                                organized, observable, resilient, and operationally prepared environment.
+                            </p>
+
+                            <p className="mb-4">
+                                <strong>Main technologies and competencies:</strong> Layer 2 and Layer 3
+                                networks, optical backbone, Huawei, DWDM, OLT, ONU, Proxmox, Linux,
+                                Windows, Active Directory, LDAP, FreeRADIUS, Zabbix, Grafana,
+                                troubleshooting, root-cause analysis, monitoring, observability, and
+                                integration of IT and Telecom infrastructure.
+                            </p>
+                        </>
+                    )
+                },
               {
               id: "azzatelecom2024",
               tituloCard: "YEAR 2024",

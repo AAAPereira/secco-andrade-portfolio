@@ -72,7 +72,7 @@ const SkillDisplay: React.FC = () => {
             className="w-[133px] md:w-[266px] lg:w-[400px] mx-auto mb-4 animate-pulse logo-neon"
             style={{ height: "auto", filter: "drop-shadow(var(--logo-glow))" }} />
 
-            <h1 className="text-xl text-theme-primary font-bold">Carregando Skill Completo...</h1>
+            <h1 className="text-xl text-theme-primary font-bold">Carregando Competências Técnicas...</h1>
           </motion.div>
         </div>
       </div>
@@ -113,14 +113,14 @@ const SkillDisplay: React.FC = () => {
 
         {/* Objeto 1: Coluna Esquerda */}
         {/* Em telas menores, ocupa 1 coluna (`col-span-1`). */}
-        <div className="col-span-4 mt-4">
-                <Image src="/media/photos/andrade-pereira.webp"
+        <div className="lg:col-span-4 z-50 w-full flex flex-col justify-start items-center pt-14 translate-y-4 lg:translate-x-12">
+                <Image src="/media/photos/modelos/modelo27.webp"
                 alt="Foto de André Pereira"
                 width={0}
                 height={0}
                 sizes="100vw"
                 priority
-                className="w-16 md:w-32 lg:w-60 h-auto"/>
+                className="w-44 md:w-60 lg:w-72 xl:w-79 h-auto object-contain"/>
         </div>
 
         {/* Objeto 2: Coluna Direita */}

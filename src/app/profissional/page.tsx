@@ -117,7 +117,7 @@ export default function ProfissionalPage() {
               {temas.filter(t => t.id === temaProfissional).map(t => (
                 <div key={t.id} className="flex flex-col gap-4">
                   <h2 className="text-3xl font-bold text-theme-accent text-center">{t.titulo}</h2>
-                  <div className="text-base text-justify leading-relaxed overflow-y-auto max-h-[65vh] px-2 custom-scroll">
+                  <div className="text-base text-justify leading-relaxed overflow-y-auto max-h-[62vh] px-2 custom-scroll">
                     {t.texto}
                   </div>
                 </div>

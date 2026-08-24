@@ -11,31 +11,6 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useIdioma } from "@/app/components/idioma/IdiomaContext"; // Certifique-se que o caminho está correto
 
-const certificados = [
-  '/media/photos/certificados/Certificado-Oracle-OCI.webp',
-  '/media/photos/certificados/Certificado-NSE1.webp',
-  '/media/photos/certificados/Certificado-NSE2.webp',
-  '/media/photos/certificados/Certificado-CURSO_CCNA.webp',
-  '/media/photos/certificados/Certificado-Analise-de-Malware.webp',
-  '/media/photos/certificados/Certificado-Ethical-Hacker.webp',
-  '/media/photos/certificados/Certificado-Nivelamento-Hackers-do-Bem.webp',
-  '/media/photos/certificados/Certificado-Introdução-Pentest.webp',
-  '/media/photos/certificados/Certificado-MITRE-ATT&CK.webp',
-  '/media/photos/certificados/Certificado-Information-Securety-Foundation.webp',
-  '/media/photos/certificados/Certificado-MultiCloud.webp',
-  '/media/photos/certificados/Certificado-Política-Cibersegurança.webp',
-  '/media/photos/certificados/Certificado-Mikrotik.webp',
-  '/media/photos/certificados/Certificado-Segurança-Digital.webp',
-  '/media/photos/certificados/Certificado-BT-ICT-FDN-Foundation.webp',
-  '/media/photos/certificados/Certificado-BT-ICT-FDN-Foundation_verso.webp',
-  '/media/photos/certificados/Certificado-BT-ICT-TC-Conceitos-e-Fundamentos.webp',
-  '/media/photos/certificados/Certificado-BT-ICT-TC-Conceitos-Fundamentos-verso.webp',
-  '/media/photos/certificados/Certificado-Arquitetura-Mainframe.webp',
-  '/media/photos/certificados/Certificado-Fundamentos.webp',
-  '/media/photos/certificados/Certificado-Praticas-Suporte-Storage.webp',
-  '/media/photos/certificados/Certificado-MBA-Gestao.webp',
-  '/media/photos/certificados/Certificado-Diploma-Bacharel.webp',
-];
 
 export default function SobrePage() {
   const { idioma } = useIdioma(); // Hook para gerenciar o idioma
@@ -101,81 +76,145 @@ export default function SobrePage() {
   // Conteúdo Principal da Página Sobre
   return (
 
-    <div className="grid grid-cols-2 md:grid-cols-12 gap-6">
-      <div className="lg:col-span-4 mt-12 z-50 w-full flex flex-col justify-center items-center">
+      <div className="grid grid-cols-2 md:grid-cols-12 gap-6 pt-8 lg:-translate-x-12">
+          <div className="lg:col-span-4 z-50 w-full flex flex-col justify-start items-center pt-16 translate-y-4 lg:translate-x-12">
         <Image
-          src="/media/photos/andre-pereira.webp"
+          src="/media/photos/modelos/modelo20.webp"
           alt="Foto de André Pereira"
           width={0}
           height={0}
           sizes="100vw"
           priority
-          className="w-16 md:w-24 lg:w-40 h-auto"
+          className="w-44 md:w-60 lg:w-72 xl:w-80 h-auto object-contain"
         />
       </div>
 
-      <div className="lg:col-span-5 mt-6 w-full flex flex-col justify-center items-center">
-        {idioma === "pt" ? (
-          <p>
-            André Pereira, 55 anos, residente em Campinas - SP. Casado e pai de dois filhos.
-            Profissional atuante na área de <strong>TELECOM e INFRAESTRUTURA</strong>, com mais
-            de <strong>15 anos de experiência</strong>.
-            <br />
-            <br />
-            Com amplo conhecimento técnico, domina cabeamento estruturado, redes LAN/WAN/WIFI,
-            switches Layer 2 e 3, entrega de portas seguras, servidores Windows e Linux,
-            segurança com firewall Fortinet, monitoramento por CFTV e protocolos de roteamento
-            como BGP, OSPF, EIGRP e RIP.
-            <br />
-            <br />
-            Possui certificações Fortinet NSE1, NSE2, Oracle OCI e diversos cursos na área de
-            segurança da informação com domínio de frameworks como NIST e MITRE ATT&CK. Seu
-            diferencial está no conhecimento prático e na constante atualização frente às
-            tendências e governança da área.
-          </p>
-        ) : (
-          <p>
-            André Pereira, 55 years old, lives in Campinas - SP, Brazil. Married and father of
-            two. Active professional in the <strong>TELECOM and INFRASTRUCTURE</strong> field with
-            over <strong>15 years of experience</strong>.
-            <br />
-            <br />
-            With broad technical expertise, he masters structured cabling, LAN/WAN/WIFI networks,
-            Layer 2 and 3 switches, secure port delivery, Windows and Linux servers, Fortinet
-            firewall security, CCTV monitoring, and routing protocols such as BGP, OSPF, EIGRP,
-            and RIP.
-            <br />
-            <br />
-            He holds certifications such as Fortinet NSE1, NSE2, Oracle OCI, and has completed
-            several cybersecurity courses, with proficiency in frameworks like NIST and MITRE
-            ATT&CK. His differential lies in practical knowledge and constant updating in line
-            with industry trends and governance.
-          </p>
-        )}
+          <div className="lg:col-span-8 mt-6 w-full flex flex-col justify-center items-center">
+              {idioma === "pt" ? (
+                  <div className="text-justify leading-[1.55] space-y-4 max-h-[620px] overflow-y-auto pr-4 lg:-translate-x-22"
+                      style={{
+                          scrollbarWidth: "thin",
+                          scrollbarColor: "#00d9ff transparent",
+                      }}>
+                      <p>
+                          Sou André Pereira, tenho 57 anos e resido em Campinas - SP. Sou casado com a Fernanda,
+                          pai de dois filhos e avô de cinco netos. Atuo há mais de{" "}
+                          <strong>25 anos nas áreas de TELECOM e INFRAESTRUTURA DE TI</strong>,
+                          construindo minha experiência em ambientes corporativos que envolvem
+                          conectividade, redes, servidores, segurança, monitoramento e continuidade
+                          dos serviços.
+                      </p>
+
+                      <p>
+                          Minha trajetória profissional reúne experiência em operação, implantação
+                          e sustentação de ambientes tecnológicos, passando por diferentes cenários
+                          de Telecom e Infraestrutura. Ao longo da carreira, atuei na administração
+                          e troubleshooting de redes e serviços, implantação de soluções,
+                          recuperação de falhas, análise de causa raiz e evolução de ambientes
+                          críticos, sempre buscando conciliar disponibilidade, segurança e
+                          estabilidade operacional.
+                      </p>
+
+                      <p>
+                          Atualmente participo do <strong>Projeto FUMEC</strong>, atuando na
+                          implantação e integração de infraestrutura de TI e Telecom. O ambiente
+                          reúne tecnologias como Proxmox, Linux e Windows, serviços de identidade
+                          e autenticação com Active Directory, LDAP e FreeRADIUS, além de recursos
+                          de rede, segurança e monitoramento. Nesse contexto, também desenvolvo e
+                          evoluo o <strong>AD Replication Mission Control</strong>, utilizando
+                          Zabbix e Grafana para consolidar informações de saúde, serviços,
+                          utilização de recursos e auditoria de 19 servidores. Minha atuação inclui
+                          ainda troubleshooting de backbone, análise de falhas e trabalhos
+                          relacionados à infraestrutura óptica e equipamentos de rede.
+                      </p>
+
+                      <p>
+                          Minha formação acadêmica inclui <strong>MBA em Gestão de Logística</strong>,
+                          concluído em 2009, <strong>Pós-Graduação em Gestão Empresarial</strong>,
+                          concluída em 2008, e <strong>Graduação em Administração
+                              (Análise de Sistemas)</strong>, concluída em 2005, todas pelas Faculdades
+                          Fleming COC. Essa formação complementa minha experiência técnica,
+                          agregando conhecimentos de gestão, processos e negócio à atuação em
+                          Telecom e Infraestrutura de TI.
+                      </p>
+
+                      <p>
+                          Minha base técnica inclui redes LAN e WAN, ambientes Layer 2 e Layer 3,
+                          roteamento, redundância e conectividade utilizando tecnologias como BGP,
+                          OSPF, MPLS, HSRP, VRRP e GLBP, além de servidores Windows e Linux,
+                          virtualização, segurança e observabilidade. Ao longo da carreira,
+                          mantenho também uma rotina contínua de capacitação profissional, com
+                          certificações Fortinet NSE1, NSE2 e Oracle OCI, além de estudos em
+                          segurança da informação, NIST, MITRE ATT&CK, governança e LGPD. Os
+                          principais certificados e comprovantes podem ser consultados na seção{" "}
+                          <strong>Certificados</strong> deste portfólio.
+                      </p>
+                  </div>
+              ) : (
+                      <div className="text-justify leading-[1.55] space-y-4 max-h-[620px] overflow-y-auto pr-4 lg:-translate-x-22"
+                          style={{
+                              scrollbarWidth: "thin",
+                              scrollbarColor: "#00d9ff transparent",
+                          }}>
+                      <p>
+                          I am André Pereira, 57 years old, based in Campinas, São Paulo, Brazil.
+                          I am married, a father of two, and a grandfather of five. I have more
+                          than <strong>25 years of experience in TELECOM and IT INFRASTRUCTURE</strong>,
+                          building my career in corporate environments involving connectivity,
+                          networks, servers, security, monitoring, and service continuity.
+                      </p>
+
+                      <p>
+                          My professional career combines operations, implementation, and support
+                          of technology environments across different Telecom and IT Infrastructure
+                          scenarios. Throughout my career, I have worked with network and service
+                          administration and troubleshooting, solution implementation, fault
+                          recovery, root-cause analysis, and the evolution of critical
+                          environments, always seeking to balance availability, security, and
+                          operational stability.
+                      </p>
+
+                      <p>
+                          I am currently involved in the <strong>FUMEC Project</strong>, working
+                          on the implementation and integration of IT and Telecom infrastructure.
+                          The environment combines technologies such as Proxmox, Linux, and
+                          Windows, identity and authentication services using Active Directory,
+                          LDAP, and FreeRADIUS, as well as networking, security, and monitoring
+                          resources. Within this environment, I also develop and enhance the{" "}
+                          <strong>AD Replication Mission Control</strong>, using Zabbix and Grafana
+                          to consolidate health, service, resource utilization, and audit
+                          information from 19 servers. My work also includes backbone
+                          troubleshooting, fault analysis, and activities involving optical
+                          infrastructure and network equipment.
+                      </p>
+
+                      <p>
+                          My academic background includes an <strong>MBA in Logistics
+                              Management</strong>, completed in 2009, a{" "}
+                          <strong>Postgraduate Degree in Business Management</strong>, completed
+                          in 2008, and a <strong>Degree in Business Administration
+                              (Systems Analysis)</strong>, completed in 2005, all from Faculdades
+                          Fleming COC. This academic background complements my technical
+                          experience by adding management, process, and business perspectives to
+                          my work in Telecom and IT Infrastructure.
+                      </p>
+
+                      <p>
+                          My technical background includes LAN and WAN networks, Layer 2 and
+                          Layer 3 environments, routing, redundancy, and connectivity using
+                          technologies such as BGP, OSPF, MPLS, HSRP, VRRP, and GLBP, as well as
+                          Windows and Linux servers, virtualization, security, and observability.
+                          Throughout my career, I have also maintained a continuous professional
+                          development path, including Fortinet NSE1, NSE2, and Oracle OCI
+                          certifications, along with studies in information security, NIST,
+                          MITRE ATT&CK, governance, and LGPD. My main certificates and supporting
+                          credentials are available in the <strong>Certificates</strong> section
+                          of this portfolio.
+                      </p>
+                  </div>
+              )}
       </div>
 
-      <div className="col-span-full mt-8 lg:mt-[-6rem] space-y-6 max-w-full overflow-hidden">
-        <h2 className="text-2xl font-bold text-theme-primary mb-4 text-center">Certificados</h2>
-        <Slider {...settings}>
-          {certificados.map((src, idx) => (
-            <div
-              key={idx}
-              onClick={() => router.push("/certificados")}
-              className="slick-slide-item cursor-pointer bg-gray-800 rounded-xl shadow-md border border-theme-primary hover:shadow-xl p-2" // Adicionado padding no item do slider
-            >
-              <Image
-                src={src}
-                alt={`Certificado ${idx + 1}`}
-                width={0}
-                height={0}
-                sizes="100vw"
-                priority
-                className="w-full h-auto object-contain rounded-xl mx-auto" // w-full e h-auto para responsividade
-              />
-            </div>
-          ))}
-        </Slider>
-      </div>
     </div>
   );
 }
