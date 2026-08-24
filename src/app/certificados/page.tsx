@@ -99,38 +99,40 @@ export default function Certificacoes() {
     <div className="flex flex-col items-center w-full p-4">
 
       {/* ✅ Imagem do André */}
-      <div className="lg:col-span-2 space-y-6">
-        <Image
-          src="/media/photos/andre-pereira-b.webp"
-          alt="Foto de André Pereira"
-          width={0}
-          height={0}
-          sizes="100vw"
-          priority
-          className="w-16 md:w-32 lg:w-48 mx-auto"
-        />
-      </div>
-
-      {/* ✅ Slider de Certificados */}
-      <div className="lg:col-span-1 space-y-6 lg:mt-[-23rem] max-w-7xl">
-        <Slider {...settings}>
-          {minhasCertificacoes.map((cert) => (
-            <div key={cert.id} className="p-0">
-              <div className="bg-zinc-900 rounded-xl border border-theme-primary p-2 shadow-lg">
-                <Image
-                  src={cert.src}
-                  alt={cert.id}
+          {/* ✅ Imagem do André - ATRÁS DOS CERTIFICADOS */}
+          <div className="relative lg:col-span-4 z-10 w-full flex flex-col justify-start items-center pt-2 translate-y-4 lg:translate-x-2 space-y-6">
+              <Image
+                  src="/media/photos/modelos/modelo23.webp"
+                  alt="Foto de André Pereira"
                   width={0}
                   height={0}
                   sizes="100vw"
                   priority
-                  className="w-[166px] md:w-[232px] lg:w-[500px] object-contain rounded-xl mx-auto"
-                />
-              </div>
-            </div>
-          ))}
-        </Slider>
+                  className="w-44 md:w-60 lg:w-72 xl:w-80 h-auto object-contain"
+              />
+          </div>
+
+          {/* ✅ Slider de Certificados - NA FRENTE DA FOTO */}
+          <div className="relative lg:col-span-1 z-30 space-y-6 lg:mt-[-8.5rem] max-w-7xl">
+              <Slider {...settings}>
+                  {minhasCertificacoes.map((cert) => (
+                      <div key={cert.id} className="p-0">
+                          <div className="bg-zinc-900 rounded-xl border border-theme-primary p-2 shadow-lg">
+                              <Image
+                                  src={cert.src}
+                                  alt={cert.id}
+                                  width={0}
+                                  height={0}
+                                  sizes="100vw"
+                                  priority
+                                  className="w-[166px] md:w-[232px] lg:w-[500px] object-contain rounded-xl mx-auto"
+                              />
+                          </div>
+                      </div>
+                  ))}
+              </Slider>
+          </div>
+
       </div>
-    </div>
   );
 }
